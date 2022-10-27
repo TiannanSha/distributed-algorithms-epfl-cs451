@@ -1,5 +1,7 @@
 package cs451;
 
+import cs451.links.LinkUser;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -7,19 +9,20 @@ import java.net.Socket;
 
 public class Main {
 
-    private static void handleSignal() {
+    private static void handleSignal(LinkUser linkUser) {
         //immediately stop network packet processing
         System.out.println("Immediately stopping network packet processing.");
 
         //write/flush output file if necessary
         System.out.println("Writing output.");
+        linkUser.stopLinkUserAndFlushLog();
     }
 
-    private static void initSignalHandlers() {
+    private static void initSignalHandlers(LinkUser linkUser) {
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
-                handleSignal();
+                handleSignal(linkUser);
             }
         });
     }
@@ -27,8 +30,6 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Parser parser = new Parser(args);
         parser.parse();
-
-        initSignalHandlers();
 
         // example
         long pid = ProcessHandle.current().pid();
@@ -55,8 +56,17 @@ public class Main {
         System.out.println(parser.config() + "\n");
 
         System.out.println("Doing some initialization\n");
+        // *** my code ***
+        Logger logger = new Logger(parser.output());
+        ConfigParser configParser = parser.getConfigParser();
+        configParser.readPerfectLinkConf();
+        LinkUser linkUser = new LinkUser(parser.hosts().get(parser.myId()), configParser.getNumMsgsToSend(), configParser.getHostIdToSendTo(), logger);
+        initSignalHandlers(linkUser);
 
         System.out.println("Broadcasting and delivering messages...\n");
+        // *** my code ***
+        linkUser.sendAllMsgs();
+        linkUser.startReceivingLoop();
 
         // After a process finishes broadcasting,
         // it waits forever for the delivery of messages.
