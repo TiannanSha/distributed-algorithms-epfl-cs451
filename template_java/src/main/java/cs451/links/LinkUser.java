@@ -74,7 +74,9 @@ public class LinkUser {
         while (true) {
             System.out.println("link user receivingLoop");
             Packet pkt = perfectLink.deliver();
-            logger.appendDeliveryLogs(pkt.src, pkt.firstMsgId, pkt.firstMsgId+pkt.numMsgs-1);
+            if (pkt!=null) {
+                logger.appendDeliveryLogs(pkt.src, pkt.firstMsgId, pkt.firstMsgId + pkt.numMsgs - 1);
+            }
             System.out.println("link user receivingLoop after perfectLink deliver");
         }
     }

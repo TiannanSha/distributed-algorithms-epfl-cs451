@@ -6,6 +6,7 @@ import java.net.DatagramPacket;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -16,14 +17,15 @@ import java.util.concurrent.*;
 
 public class PerfectLink implements Link {
 
-    HashSet<Integer> receivedPktIds = new HashSet<>();  // for preventing double delivery
+    // for preventing double delivery, each entry consists of two integers, [senderHost, pktId]
+    HashSet<int[]> receivedPktIds = new HashSet<>();
     HashSet<Integer> ACKedSentPktIds = new HashSet<>(); // packetIds sent by me that have been ACKed
     Host myHost;
     private final FairLossLink fLink;
     private ExecutorService executorService = Executors.newFixedThreadPool(4);
     List<Host> hosts;
 
-    public PerfectLink(Host myHost, List<Host> host) {
+    public PerfectLink(Host myHost, List<Host> hosts) {
         this.myHost = myHost;
         fLink = new FairLossLink(myHost);
         this.hosts = hosts;
@@ -57,22 +59,32 @@ public class PerfectLink implements Link {
     @Override
     public Packet deliver() {
         System.out.println("perfectlink deliver()");
-        Packet pkt = fLink.deliver();
-        if (!pkt.isACK) {
+        Packet pktRecv = fLink.deliver();
+        if (!pktRecv.isACK) {
+            // received actual message packet pktRecv
             System.out.println("perfectlink deliver not ACK");
-            // send an ACK for this packet, and update received pkt
-            receivedPktIds.add(pkt.pktId);
+            // send an ACK for this packet, and update received pktRecv
             System.out.println("perfectlink deliver before reply ACK");
-            fLink.send(new Packet(new ArrayList<Message>(), pkt.pktId, true,
-                    myHost.getId()), hosts.get(pkt.src-1));
-            if (!receivedPktIds.contains(pkt.pktId)) {
-                // this is a new packet
-                return pkt;
+            Packet ACK = new Packet(new ArrayList<Message>(), pktRecv.pktId, true,
+                    myHost.getId());
+            fLink.send(ACK, hosts.get(pktRecv.src-1));
+            System.out.println("after flink send");
+
+            int[] pktIdTuple = new int[2];
+            pktIdTuple[0] = pktRecv.src;
+            pktIdTuple[1] = pktRecv.pktId;
+            if (!receivedPktIds.contains(pktIdTuple)) {
+                // this is a new non-ack packet
+                receivedPktIds.add(pktIdTuple);
+                return pktRecv;
+            } else {
+                // this is an old non-ack packet
+                return null;
             }
-        } else {
-            System.out.println("perfectlink deliver ACK");
-            ACKedSentPktIds.add(pkt.pktId);
         }
+        // this is an ACK packet
+        System.out.println("perfectlink deliver ACK");
+        ACKedSentPktIds.add(pktRecv.pktId);
         return null;
     }
 

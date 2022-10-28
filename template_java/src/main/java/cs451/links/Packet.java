@@ -17,11 +17,18 @@ public class Packet {
     boolean isACK;
     short src; // todo maybe can fit in one byte or char since maximum 128 processes
 
+
+
     public Packet(List<Message> messages, int pktId, boolean isACK, int src) {
         this.data = PacketSerializer.serializeMessagesToData(messages);
         this.pktId = pktId;
         numMsgs = messages.size();
-        firstMsgId = messages.get(0).msgId;
+        if (isACK) {
+            System.out.println("info: creating ACK packet");
+            firstMsgId = -1;
+        } else {
+            firstMsgId = messages.get(0).msgId;
+        }
         this.isACK = isACK;
         this.src = (short)src;
     }
@@ -34,7 +41,6 @@ public class Packet {
         this.src = (short)src;
         this.isACK = isACK;
     }
-
 
     public byte[] marshalPacket() {
         return PacketSerializer.serialize(this);

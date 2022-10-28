@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -73,12 +74,14 @@ public class Main {
             linkUser.sendAllMsgs();
         }
         linkUser.startReceivingLoop();
+        linkUser.getExecutorService().shutdown();
+        linkUser.getExecutorService().awaitTermination(30, TimeUnit.MINUTES);
 
         // After a process finishes broadcasting,
         // it waits forever for the delivery of messages.
-        while (true) {
-            // Sleep for 1 hour
-            Thread.sleep(60 * 60 * 1000);
-        }
+//        while (true) {
+//            // Sleep for 1 hour
+//            Thread.sleep(60 * 60 * 1000);
+//        }
     }
 }
