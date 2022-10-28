@@ -11,6 +11,11 @@ public class Host {
     private String ip;
     private int port = -1;
 
+    public Host() {
+
+    }
+
+    // for testing purpose
     public Host(String idString, String ipString, String portString) {
         populate(idString, ipString, portString);
     }
@@ -57,6 +62,13 @@ public class Host {
         return port;
     }
 
-    public InetAddress getInetIp() throws UnknownHostException { return InetAddress.getByName(ip); }
+    public InetAddress getInetIp() {
+        try {
+            return InetAddress.getByName(ip);
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 }

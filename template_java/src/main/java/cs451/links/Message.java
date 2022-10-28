@@ -1,5 +1,7 @@
 package cs451.links;
 
+import java.nio.ByteBuffer;
+
 public class Message {
     String content;
     int msgId;
@@ -9,5 +11,8 @@ public class Message {
         this.msgId = msgId;
     }
 
-
+    public byte[] marshal() {
+        ByteBuffer byteBuffer = ByteBuffer.allocate(content.length());
+        return byteBuffer.array();
+    }
 }

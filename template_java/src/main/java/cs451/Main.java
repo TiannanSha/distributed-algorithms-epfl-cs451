@@ -60,12 +60,18 @@ public class Main {
         Logger logger = new Logger(parser.output());
         ConfigParser configParser = parser.getConfigParser();
         configParser.readPerfectLinkConf();
-        LinkUser linkUser = new LinkUser(parser.hosts().get(parser.myId()), configParser.getNumMsgsToSend(), configParser.getHostIdToSendTo(), logger);
+        Host myhost = parser.hosts().get(parser.myId()-1);
+        Host hostToSendTo = parser.hosts().get(configParser.getHostIdToSendTo()-1);
+        LinkUser linkUser = new LinkUser(myhost,
+                configParser.getNumMsgsToSend(),
+                hostToSendTo, logger, parser.hosts());
         initSignalHandlers(linkUser);
 
         System.out.println("Broadcasting and delivering messages...\n");
         // *** my code ***
-        linkUser.sendAllMsgs();
+        if (myhost.getId() != configParser.getHostIdToSendTo()) {
+            linkUser.sendAllMsgs();
+        }
         linkUser.startReceivingLoop();
 
         // After a process finishes broadcasting,

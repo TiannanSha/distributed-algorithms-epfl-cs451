@@ -4,7 +4,7 @@ import cs451.Host;
 
 public interface Link {
 
-    final int BUF_SIZE = 512;  //
+    final int BUF_SIZE = 256;  //
     /**
      *
      * @param packet
