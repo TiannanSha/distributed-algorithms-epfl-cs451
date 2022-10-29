@@ -18,7 +18,7 @@ import java.util.concurrent.*;
 public class PerfectLink implements Link {
 
     // for preventing double delivery, each entry consists of two integers, [senderHost, pktId]
-    HashSet<int[]> receivedPktIds = new HashSet<>();
+    HashSet<List<Integer>> receivedPktIds = new HashSet<>();
     HashSet<Integer> ACKedSentPktIds = new HashSet<>(); // packetIds sent by me that have been ACKed
     Host myHost;
     private final FairLossLink fLink;
@@ -42,12 +42,13 @@ public class PerfectLink implements Link {
         DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, host.getInetIp(), host.getPort());
         Future<?> future = executorService.submit(
                 ()-> {
+                    //todo append broadcast log here
                     // keep sending until ACK is received
                     while (!ACKedSentPktIds.contains(packet.pktId)) {
                         System.out.println("in perfect link send() loop, pktId = " + packet.pktId);
                         fLink.send(datagramPacket, host);
                         try {
-                            Thread.sleep(1000);
+                            Thread.sleep(300);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -70,9 +71,9 @@ public class PerfectLink implements Link {
             fLink.send(ACK, hosts.get(pktRecv.src-1));
             System.out.println("after flink send");
 
-            int[] pktIdTuple = new int[2];
-            pktIdTuple[0] = pktRecv.src;
-            pktIdTuple[1] = pktRecv.pktId;
+            List<Integer> pktIdTuple = new LinkedList<>();
+            pktIdTuple.add((int)pktRecv.src);
+            pktIdTuple.add(pktRecv.pktId);
             if (!receivedPktIds.contains(pktIdTuple)) {
                 // this is a new non-ack packet
                 receivedPktIds.add(pktIdTuple);
