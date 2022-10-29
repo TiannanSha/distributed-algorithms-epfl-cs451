@@ -1,0 +1,490 @@
+My PID: 15297
+
+From a new terminal type `kill -SIGINT 15297` or `kill -SIGTERM 15297` to stop processing packets
+
+My ID: 41
+
+List of resolved hosts is:
+==========================
+1
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11001
+
+2
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11002
+
+3
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11003
+
+4
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11004
+
+5
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11005
+
+6
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11006
+
+7
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11007
+
+8
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11008
+
+9
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11009
+
+10
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11010
+
+11
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11011
+
+12
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11012
+
+13
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11013
+
+14
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11014
+
+15
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11015
+
+16
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11016
+
+17
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11017
+
+18
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11018
+
+19
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11019
+
+20
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11020
+
+21
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11021
+
+22
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11022
+
+23
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11023
+
+24
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11024
+
+25
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11025
+
+26
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11026
+
+27
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11027
+
+28
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11028
+
+29
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11029
+
+30
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11030
+
+31
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11031
+
+32
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11032
+
+33
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11033
+
+34
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11034
+
+35
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11035
+
+36
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11036
+
+37
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11037
+
+38
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11038
+
+39
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11039
+
+40
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11040
+
+41
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11041
+
+42
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11042
+
+43
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11043
+
+44
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11044
+
+45
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11045
+
+46
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11046
+
+47
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11047
+
+48
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11048
+
+49
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11049
+
+50
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11050
+
+
+Path to output:
+===============
+/Users/sha/Desktop/EPFL/2022-2023fall/distributed-algorithms/CS451-2022-project/example/output/stress/proc41.output
+
+Path to config:
+===============
+../example/output/stress/config
+
+Doing some initialization
+
+cs451.links.LinkUser@4fca772d
+Broadcasting and delivering messages...
+
+sendAllMsgs()
+
+sendMsgs()
+
+in perfect link send()
+append to log with entry: b 1
+
+append to log with entry: b 2
+
+append to log with entry: b 3
+
+append to log with entry: b 4
+
+append to log with entry: b 5
+
+append to log with entry: b 6
+
+append to log with entry: b 7
+
+append to log with entry: b 8
+
+in perfect link send()
+append to log with entry: b 9
+
+append to log with entry: b 10
+
+append to log with entry: b 11
+
+append to log with entry: b 12
+
+append to log with entry: b 13
+
+in perfect link send() loop, pktId = 0
+in fairloss link send()
+append to log with entry: b 14
+
+append to log with entry: b 15
+
+append to log with entry: b 16
+
+send to addr:/127.0.0.1, port:11001
+in perfect link send() loop, pktId = 1
+in fairloss link send()
+send to addr:/127.0.0.1, port:11001
+in perfect link send()
+append to log with entry: b 17
+
+append to log with entry: b 18
+
+append to log with entry: b 19
+
+append to log with entry: b 20
+
+append to log with entry: b 21
+
+append to log with entry: b 22
+
+append to log with entry: b 23
+
+append to log with entry: b 24
+
+in perfect link send() loop, pktId = 2
+in perfect link send()
+in fairloss link send()
+send to addr:/127.0.0.1, port:11001
+append to log with entry: b 25
+
+append to log with entry: b 26
+
+append to log with entry: b 27
+
+append to log with entry: b 28
+
+append to log with entry: b 29
+
+append to log with entry: b 30
+
+append to log with entry: b 31
+
+append to log with entry: b 32
+
+in perfect link send()
+in perfect link send() loop, pktId = 3
+in fairloss link send()
+send to addr:/127.0.0.1, port:11001
+append to log with entry: b 33
+
+append to log with entry: b 34
+
+append to log with entry: b 35
+
+append to log with entry: b 36
+
+append to log with entry: b 37
+
+append to log with entry: b 38
+
+append to log with entry: b 39
+
+append to log with entry: b 40
+
+in perfect link send()
+append to log with entry: b 41
+
+append to log with entry: b 42
+
+append to log with entry: b 43
+
+append to log with entry: b 44
+
+append to log with entry: b 45
+
+append to log with entry: b 46
+
+append to log with entry: b 47
+
+append to log with entry: b 48
+
+in perfect link send()
+append to log with entry: b 49
+
+append to log with entry: b 50
+
+append to log with entry: b 51
+
+append to log with entry: b 52
+
+append to log with entry: b 53
+
+append to log with entry: b 54
+
+append to log with entry: b 55
+
+append to log with entry: b 56
+
+in perfect link send()
+append to log with entry: b 57
+
+append to log with entry: b 58
+
+append to log with entry: b 59
+
+append to log with entry: b 60
+
+append to log with entry: b 61
+
+append to log with entry: b 62
+
+append to log with entry: b 63
+
+append to log with entry: b 64
+
+in perfect link send()
+append to log with entry: b 65
+
+append to log with entry: b 66
+
+append to log with entry: b 67
+
+append to log with entry: b 68
+
+append to log with entry: b 69
+
+append to log with entry: b 70
+
+append to log with entry: b 71
+
+append to log with entry: b 72
+
+in perfect link send()
+append to log with entry: b 73
+
+append to log with entry: b 74
+
+append to log with entry: b 75
+
+append to log with entry: b 76
+
+append to log with entry: b 77
+
+append to log with entry: b 78
+
+append to log with entry: b 79
+
+append to log with entry: b 80
+
+in perfect link send()
+append to log with entry: b 81
+
+append to log with entry: b 82
+
+append to log with entry: b 83
+
+append to log with entry: b 84
+
+append to log with entry: b 85
+
+append to log with entry: b 86
+
+append to log with entry: b 87
+
+append to log with entry: b 88
+
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId0,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId1,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId2,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId3,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+in perfect link send() loop, pktId = 4
+in fairloss link send()
+send to addr:/127.0.0.1, port:11001
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId4,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+in perfect link send() loop, pktId = 5
+in fairloss link send()
+send to addr:/127.0.0.1, port:11001
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId5,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+in perfect link send() loop, pktId = 6
+in fairloss link send()
+send to addr:/127.0.0.1, port:11001
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId6,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+in perfect link send() loop, pktId = 7
+in fairloss link send()
+send to addr:/127.0.0.1, port:11001
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId7,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+Immediately stopping network packet processing.
+Writing output.
+enter flushToDisk, outputfile: /Users/sha/Desktop/EPFL/2022-2023fall/distributed-algorithms/CS451-2022-project/example/output/stress/proc41.output
