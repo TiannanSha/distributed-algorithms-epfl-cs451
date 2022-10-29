@@ -4,7 +4,7 @@ import cs451.Host;
 
 import java.net.DatagramPacket;
 
-
+@Deprecated
 public class StubbornLink implements Link{
     private FairLossLink fairLossLink;
 

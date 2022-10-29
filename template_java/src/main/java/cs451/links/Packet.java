@@ -50,5 +50,10 @@ public class Packet {
         return PacketSerializer.deserializePacket(data);
     }
 
+    @Override
+    public String toString() {
+       return "pkt.src = " + this.src + ", pkt.pktId" + this.pktId + ",pkt.isACK = " + isACK;
+    }
+
 
 }

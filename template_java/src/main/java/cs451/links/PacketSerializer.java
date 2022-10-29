@@ -14,7 +14,7 @@ public class PacketSerializer {
     public static final int src=14; // src is short
     public static final int DATA_OFFSET =16;
 
-    public static final int MAX_DATA_SIZE = 32;
+    public static final int MAX_DATA_SIZE = 8 * Message.MAX_MSG_CONTENT_SIZE;
     public static final int MAX_PACKET_SIZE = DATA_OFFSET+ MAX_DATA_SIZE;
 
     public static byte[] serialize(Packet packet) {

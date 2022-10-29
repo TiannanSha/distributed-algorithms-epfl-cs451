@@ -1,6 +1,6 @@
-My PID: 6997
+My PID: 14755
 
-From a new terminal type `kill -SIGINT 6997` or `kill -SIGTERM 6997` to stop processing packets
+From a new terminal type `kill -SIGINT 14755` or `kill -SIGTERM 14755` to stop processing packets
 
 My ID: 5
 
@@ -26,6 +26,14 @@ Human-readable Port: 11004
 Human-readable IP: 127.0.0.1
 Human-readable Port: 11005
 
+6
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11006
+
+7
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11007
+
 
 Path to output:
 ===============
@@ -45,9 +53,6 @@ sendAllMsgs()
 sendMsgs()
 
 in perfect link send()
-in perfect link send() loop, pktId = 0
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
 append to log with entry: b 1
 
 append to log with entry: b 2
@@ -65,17 +70,16 @@ append to log with entry: b 7
 append to log with entry: b 8
 
 in perfect link send()
-in perfect link send() loop, pktId = 1
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
 append to log with entry: b 9
 
 append to log with entry: b 10
 
 append to log with entry: b 11
 
+in perfect link send() loop, pktId = 0
 append to log with entry: b 12
 
+in fairloss link send()
 append to log with entry: b 13
 
 append to log with entry: b 14
@@ -85,13 +89,12 @@ append to log with entry: b 15
 append to log with entry: b 16
 
 in perfect link send()
-in perfect link send() loop, pktId = 2
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
 append to log with entry: b 17
 
 append to log with entry: b 18
 
+in perfect link send() loop, pktId = 1
+in fairloss link send()
 append to log with entry: b 19
 
 append to log with entry: b 20
@@ -105,9 +108,8 @@ append to log with entry: b 23
 append to log with entry: b 24
 
 in perfect link send()
-in perfect link send() loop, pktId = 3
+in perfect link send() loop, pktId = 2
 in fairloss link send()
-send to addr:/127.0.0.1, port:11001
 append to log with entry: b 25
 
 append to log with entry: b 26
@@ -127,6 +129,8 @@ append to log with entry: b 32
 in perfect link send()
 append to log with entry: b 33
 
+in perfect link send() loop, pktId = 3
+in fairloss link send()
 append to log with entry: b 34
 
 append to log with entry: b 35
@@ -154,15 +158,19 @@ append to log with entry: b 45
 
 append to log with entry: b 46
 
+send to addr:/127.0.0.1, port:11001
 append to log with entry: b 47
 
+send to addr:/127.0.0.1, port:11001
 append to log with entry: b 48
 
 in perfect link send()
+send to addr:/127.0.0.1, port:11001
 append to log with entry: b 49
 
 append to log with entry: b 50
 
+send to addr:/127.0.0.1, port:11001
 append to log with entry: b 51
 
 append to log with entry: b 52
@@ -269,324 +277,449 @@ append to log with entry: b 99
 
 append to log with entry: b 100
 
+append to log with entry: b 101
+
+append to log with entry: b 102
+
+append to log with entry: b 103
+
+append to log with entry: b 104
+
+in perfect link send()
+append to log with entry: b 105
+
+append to log with entry: b 106
+
+append to log with entry: b 107
+
+append to log with entry: b 108
+
+append to log with entry: b 109
+
+append to log with entry: b 110
+
+append to log with entry: b 111
+
+append to log with entry: b 112
+
+in perfect link send()
+append to log with entry: b 113
+
+append to log with entry: b 114
+
+append to log with entry: b 115
+
+append to log with entry: b 116
+
+append to log with entry: b 117
+
+append to log with entry: b 118
+
+append to log with entry: b 119
+
+append to log with entry: b 120
+
+in perfect link send()
+append to log with entry: b 121
+
+append to log with entry: b 122
+
+append to log with entry: b 123
+
+append to log with entry: b 124
+
+append to log with entry: b 125
+
+append to log with entry: b 126
+
+append to log with entry: b 127
+
+append to log with entry: b 128
+
+in perfect link send()
+append to log with entry: b 129
+
+append to log with entry: b 130
+
+append to log with entry: b 131
+
+append to log with entry: b 132
+
+append to log with entry: b 133
+
+append to log with entry: b 134
+
+append to log with entry: b 135
+
+append to log with entry: b 136
+
+in perfect link send()
+append to log with entry: b 137
+
+append to log with entry: b 138
+
+append to log with entry: b 139
+
+append to log with entry: b 140
+
+append to log with entry: b 141
+
+append to log with entry: b 142
+
+append to log with entry: b 143
+
+append to log with entry: b 144
+
+in perfect link send()
+append to log with entry: b 145
+
+append to log with entry: b 146
+
+append to log with entry: b 147
+
+append to log with entry: b 148
+
+append to log with entry: b 149
+
+append to log with entry: b 150
+
+append to log with entry: b 151
+
+append to log with entry: b 152
+
+in perfect link send()
+append to log with entry: b 153
+
+append to log with entry: b 154
+
+append to log with entry: b 155
+
+append to log with entry: b 156
+
+append to log with entry: b 157
+
+append to log with entry: b 158
+
+append to log with entry: b 159
+
+append to log with entry: b 160
+
+in perfect link send()
+append to log with entry: b 161
+
+append to log with entry: b 162
+
+append to log with entry: b 163
+
+append to log with entry: b 164
+
+append to log with entry: b 165
+
+append to log with entry: b 166
+
+append to log with entry: b 167
+
+append to log with entry: b 168
+
+in perfect link send()
+append to log with entry: b 169
+
+append to log with entry: b 170
+
+append to log with entry: b 171
+
+append to log with entry: b 172
+
+append to log with entry: b 173
+
+append to log with entry: b 174
+
+append to log with entry: b 175
+
+append to log with entry: b 176
+
+in perfect link send()
+append to log with entry: b 177
+
+append to log with entry: b 178
+
+append to log with entry: b 179
+
+append to log with entry: b 180
+
+append to log with entry: b 181
+
+append to log with entry: b 182
+
+append to log with entry: b 183
+
+append to log with entry: b 184
+
+in perfect link send()
+append to log with entry: b 185
+
+append to log with entry: b 186
+
+append to log with entry: b 187
+
+append to log with entry: b 188
+
+append to log with entry: b 189
+
+append to log with entry: b 190
+
+append to log with entry: b 191
+
+append to log with entry: b 192
+
+in perfect link send()
+append to log with entry: b 193
+
+append to log with entry: b 194
+
+append to log with entry: b 195
+
+append to log with entry: b 196
+
+append to log with entry: b 197
+
+append to log with entry: b 198
+
+append to log with entry: b 199
+
+append to log with entry: b 200
+
+in perfect link send()
+append to log with entry: b 201
+
+append to log with entry: b 202
+
+append to log with entry: b 203
+
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId0,pkt.isACK = true
 perfectlink deliver ACK
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId2,pkt.isACK = true
 perfectlink deliver ACK
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId1,pkt.isACK = true
 perfectlink deliver ACK
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-in perfect link send() loop, pktId = 4
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId3,pkt.isACK = true
 perfectlink deliver ACK
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 in perfect link send() loop, pktId = 5
 in fairloss link send()
+in perfect link send() loop, pktId = 4
+in fairloss link send()
+send to addr:/127.0.0.1, port:11001
 send to addr:/127.0.0.1, port:11001
 in perfect link send() loop, pktId = 6
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-fair loss link deliver() after socket.receive()
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
 in perfect link send() loop, pktId = 7
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
 fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId5,pkt.isACK = true
 perfectlink deliver ACK
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-in perfect link send() loop, pktId = 11
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
-in fairloss link send()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId4,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId6,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId7,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
 in perfect link send() loop, pktId = 8
 in fairloss link send()
 in perfect link send() loop, pktId = 11
 in fairloss link send()
 in perfect link send() loop, pktId = 9
 in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-in perfect link send() loop, pktId = 11
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-in perfect link send() loop, pktId = 8
-in fairloss link send()
 in perfect link send() loop, pktId = 10
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
 send to addr:/127.0.0.1, port:11001
 send to addr:/127.0.0.1, port:11001
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId9,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId8,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId11,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId10,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+in perfect link send() loop, pktId = 12
 in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-in perfect link send() loop, pktId = 10
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
+in perfect link send() loop, pktId = 13
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
+in perfect link send() loop, pktId = 14
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
+in perfect link send() loop, pktId = 15
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId12,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId13,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId14,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId15,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+in perfect link send() loop, pktId = 17
 in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-in perfect link send() loop, pktId = 11
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
+in perfect link send() loop, pktId = 16
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId16,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId17,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+in perfect link send() loop, pktId = 18
 in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-in perfect link send() loop, pktId = 8
+in perfect link send() loop, pktId = 19
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId18,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId19,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+in perfect link send() loop, pktId = 21
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
-in perfect link send() loop, pktId = 11
-in fairloss link send()
+in perfect link send() loop, pktId = 23
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-in perfect link send() loop, pktId = 8
+in perfect link send() loop, pktId = 22
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
+in perfect link send() loop, pktId = 20
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 10
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId21,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId22,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId23,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId20,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+in perfect link send() loop, pktId = 24
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 11
-in fairloss link send()
-in perfect link send() loop, pktId = 9
+in perfect link send() loop, pktId = 25
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-in perfect link send() loop, pktId = 10
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 9
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId24,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 1, pkt.pktId25,pkt.isACK = true
+perfectlink deliver ACK
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
 Immediately stopping network packet processing.
 Writing output.
-in perfect link send() loop, pktId = 11
-in fairloss link send()
 enter flushToDisk, outputfile: /Users/sha/Desktop/EPFL/2022-2023fall/distributed-algorithms/CS451-2022-project/example/output/stress/proc05.output
-send to addr:/127.0.0.1, port:11001

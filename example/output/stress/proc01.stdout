@@ -1,6 +1,6 @@
-My PID: 6993
+My PID: 14751
 
-From a new terminal type `kill -SIGINT 6993` or `kill -SIGTERM 6993` to stop processing packets
+From a new terminal type `kill -SIGINT 14751` or `kill -SIGTERM 14751` to stop processing packets
 
 My ID: 1
 
@@ -26,6 +26,14 @@ Human-readable Port: 11004
 Human-readable IP: 127.0.0.1
 Human-readable Port: 11005
 
+6
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11006
+
+7
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11007
+
 
 Path to output:
 ===============
@@ -43,218 +51,12 @@ Broadcasting and delivering messages...
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11005
-fairloss link after send ACK
-after flink send
-d 5 1
-
-d 5 2
-
-d 5 3
-
-d 5 4
-
-d 5 5
-
-d 5 6
-
-d 5 7
-
-d 5 8
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11005
-fairloss link after send ACK
-after flink send
-d 5 9
-
-d 5 10
-
-d 5 11
-
-d 5 12
-
-d 5 13
-
-d 5 14
-
-d 5 15
-
-d 5 16
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11005
-fairloss link after send ACK
-after flink send
-d 5 17
-
-d 5 18
-
-d 5 19
-
-d 5 20
-
-d 5 21
-
-d 5 22
-
-d 5 23
-
-d 5 24
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11005
-fairloss link after send ACK
-after flink send
-d 5 25
-
-d 5 26
-
-d 5 27
-
-d 5 28
-
-d 5 29
-
-d 5 30
-
-d 5 31
-
-d 5 32
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-fairloss link after send ACK
-after flink send
-d 3 1
-
-d 3 2
-
-d 3 3
-
-d 3 4
-
-d 3 5
-
-d 3 6
-
-d 3 7
-
-d 3 8
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-fairloss link after send ACK
-after flink send
-d 3 9
-
-d 3 10
-
-d 3 11
-
-d 3 12
-
-d 3 13
-
-d 3 14
-
-d 3 15
-
-d 3 16
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-fairloss link after send ACK
-after flink send
-d 3 17
-
-d 3 18
-
-d 3 19
-
-d 3 20
-
-d 3 21
-
-d 3 22
-
-d 3 23
-
-d 3 24
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-fairloss link after send ACK
-after flink send
-d 3 25
-
-d 3 26
-
-d 3 27
-
-d 3 28
-
-d 3 29
-
-d 3 30
-
-d 3 31
-
-d 3 32
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId0,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 0
 fairloss link after send ACK
 after flink send
 d 4 1
@@ -277,10 +79,12 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId1,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 1
 fairloss link after send ACK
 after flink send
 d 4 9
@@ -303,62 +107,40 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 6, pkt.pktId0,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11004
+fairloss link send ACK to host /127.0.0.1port 11006
+packet.src = 1, packet.pktId = 0
 fairloss link after send ACK
 after flink send
-d 4 17
+d 6 1
 
-d 4 18
+d 6 2
 
-d 4 19
+d 6 3
 
-d 4 20
+d 6 4
 
-d 4 21
+d 6 5
 
-d 4 22
+d 6 6
 
-d 4 23
+d 6 7
 
-d 4 24
+d 6 8
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11004
-fairloss link after send ACK
-after flink send
-d 4 25
-
-d 4 26
-
-d 4 27
-
-d 4 28
-
-d 4 29
-
-d 4 30
-
-d 4 31
-
-d 4 32
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId0,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 0
 fairloss link after send ACK
 after flink send
 d 2 1
@@ -381,10 +163,12 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId1,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 1
 fairloss link after send ACK
 after flink send
 d 2 9
@@ -407,10 +191,96 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId2,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 2
+fairloss link after send ACK
+after flink send
+d 4 17
+
+d 4 18
+
+d 4 19
+
+d 4 20
+
+d 4 21
+
+d 4 22
+
+d 4 23
+
+d 4 24
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 6, pkt.pktId1,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11006
+packet.src = 1, packet.pktId = 1
+fairloss link after send ACK
+after flink send
+d 6 9
+
+d 6 10
+
+d 6 11
+
+d 6 12
+
+d 6 13
+
+d 6 14
+
+d 6 15
+
+d 6 16
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId2,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 2
+fairloss link after send ACK
+after flink send
+d 3 17
+
+d 3 18
+
+d 3 19
+
+d 3 20
+
+d 3 21
+
+d 3 22
+
+d 3 23
+
+d 3 24
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId2,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 2
 fairloss link after send ACK
 after flink send
 d 2 17
@@ -433,10 +303,180 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 6, pkt.pktId2,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11006
+packet.src = 1, packet.pktId = 2
+fairloss link after send ACK
+after flink send
+d 6 17
+
+d 6 18
+
+d 6 19
+
+d 6 20
+
+d 6 21
+
+d 6 22
+
+d 6 23
+
+d 6 24
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId1,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 1
+fairloss link after send ACK
+after flink send
+d 3 9
+
+d 3 10
+
+d 3 11
+
+d 3 12
+
+d 3 13
+
+d 3 14
+
+d 3 15
+
+d 3 16
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId0,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 0
+fairloss link after send ACK
+after flink send
+d 3 1
+
+d 3 2
+
+d 3 3
+
+d 3 4
+
+d 3 5
+
+d 3 6
+
+d 3 7
+
+d 3 8
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId3,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 3
+fairloss link after send ACK
+after flink send
+d 3 25
+
+d 3 26
+
+d 3 27
+
+d 3 28
+
+d 3 29
+
+d 3 30
+
+d 3 31
+
+d 3 32
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId3,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 3
+fairloss link after send ACK
+after flink send
+d 4 25
+
+d 4 26
+
+d 4 27
+
+d 4 28
+
+d 4 29
+
+d 4 30
+
+d 4 31
+
+d 4 32
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 6, pkt.pktId3,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11006
+packet.src = 1, packet.pktId = 3
+fairloss link after send ACK
+after flink send
+d 6 25
+
+d 6 26
+
+d 6 27
+
+d 6 28
+
+d 6 29
+
+d 6 30
+
+d 6 31
+
+d 6 32
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId3,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 3
 fairloss link after send ACK
 after flink send
 d 2 25
@@ -459,400 +499,236 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId0,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 0
 fairloss link after send ACK
 after flink send
-d 5 33
+d 5 1
 
-d 5 34
+d 5 2
 
-d 5 35
+d 5 3
 
-d 5 36
+d 5 4
 
-d 5 37
+d 5 5
 
-d 5 38
+d 5 6
 
-d 5 39
+d 5 7
 
-d 5 40
+d 5 8
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId2,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 2
 fairloss link after send ACK
 after flink send
-d 5 41
+d 5 17
 
-d 5 42
+d 5 18
 
-d 5 43
+d 5 19
 
-d 5 44
+d 5 20
 
-d 5 45
+d 5 21
 
-d 5 46
+d 5 22
 
-d 5 47
+d 5 23
 
-d 5 48
+d 5 24
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId1,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 1
 fairloss link after send ACK
 after flink send
-d 5 49
+d 5 9
 
-d 5 50
+d 5 10
 
-d 5 51
+d 5 11
 
-d 5 52
+d 5 12
 
-d 5 53
+d 5 13
 
-d 5 54
+d 5 14
 
-d 5 55
+d 5 15
 
-d 5 56
+d 5 16
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId3,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 3
 fairloss link after send ACK
 after flink send
-d 5 57
+d 5 25
 
-d 5 58
+d 5 26
 
-d 5 59
+d 5 27
 
-d 5 60
+d 5 28
 
-d 5 61
+d 5 29
 
-d 5 62
+d 5 30
 
-d 5 63
+d 5 31
 
-d 5 64
+d 5 32
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId3,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 3
 fairloss link after send ACK
 after flink send
-d 3 33
+d 7 25
 
-d 3 34
+d 7 26
 
-d 3 35
+d 7 27
 
-d 3 36
+d 7 28
 
-d 3 37
+d 7 29
 
-d 3 38
+d 7 30
 
-d 3 39
+d 7 31
 
-d 3 40
+d 7 32
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId0,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 0
 fairloss link after send ACK
 after flink send
-d 3 41
+d 7 1
 
-d 3 42
+d 7 2
 
-d 3 43
+d 7 3
 
-d 3 44
+d 7 4
 
-d 3 45
+d 7 5
 
-d 3 46
+d 7 6
 
-d 3 47
+d 7 7
 
-d 3 48
+d 7 8
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId1,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 1
 fairloss link after send ACK
 after flink send
-d 3 49
+d 7 9
 
-d 3 50
+d 7 10
 
-d 3 51
+d 7 11
 
-d 3 52
+d 7 12
 
-d 3 53
+d 7 13
 
-d 3 54
+d 7 14
 
-d 3 55
+d 7 15
 
-d 3 56
+d 7 16
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId2,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 2
 fairloss link after send ACK
 after flink send
-d 3 57
+d 7 17
 
-d 3 58
+d 7 18
 
-d 3 59
+d 7 19
 
-d 3 60
+d 7 20
 
-d 3 61
+d 7 21
 
-d 3 62
+d 7 22
 
-d 3 63
+d 7 23
 
-d 3 64
+d 7 24
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11004
-fairloss link after send ACK
-after flink send
-d 4 33
-
-d 4 34
-
-d 4 35
-
-d 4 36
-
-d 4 37
-
-d 4 38
-
-d 4 39
-
-d 4 40
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11004
-fairloss link after send ACK
-after flink send
-d 4 41
-
-d 4 42
-
-d 4 43
-
-d 4 44
-
-d 4 45
-
-d 4 46
-
-d 4 47
-
-d 4 48
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11004
-fairloss link after send ACK
-after flink send
-d 4 49
-
-d 4 50
-
-d 4 51
-
-d 4 52
-
-d 4 53
-
-d 4 54
-
-d 4 55
-
-d 4 56
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11004
-fairloss link after send ACK
-after flink send
-d 4 57
-
-d 4 58
-
-d 4 59
-
-d 4 60
-
-d 4 61
-
-d 4 62
-
-d 4 63
-
-d 4 64
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId4,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
-fairloss link after send ACK
-after flink send
-d 2 49
-
-d 2 50
-
-d 2 51
-
-d 2 52
-
-d 2 53
-
-d 2 54
-
-d 2 55
-
-d 2 56
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-fairloss link after send ACK
-after flink send
-d 2 57
-
-d 2 58
-
-d 2 59
-
-d 2 60
-
-d 2 61
-
-d 2 62
-
-d 2 63
-
-d 2 64
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-fairloss link after send ACK
-after flink send
-d 2 41
-
-d 2 42
-
-d 2 43
-
-d 2 44
-
-d 2 45
-
-d 2 46
-
-d 2 47
-
-d 2 48
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 4
 fairloss link after send ACK
 after flink send
 d 2 33
@@ -875,218 +751,544 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-fairloss link after send ACK
-after flink send
-d 3 65
-
-d 3 66
-
-d 3 67
-
-d 3 68
-
-d 3 69
-
-d 3 70
-
-d 3 71
-
-d 3 72
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-fairloss link after send ACK
-after flink send
-d 3 73
-
-d 3 74
-
-d 3 75
-
-d 3 76
-
-d 3 77
-
-d 3 78
-
-d 3 79
-
-d 3 80
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-fairloss link after send ACK
-after flink send
-d 3 81
-
-d 3 82
-
-d 3 83
-
-d 3 84
-
-d 3 85
-
-d 3 86
-
-d 3 87
-
-d 3 88
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-fairloss link after send ACK
-after flink send
-d 3 89
-
-d 3 90
-
-d 3 91
-
-d 3 92
-
-d 3 93
-
-d 3 94
-
-d 3 95
-
-d 3 96
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId4,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 4
 fairloss link after send ACK
 after flink send
-d 4 89
+d 4 33
 
-d 4 90
+d 4 34
 
-d 4 91
+d 4 35
 
-d 4 92
+d 4 36
 
-d 4 93
+d 4 37
 
-d 4 94
+d 4 38
 
-d 4 95
+d 4 39
 
-d 4 96
+d 4 40
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId5,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 5
 fairloss link after send ACK
 after flink send
-d 4 65
+d 4 41
 
-d 4 66
+d 4 42
 
-d 4 67
+d 4 43
 
-d 4 68
+d 4 44
 
-d 4 69
+d 4 45
 
-d 4 70
+d 4 46
 
-d 4 71
+d 4 47
 
-d 4 72
+d 4 48
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId6,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 6
 fairloss link after send ACK
 after flink send
-d 4 73
+d 4 49
 
-d 4 74
+d 4 50
 
-d 4 75
+d 4 51
 
-d 4 76
+d 4 52
 
-d 4 77
+d 4 53
 
-d 4 78
+d 4 54
 
-d 4 79
+d 4 55
 
-d 4 80
+d 4 56
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11004
-fairloss link after send ACK
-after flink send
-d 4 81
-
-d 4 82
-
-d 4 83
-
-d 4 84
-
-d 4 85
-
-d 4 86
-
-d 4 87
-
-d 4 88
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId5,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 5
+fairloss link after send ACK
+after flink send
+d 2 41
+
+d 2 42
+
+d 2 43
+
+d 2 44
+
+d 2 45
+
+d 2 46
+
+d 2 47
+
+d 2 48
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId6,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 6
+fairloss link after send ACK
+after flink send
+d 2 49
+
+d 2 50
+
+d 2 51
+
+d 2 52
+
+d 2 53
+
+d 2 54
+
+d 2 55
+
+d 2 56
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId4,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 4
+fairloss link after send ACK
+after flink send
+d 3 33
+
+d 3 34
+
+d 3 35
+
+d 3 36
+
+d 3 37
+
+d 3 38
+
+d 3 39
+
+d 3 40
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId7,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 7
+fairloss link after send ACK
+after flink send
+d 4 57
+
+d 4 58
+
+d 4 59
+
+d 4 60
+
+d 4 61
+
+d 4 62
+
+d 4 63
+
+d 4 64
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId5,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 5
+fairloss link after send ACK
+after flink send
+d 3 41
+
+d 3 42
+
+d 3 43
+
+d 3 44
+
+d 3 45
+
+d 3 46
+
+d 3 47
+
+d 3 48
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId7,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 7
+fairloss link after send ACK
+after flink send
+d 3 57
+
+d 3 58
+
+d 3 59
+
+d 3 60
+
+d 3 61
+
+d 3 62
+
+d 3 63
+
+d 3 64
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId6,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 6
+fairloss link after send ACK
+after flink send
+d 3 49
+
+d 3 50
+
+d 3 51
+
+d 3 52
+
+d 3 53
+
+d 3 54
+
+d 3 55
+
+d 3 56
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId7,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 7
+fairloss link after send ACK
+after flink send
+d 2 57
+
+d 2 58
+
+d 2 59
+
+d 2 60
+
+d 2 61
+
+d 2 62
+
+d 2 63
+
+d 2 64
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId5,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 5
+fairloss link after send ACK
+after flink send
+d 5 41
+
+d 5 42
+
+d 5 43
+
+d 5 44
+
+d 5 45
+
+d 5 46
+
+d 5 47
+
+d 5 48
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId4,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 4
+fairloss link after send ACK
+after flink send
+d 5 33
+
+d 5 34
+
+d 5 35
+
+d 5 36
+
+d 5 37
+
+d 5 38
+
+d 5 39
+
+d 5 40
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId6,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 6
+fairloss link after send ACK
+after flink send
+d 5 49
+
+d 5 50
+
+d 5 51
+
+d 5 52
+
+d 5 53
+
+d 5 54
+
+d 5 55
+
+d 5 56
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId7,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 7
+fairloss link after send ACK
+after flink send
+d 5 57
+
+d 5 58
+
+d 5 59
+
+d 5 60
+
+d 5 61
+
+d 5 62
+
+d 5 63
+
+d 5 64
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId4,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 4
+fairloss link after send ACK
+after flink send
+d 7 33
+
+d 7 34
+
+d 7 35
+
+d 7 36
+
+d 7 37
+
+d 7 38
+
+d 7 39
+
+d 7 40
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId5,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 5
+fairloss link after send ACK
+after flink send
+d 7 41
+
+d 7 42
+
+d 7 43
+
+d 7 44
+
+d 7 45
+
+d 7 46
+
+d 7 47
+
+d 7 48
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId6,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 6
+fairloss link after send ACK
+after flink send
+d 7 49
+
+d 7 50
+
+d 7 51
+
+d 7 52
+
+d 7 53
+
+d 7 54
+
+d 7 55
+
+d 7 56
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId7,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 7
+fairloss link after send ACK
+after flink send
+d 7 57
+
+d 7 58
+
+d 7 59
+
+d 7 60
+
+d 7 61
+
+d 7 62
+
+d 7 63
+
+d 7 64
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId8,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 8
 fairloss link after send ACK
 after flink send
 d 2 65
@@ -1109,10 +1311,12 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId9,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 9
 fairloss link after send ACK
 after flink send
 d 2 73
@@ -1135,10 +1339,12 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId10,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 10
 fairloss link after send ACK
 after flink send
 d 2 81
@@ -1161,10 +1367,124 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId8,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 8
+fairloss link after send ACK
+after flink send
+d 3 65
+
+d 3 66
+
+d 3 67
+
+d 3 68
+
+d 3 69
+
+d 3 70
+
+d 3 71
+
+d 3 72
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId9,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 9
+fairloss link after send ACK
+after flink send
+d 3 73
+
+d 3 74
+
+d 3 75
+
+d 3 76
+
+d 3 77
+
+d 3 78
+
+d 3 79
+
+d 3 80
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId10,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 10
+fairloss link after send ACK
+after flink send
+d 3 81
+
+d 3 82
+
+d 3 83
+
+d 3 84
+
+d 3 85
+
+d 3 86
+
+d 3 87
+
+d 3 88
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId11,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 11
+fairloss link after send ACK
+after flink send
+d 3 89
+
+d 3 90
+
+d 3 91
+
+d 3 92
+
+d 3 93
+
+d 3 94
+
+d 3 95
+
+d 3 96
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 2, pkt.pktId11,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 11
 fairloss link after send ACK
 after flink send
 d 2 89
@@ -1187,19 +1507,1483 @@ link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId8,pkt.isACK = false
 perfectlink deliver not ACK
 perfectlink deliver before reply ACK
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 8
 fairloss link after send ACK
 after flink send
-d 4 97
+d 4 65
 
-d 4 98
+d 4 66
 
-d 4 99
+d 4 67
 
-d 4 100
+d 4 68
+
+d 4 69
+
+d 4 70
+
+d 4 71
+
+d 4 72
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId10,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 10
+fairloss link after send ACK
+after flink send
+d 4 81
+
+d 4 82
+
+d 4 83
+
+d 4 84
+
+d 4 85
+
+d 4 86
+
+d 4 87
+
+d 4 88
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId11,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 11
+fairloss link after send ACK
+after flink send
+d 4 89
+
+d 4 90
+
+d 4 91
+
+d 4 92
+
+d 4 93
+
+d 4 94
+
+d 4 95
+
+d 4 96
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 4, pkt.pktId9,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11004
+packet.src = 1, packet.pktId = 9
+fairloss link after send ACK
+after flink send
+d 4 73
+
+d 4 74
+
+d 4 75
+
+d 4 76
+
+d 4 77
+
+d 4 78
+
+d 4 79
+
+d 4 80
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId9,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 9
+fairloss link after send ACK
+after flink send
+d 5 73
+
+d 5 74
+
+d 5 75
+
+d 5 76
+
+d 5 77
+
+d 5 78
+
+d 5 79
+
+d 5 80
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId8,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 8
+fairloss link after send ACK
+after flink send
+d 5 65
+
+d 5 66
+
+d 5 67
+
+d 5 68
+
+d 5 69
+
+d 5 70
+
+d 5 71
+
+d 5 72
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId11,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 11
+fairloss link after send ACK
+after flink send
+d 5 89
+
+d 5 90
+
+d 5 91
+
+d 5 92
+
+d 5 93
+
+d 5 94
+
+d 5 95
+
+d 5 96
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId10,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 10
+fairloss link after send ACK
+after flink send
+d 5 81
+
+d 5 82
+
+d 5 83
+
+d 5 84
+
+d 5 85
+
+d 5 86
+
+d 5 87
+
+d 5 88
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId9,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 9
+fairloss link after send ACK
+after flink send
+d 7 73
+
+d 7 74
+
+d 7 75
+
+d 7 76
+
+d 7 77
+
+d 7 78
+
+d 7 79
+
+d 7 80
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId11,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 11
+fairloss link after send ACK
+after flink send
+d 7 89
+
+d 7 90
+
+d 7 91
+
+d 7 92
+
+d 7 93
+
+d 7 94
+
+d 7 95
+
+d 7 96
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId10,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 10
+fairloss link after send ACK
+after flink send
+d 7 81
+
+d 7 82
+
+d 7 83
+
+d 7 84
+
+d 7 85
+
+d 7 86
+
+d 7 87
+
+d 7 88
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId8,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 8
+fairloss link after send ACK
+after flink send
+d 7 65
+
+d 7 66
+
+d 7 67
+
+d 7 68
+
+d 7 69
+
+d 7 70
+
+d 7 71
+
+d 7 72
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId12,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 12
+fairloss link after send ACK
+after flink send
+d 5 97
+
+d 5 98
+
+d 5 99
+
+d 5 100
+
+d 5 101
+
+d 5 102
+
+d 5 103
+
+d 5 104
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId13,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 13
+fairloss link after send ACK
+after flink send
+d 5 105
+
+d 5 106
+
+d 5 107
+
+d 5 108
+
+d 5 109
+
+d 5 110
+
+d 5 111
+
+d 5 112
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId14,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 14
+fairloss link after send ACK
+after flink send
+d 5 113
+
+d 5 114
+
+d 5 115
+
+d 5 116
+
+d 5 117
+
+d 5 118
+
+d 5 119
+
+d 5 120
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId15,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 15
+fairloss link after send ACK
+after flink send
+d 5 121
+
+d 5 122
+
+d 5 123
+
+d 5 124
+
+d 5 125
+
+d 5 126
+
+d 5 127
+
+d 5 128
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId13,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 13
+fairloss link after send ACK
+after flink send
+d 3 105
+
+d 3 106
+
+d 3 107
+
+d 3 108
+
+d 3 109
+
+d 3 110
+
+d 3 111
+
+d 3 112
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId14,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 14
+fairloss link after send ACK
+after flink send
+d 3 113
+
+d 3 114
+
+d 3 115
+
+d 3 116
+
+d 3 117
+
+d 3 118
+
+d 3 119
+
+d 3 120
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId15,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 15
+fairloss link after send ACK
+after flink send
+d 3 121
+
+d 3 122
+
+d 3 123
+
+d 3 124
+
+d 3 125
+
+d 3 126
+
+d 3 127
+
+d 3 128
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId12,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 12
+fairloss link after send ACK
+after flink send
+d 3 97
+
+d 3 98
+
+d 3 99
+
+d 3 100
+
+d 3 101
+
+d 3 102
+
+d 3 103
+
+d 3 104
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId12,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 12
+fairloss link after send ACK
+after flink send
+d 7 97
+
+d 7 98
+
+d 7 99
+
+d 7 100
+
+d 7 101
+
+d 7 102
+
+d 7 103
+
+d 7 104
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId13,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 13
+fairloss link after send ACK
+after flink send
+d 7 105
+
+d 7 106
+
+d 7 107
+
+d 7 108
+
+d 7 109
+
+d 7 110
+
+d 7 111
+
+d 7 112
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId15,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 15
+fairloss link after send ACK
+after flink send
+d 7 121
+
+d 7 122
+
+d 7 123
+
+d 7 124
+
+d 7 125
+
+d 7 126
+
+d 7 127
+
+d 7 128
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId14,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 14
+fairloss link after send ACK
+after flink send
+d 7 113
+
+d 7 114
+
+d 7 115
+
+d 7 116
+
+d 7 117
+
+d 7 118
+
+d 7 119
+
+d 7 120
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId16,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 16
+fairloss link after send ACK
+after flink send
+d 5 129
+
+d 5 130
+
+d 5 131
+
+d 5 132
+
+d 5 133
+
+d 5 134
+
+d 5 135
+
+d 5 136
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId17,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 17
+fairloss link after send ACK
+after flink send
+d 5 137
+
+d 5 138
+
+d 5 139
+
+d 5 140
+
+d 5 141
+
+d 5 142
+
+d 5 143
+
+d 5 144
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId18,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 18
+fairloss link after send ACK
+after flink send
+d 5 145
+
+d 5 146
+
+d 5 147
+
+d 5 148
+
+d 5 149
+
+d 5 150
+
+d 5 151
+
+d 5 152
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId19,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 19
+fairloss link after send ACK
+after flink send
+d 5 153
+
+d 5 154
+
+d 5 155
+
+d 5 156
+
+d 5 157
+
+d 5 158
+
+d 5 159
+
+d 5 160
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId17,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 17
+fairloss link after send ACK
+after flink send
+d 7 137
+
+d 7 138
+
+d 7 139
+
+d 7 140
+
+d 7 141
+
+d 7 142
+
+d 7 143
+
+d 7 144
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId16,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 16
+fairloss link after send ACK
+after flink send
+d 7 129
+
+d 7 130
+
+d 7 131
+
+d 7 132
+
+d 7 133
+
+d 7 134
+
+d 7 135
+
+d 7 136
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId19,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 19
+fairloss link after send ACK
+after flink send
+d 7 153
+
+d 7 154
+
+d 7 155
+
+d 7 156
+
+d 7 157
+
+d 7 158
+
+d 7 159
+
+d 7 160
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId18,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 18
+fairloss link after send ACK
+after flink send
+d 7 145
+
+d 7 146
+
+d 7 147
+
+d 7 148
+
+d 7 149
+
+d 7 150
+
+d 7 151
+
+d 7 152
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId21,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 21
+fairloss link after send ACK
+after flink send
+d 5 169
+
+d 5 170
+
+d 5 171
+
+d 5 172
+
+d 5 173
+
+d 5 174
+
+d 5 175
+
+d 5 176
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId22,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 22
+fairloss link after send ACK
+after flink send
+d 5 177
+
+d 5 178
+
+d 5 179
+
+d 5 180
+
+d 5 181
+
+d 5 182
+
+d 5 183
+
+d 5 184
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId23,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 23
+fairloss link after send ACK
+after flink send
+d 5 185
+
+d 5 186
+
+d 5 187
+
+d 5 188
+
+d 5 189
+
+d 5 190
+
+d 5 191
+
+d 5 192
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId20,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 20
+fairloss link after send ACK
+after flink send
+d 5 161
+
+d 5 162
+
+d 5 163
+
+d 5 164
+
+d 5 165
+
+d 5 166
+
+d 5 167
+
+d 5 168
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId19,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 19
+fairloss link after send ACK
+after flink send
+d 3 153
+
+d 3 154
+
+d 3 155
+
+d 3 156
+
+d 3 157
+
+d 3 158
+
+d 3 159
+
+d 3 160
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId18,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 18
+fairloss link after send ACK
+after flink send
+d 3 145
+
+d 3 146
+
+d 3 147
+
+d 3 148
+
+d 3 149
+
+d 3 150
+
+d 3 151
+
+d 3 152
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId17,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 17
+fairloss link after send ACK
+after flink send
+d 3 137
+
+d 3 138
+
+d 3 139
+
+d 3 140
+
+d 3 141
+
+d 3 142
+
+d 3 143
+
+d 3 144
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId16,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 16
+fairloss link after send ACK
+after flink send
+d 3 129
+
+d 3 130
+
+d 3 131
+
+d 3 132
+
+d 3 133
+
+d 3 134
+
+d 3 135
+
+d 3 136
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId20,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 20
+fairloss link after send ACK
+after flink send
+d 7 161
+
+d 7 162
+
+d 7 163
+
+d 7 164
+
+d 7 165
+
+d 7 166
+
+d 7 167
+
+d 7 168
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId21,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 21
+fairloss link after send ACK
+after flink send
+d 7 169
+
+d 7 170
+
+d 7 171
+
+d 7 172
+
+d 7 173
+
+d 7 174
+
+d 7 175
+
+d 7 176
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId23,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 23
+fairloss link after send ACK
+after flink send
+d 7 185
+
+d 7 186
+
+d 7 187
+
+d 7 188
+
+d 7 189
+
+d 7 190
+
+d 7 191
+
+d 7 192
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId22,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 22
+fairloss link after send ACK
+after flink send
+d 7 177
+
+d 7 178
+
+d 7 179
+
+d 7 180
+
+d 7 181
+
+d 7 182
+
+d 7 183
+
+d 7 184
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId21,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 21
+fairloss link after send ACK
+after flink send
+d 3 169
+
+d 3 170
+
+d 3 171
+
+d 3 172
+
+d 3 173
+
+d 3 174
+
+d 3 175
+
+d 3 176
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId20,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 20
+fairloss link after send ACK
+after flink send
+d 3 161
+
+d 3 162
+
+d 3 163
+
+d 3 164
+
+d 3 165
+
+d 3 166
+
+d 3 167
+
+d 3 168
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId24,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 24
+fairloss link after send ACK
+after flink send
+d 5 193
+
+d 5 194
+
+d 5 195
+
+d 5 196
+
+d 5 197
+
+d 5 198
+
+d 5 199
+
+d 5 200
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 5, pkt.pktId25,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11005
+packet.src = 1, packet.pktId = 25
+fairloss link after send ACK
+after flink send
+d 5 201
+
+d 5 202
+
+d 5 203
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId22,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 22
+fairloss link after send ACK
+after flink send
+d 3 177
+
+d 3 178
+
+d 3 179
+
+d 3 180
+
+d 3 181
+
+d 3 182
+
+d 3 183
+
+d 3 184
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId23,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 23
+fairloss link after send ACK
+after flink send
+d 3 185
+
+d 3 186
+
+d 3 187
+
+d 3 188
+
+d 3 189
+
+d 3 190
+
+d 3 191
+
+d 3 192
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId24,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 24
+fairloss link after send ACK
+after flink send
+d 7 193
+
+d 7 194
+
+d 7 195
+
+d 7 196
+
+d 7 197
+
+d 7 198
+
+d 7 199
+
+d 7 200
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 7, pkt.pktId25,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11007
+packet.src = 1, packet.pktId = 25
+fairloss link after send ACK
+after flink send
+d 7 201
+
+d 7 202
+
+d 7 203
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId24,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 24
+fairloss link after send ACK
+after flink send
+d 3 193
+
+d 3 194
+
+d 3 195
+
+d 3 196
+
+d 3 197
+
+d 3 198
+
+d 3 199
+
+d 3 200
+
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+fair loss link deliver() after socket.receive()
+pkt.src = 3, pkt.pktId25,pkt.isACK = false
+perfectlink deliver not ACK
+perfectlink deliver before reply ACK
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11003
+packet.src = 1, packet.pktId = 25
+fairloss link after send ACK
+after flink send
+d 3 201
+
+d 3 202
+
+d 3 203
 
 link user receivingLoop after perfectLink deliver
 link user receivingLoop

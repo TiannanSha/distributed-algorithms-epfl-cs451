@@ -31,6 +31,7 @@ public class FairLossLink implements Link {
         byte[] buf = packet.marshalPacket();
         try {
             System.out.println("fairloss link send ACK to host " + host.getInetIp() + "port " + host.getPort());
+            System.out.println("packet.src = " + packet.src + ", packet.pktId = "+packet.pktId);
             DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, host.getInetIp(), host.getPort());
             socket.send(datagramPacket);
             System.out.println("fairloss link after send ACK");

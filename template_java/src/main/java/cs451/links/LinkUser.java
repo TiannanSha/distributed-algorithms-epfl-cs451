@@ -3,6 +3,7 @@ package cs451.links;
 import cs451.Host;
 import cs451.Logger;
 
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -27,7 +28,7 @@ public class LinkUser {
 
     public LinkUser(Host myHost, int numMsgsToSend, Host sendToHost, Logger logger, List<Host> hosts ) {
         this.myHost = myHost;
-        perfectLink = new PerfectLink(myHost, hosts);
+        perfectLink = new PerfectLink(myHost, hosts, logger);
         this.numMsgsToSend = numMsgsToSend;
         this.sendToHost = sendToHost;
         this.logger = logger;
@@ -37,25 +38,30 @@ public class LinkUser {
 
     public void sendMsgs(int msgIdLow, int msgIdHigh) {
         System.out.println("sendMsgs()\n");
-        List<Message> msgs= new ArrayList<>();;
-        for (int msgId=msgIdLow; msgId <= msgIdHigh; msgId++) {
-            String content = Integer.toString(msgId);
+        List<Message> msgs= new ArrayList<>();
+        int msgId = msgIdLow;
+        for (msgId=msgIdLow; msgId <= msgIdHigh; msgId++) {
+            ByteBuffer byteBuffer = ByteBuffer.allocate(Message.MAX_MSG_CONTENT_SIZE);
+            byteBuffer.putInt(msgId);
+            byte[] content = byteBuffer.array();
             msgs.add(new Message(content, msgId));
             if (msgs.size()==Packet.MAX_NUM_MSG) {
                 // a packet is full, we can send it now and re-accumulate a new batch of messages
                 Packet pkt = new Packet(msgs, pktId, false, myHost.getId());
                 perfectLink.send(pkt, sendToHost);
-                logger.appendBroadcastLogs(msgs.get(0).msgId, msgs.get(0).msgId+msgs.size()-1);
+                //logger.appendBroadcastLogs(msgs.get(0).msgId, msgs.get(0).msgId+msgs.size()-1);
                 pktId++;
                 msgs = new ArrayList<>();
             }
         }
-        // send the last batch of meesages
-        Packet pkt = new Packet(msgs, pktId, false, myHost.getId());
-        perfectLink.send(pkt, sendToHost);
-        pktId++;
-        logger.appendBroadcastLogs(msgs.get(0).msgId, msgs.get(0).msgId+msgs.size()-1);
-        //logger.appendBroadcastLogs(msgIdLow, msgIdHigh);
+        int numMsgToSend = msgIdHigh - msgIdLow + 1;
+        if (numMsgToSend % Packet.MAX_NUM_MSG != 0) {
+            // there is a last batch of messages need to be sent
+            Packet pkt = new Packet(msgs, pktId, false, myHost.getId());
+            perfectLink.send(pkt, sendToHost);
+            pktId++;
+        }
+
     }
 
     public void sendAllMsgs() {

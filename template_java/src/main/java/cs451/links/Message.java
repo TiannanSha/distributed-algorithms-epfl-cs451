@@ -3,16 +3,19 @@ package cs451.links;
 import java.nio.ByteBuffer;
 
 public class Message {
-    String content;
+    byte[] content;
     int msgId;
+    // note that this can be easily changed if we need larger messages
+    public static final int MAX_MSG_CONTENT_SIZE = 4;
 
-    public Message(String content, int msgId) {
+
+    public Message(byte[] content, int msgId) {
         this.content = content;
         this.msgId = msgId;
     }
 
     public byte[] marshal() {
-        ByteBuffer byteBuffer = ByteBuffer.allocate(content.length());
-        return byteBuffer.array();
+//        ByteBuffer byteBuffer = ByteBuffer.allocate(content.length());
+        return content;
     }
 }

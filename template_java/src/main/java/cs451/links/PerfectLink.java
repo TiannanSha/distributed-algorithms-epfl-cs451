@@ -1,6 +1,7 @@
 package cs451.links;
 
 import cs451.Host;
+import cs451.Logger;
 
 import java.net.DatagramPacket;
 import java.sql.SQLOutput;
@@ -24,11 +25,14 @@ public class PerfectLink implements Link {
     private final FairLossLink fLink;
     private ExecutorService executorService = Executors.newFixedThreadPool(4);
     List<Host> hosts;
+    public static final int resendWaitingTimeMs = 1000;
+    Logger logger;
 
-    public PerfectLink(Host myHost, List<Host> hosts) {
+    public PerfectLink(Host myHost, List<Host> hosts, Logger logger) {
         this.myHost = myHost;
         fLink = new FairLossLink(myHost);
         this.hosts = hosts;
+        this.logger = logger;
     }
 
 
@@ -38,6 +42,7 @@ public class PerfectLink implements Link {
     @Override
     public void send(Packet packet, Host host) {
         System.out.println("in perfect link send()");
+        logger.appendBroadcastLogs(packet.firstMsgId, packet.firstMsgId+packet.numMsgs-1);
         byte[] buf = packet.marshalPacket();
         DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, host.getInetIp(), host.getPort());
         Future<?> future = executorService.submit(
@@ -48,7 +53,7 @@ public class PerfectLink implements Link {
                         System.out.println("in perfect link send() loop, pktId = " + packet.pktId);
                         fLink.send(datagramPacket, host);
                         try {
-                            Thread.sleep(300);
+                            Thread.sleep(resendWaitingTimeMs);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -61,6 +66,7 @@ public class PerfectLink implements Link {
     public Packet deliver() {
         System.out.println("perfectlink deliver()");
         Packet pktRecv = fLink.deliver();
+        System.out.println(pktRecv);
         if (!pktRecv.isACK) {
             // received actual message packet pktRecv
             System.out.println("perfectlink deliver not ACK");
