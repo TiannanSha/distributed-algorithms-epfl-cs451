@@ -30,4 +30,6 @@ bin/da_proc.jar
 hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/java
- example/output/stress/
+example/output/stress/*.output
+example/output/stress/*.stdout
+example/output/stress/*.stderr
