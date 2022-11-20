@@ -9,7 +9,7 @@ public class StubbornLink implements Link{
     private FairLossLink fairLossLink;
 
     public StubbornLink(Host myHost) {
-        fairLossLink = new FairLossLink(myHost);
+        //fairLossLink = new FairLossLink(myHost);
     }
 
     @Override

@@ -2,10 +2,6 @@ package cs451;
 
 import cs451.links.LinkUser;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.Socket;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
@@ -32,7 +28,6 @@ public class Main {
         Parser parser = new Parser(args);
         parser.parse();
 
-        // example
         long pid = ProcessHandle.current().pid();
         System.out.println("My PID: " + pid + "\n");
         System.out.println("From a new terminal type `kill -SIGINT " + pid + "` or `kill -SIGTERM " + pid + "` to stop processing packets\n");
@@ -61,8 +56,12 @@ public class Main {
         Logger logger = new Logger(parser.output());
         ConfigParser configParser = parser.getConfigParser();
         configParser.readPerfectLinkConf();
+
         Host myhost = parser.hosts().get(parser.myId()-1);
         Host hostToSendTo = parser.hosts().get(configParser.getHostIdToSendTo()-1);
+        NetworkGlobalInfo.init(myhost, parser.hosts(), logger, configParser.getNumMsgsToSend());
+
+        // todo comment out this when testing broadcast
         LinkUser linkUser = new LinkUser(myhost,
                 configParser.getNumMsgsToSend(),
                 hostToSendTo, logger, parser.hosts());

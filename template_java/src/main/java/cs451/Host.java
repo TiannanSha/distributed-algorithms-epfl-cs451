@@ -50,8 +50,8 @@ public class Host {
         return true;
     }
 
-    public int getId() {
-        return id;
+    public short getId() {
+        return (short)id;
     }
 
     public String getIp() {

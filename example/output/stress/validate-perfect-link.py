@@ -12,3 +12,7 @@ for line in lines:
 
 for sender in counts.keys():
     print(sender, counts[sender])
+print("total number of deliveries:")
+print(len(lines))
+print("total number of delivered processes")
+print(len(counts))

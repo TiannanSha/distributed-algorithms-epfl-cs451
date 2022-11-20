@@ -1,8 +1,11 @@
 package cs451;
 
+import cs451.links.Packet;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class Logger {
     // A thread-safe, mutable sequence of characters
@@ -49,6 +52,16 @@ public class Logger {
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * append the delievery of messages in a list of packets
+     * @param pkts
+     */
+    public void appendDeliveryLogs(List<Packet> pkts) {
+        for (Packet pkt: pkts) {
+            appendDeliveryLogs(pkt.getSrc(), pkt.getFirstMsgId(), pkt.getLastMsgId());
         }
     }
 }

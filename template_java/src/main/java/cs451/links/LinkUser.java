@@ -28,7 +28,7 @@ public class LinkUser {
 
     public LinkUser(Host myHost, int numMsgsToSend, Host sendToHost, Logger logger, List<Host> hosts ) {
         this.myHost = myHost;
-        perfectLink = new PerfectLink(myHost, hosts, logger);
+        perfectLink = new PerfectLink();
         this.numMsgsToSend = numMsgsToSend;
         this.sendToHost = sendToHost;
         this.logger = logger;
@@ -47,7 +47,7 @@ public class LinkUser {
             msgs.add(new Message(content, msgId));
             if (msgs.size()==Packet.MAX_NUM_MSG) {
                 // a packet is full, we can send it now and re-accumulate a new batch of messages
-                Packet pkt = new Packet(msgs, pktId, false, myHost.getId());
+                Packet pkt = new Packet(msgs, pktId, false, (short)myHost.getId(), (short)sendToHost.getId(), (short)myHost.getId());
                 perfectLink.send(pkt, sendToHost);
                 //logger.appendBroadcastLogs(msgs.get(0).msgId, msgs.get(0).msgId+msgs.size()-1);
                 pktId++;
@@ -57,7 +57,7 @@ public class LinkUser {
         int numMsgToSend = msgIdHigh - msgIdLow + 1;
         if (numMsgToSend % Packet.MAX_NUM_MSG != 0) {
             // there is a last batch of messages need to be sent
-            Packet pkt = new Packet(msgs, pktId, false, myHost.getId());
+            Packet pkt = new Packet(msgs, pktId, false, (short)myHost.getId(), (short)sendToHost.getId(), (short)myHost.getId());
             perfectLink.send(pkt, sendToHost);
             pktId++;
         }

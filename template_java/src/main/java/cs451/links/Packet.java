@@ -5,7 +5,7 @@ import java.nio.ByteBuffer;
 import java.util.List;
 
 /**
- * a packet contains messages with continuous ids
+ * a packet contains messages with continuous ids sorted in ascending order
  */
 
 public class Packet {
@@ -13,13 +13,13 @@ public class Packet {
     int pktId;
     int numMsgs;
     int firstMsgId;
-    static final int MAX_NUM_MSG = 8;
+    public static final int MAX_NUM_MSG = 8;
     boolean isACK;
     short src; // todo maybe can fit in one byte or char since maximum 128 processes
+    short dst;
+    short relayedBy;
 
-
-
-    public Packet(List<Message> messages, int pktId, boolean isACK, int src) {
+    public Packet(List<Message> messages, int pktId, boolean isACK, short src, short dst, short relayedBy) {
         this.data = PacketSerializer.serializeMessagesToData(messages);
         this.pktId = pktId;
         numMsgs = messages.size();
@@ -31,14 +31,17 @@ public class Packet {
         }
         this.isACK = isACK;
         this.src = (short)src;
+        this.dst = (short)dst;
+        this.relayedBy = (short)relayedBy;
     }
 
-    public Packet(byte[] data, int numMsgs, int firstMsgId, int pktId, boolean isACK, int src) {
+    public Packet(byte[] data, int numMsgs, int firstMsgId, int pktId, boolean isACK, short src, short dst, short relayedBy) {
         this.data = data;
         this.pktId= pktId;
         this.numMsgs = numMsgs;
         this.firstMsgId = firstMsgId;
         this.src = (short)src;
+        this.dst = (short)dst;
         this.isACK = isACK;
     }
 
@@ -55,5 +58,39 @@ public class Packet {
        return "pkt.src = " + this.src + ", pkt.pktId" + this.pktId + ",pkt.isACK = " + isACK;
     }
 
+    public int getPktId() {
+        return pktId;
+    }
 
+    public short getDst() {
+        return dst;
+    }
+
+    public short getSrc() {
+        return src;
+    }
+
+    public short getRelayedBy() {
+        return relayedBy;
+    }
+
+    public int getFirstMsgId() {
+        return firstMsgId;
+    }
+
+    public int getNumMsgs() {
+        return numMsgs;
+    }
+
+    public int getLastMsgId() {
+        return firstMsgId + numMsgs - 1;
+    }
+
+    public void setDst(short dst) {
+        this.dst = dst;
+    }
+
+    public void setRelayedBy(short relayedBy) {
+        this.relayedBy = relayedBy;
+    }
 }

@@ -1,6 +1,7 @@
 package cs451.links;
 
 import cs451.Host;
+import cs451.NetworkGlobalInfo;
 
 import java.io.IOException;
 import java.net.*;
@@ -14,15 +15,15 @@ import java.util.List;
 public class FairLossLink implements Link {
 
     private DatagramSocket socket;
-    private Host myHost;
+    //private Host myHost;
 
-    public FairLossLink(Host myHost)  {
+    public FairLossLink()  {
         try {
-            socket = new DatagramSocket(myHost.getPort());
+            socket = new DatagramSocket(NetworkGlobalInfo.getMyHost().getPort());
         } catch (SocketException e) {
             e.printStackTrace();
         }
-        this.myHost = myHost;
+        //this.myHost = myHost;
     }
 
     @Override
@@ -52,10 +53,14 @@ public class FairLossLink implements Link {
     }
 
     @Override
+    /**
+     * blocks until a packet is delivered
+     */
     public Packet deliver()  {
         try {
             byte[] buf = new byte[Link.BUF_SIZE];
             DatagramPacket datagramPacket = new DatagramPacket(buf, Link.BUF_SIZE);
+            System.out.println("before socket receive, which blocks if no packet is received");
             socket.receive(datagramPacket); // this blocks
             System.out.println("fair loss link deliver() after socket.receive()");
             return Packet.unmarshalPacket(datagramPacket.getData());
