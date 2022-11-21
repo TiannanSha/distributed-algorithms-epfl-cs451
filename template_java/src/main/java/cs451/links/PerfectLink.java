@@ -1,5 +1,6 @@
 package cs451.links;
 
+import cs451.Broadcast.NodeIdToPackets;
 import cs451.Host;
 import cs451.NetworkGlobalInfo;
 
@@ -17,19 +18,24 @@ public class PerfectLink implements Link {
     // for preventing double delivery, each entry consists of two integers, [senderHost, pktId]
     // FIXME: 19.11.22 use a thread safe set
     //HashSet<List<Integer>> receivedPktIds = new HashSet<>();
-    //NodeIDToPktIDs delivered = new NodeIDToPktIDs();
-    ConcurrentHashSet delivered = new ConcurrentHashSet();
+    NodeIDToPktIDs delivered = new NodeIDToPktIDs();
 
     /**
      * unique id for each packet send thru perfect link, help for identify ack for which and avoid duplicate
      */
-    int plPktId = 1;
+//    int plPktId = 1;
 
     // todo probably should be [dst, pktId]... because we are sending to different nodes
     // fixme implement a thread safe set, ideally a sparse representation of packet id , but maybe no need
-    // packetIds sent by me that are schedule in thread pool but haven't been ACKed
+    // packets sent/relayed by me that are schedule in thread pool but haven't been ACKed
     //HashSet<Integer> pendingPktIds = new HashSet<>();
-    ConcurrentHashSet pendingPlPktIds = new ConcurrentHashSet();
+    //ConcurrentHashSet pendingPktIds = new ConcurrentHashSet();
+
+    /**
+     * I might broadcast (node1, pkt1) and also relay (node2, pkt1), these are different packets
+     * if you want to use perfect link to send same msg twice, you should change pkt id.
+     */
+    NodeIDToPktIDs pendingPktIds = new NodeIDToPktIDs();
 
     private final FairLossLink fLink;
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
@@ -56,29 +62,23 @@ public class PerfectLink implements Link {
     // when receives a pkt, just cancel the future
     @Override
     public void send(Packet packet, Host host) {
-        packet.setPerfectLinkId(plPktId);
-        plPktId++;
+//        packet.setPerfectLinkId(plPktId);
         System.out.println("packet.dst" + packet.dst);
         sendQueue.add(packet);
     }
 
     private void submitASendTask(Packet packet, Host host) {
         // todo debug this
-        System.out.println("in perfect link submitasendtask().....");
-        pendingPlPktIds.add(packet.plPktId);
-        System.out.println("after add");
+        System.out.println("in perfect link submitasendtask()");
+        pendingPktIds.addPacket(packet.src, packet.pktId);
         NetworkGlobalInfo.getLogger().appendBroadcastLogs(packet.firstMsgId, packet.firstMsgId+packet.numMsgs-1);
-        System.out.println("after getlogger");
         byte[] buf = packet.marshalPacket();
-        System.out.println("after marshal");
         DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, host.getInetIp(), host.getPort());
-        System.out.println("in perfect link before submit");
         Future<?> future = executorService.submit(
                 ()-> {
                     // keep sending until ACK is received
-                    System.out.println("in the submitted task");
-                    while (pendingPlPktIds.contains(packet.plPktId)) {
-                        System.out.println("in perfect link send() loop, plpktId = " + packet.plPktId);
+                    while (pendingPktIds.alreadyContainsPacket(packet.src, packet.pktId)) {
+                        System.out.println("in perfect link send() loop, pktId = " + packet.pktId);
                         fLink.send(datagramPacket, host);
                         try {
                             Thread.sleep(resendWaitingTimeMs);
@@ -94,7 +94,7 @@ public class PerfectLink implements Link {
         while (true) {
             // todo maybe this should sleep sometime between check
             System.out.println("in sendingLoop");
-            if (pendingPlPktIds.size()<MAX_PENDING_PKTS) {
+            if (pendingPktIds.getTotalNumPkts()<MAX_PENDING_PKTS) {
                 try {
                     Packet pkt = sendQueue.take();
                     submitASendTask(pkt, NetworkGlobalInfo.getHostById(pkt.dst));
@@ -119,18 +119,18 @@ public class PerfectLink implements Link {
             // received actual message packet pktRecv
             System.out.println("perfectlink deliver not ACK");
             // send an ACK for this packet, and update received pktRecv
-//            System.out.println("perfectlink deliver before reply ACK");
+            System.out.println("perfectlink deliver before reply ACK");
             Packet ACK = new Packet(new ArrayList<Message>(), pktRecv.pktId, true,
-                    NetworkGlobalInfo.getMyHost().getId(), pktRecv.src, NetworkGlobalInfo.getMyHost().getId(),
-                    pktRecv.plPktId);
-            System.out.println("pl send ACK:" + ACK);
+                    pktRecv.src, pktRecv.dst, NetworkGlobalInfo.getMyHost().getId());
             fLink.send(ACK, NetworkGlobalInfo.getAllHosts().get(pktRecv.src-1));
+            System.out.println("after flink send");
 
-
-
-            if (!delivered.contains(pktRecv.plPktId)) {
+//            List<Integer> pktIdTuple = new LinkedList<>();
+//            pktIdTuple.add((int)pktRecv.src);
+//            pktIdTuple.add(pktRecv.pktId);
+            if (!delivered.alreadyContainsPacket(pktRecv.src, pktRecv.pktId)) {
                 // this is a new non-ack packet
-                delivered.add(pktRecv.plPktId);
+                delivered.addPacket(pktRecv.src, pktRecv.pktId);
                 return pktRecv;
             } else {
                 // this is an old non-ack packet
@@ -138,9 +138,11 @@ public class PerfectLink implements Link {
             }
         }
         // this is an ACK packet
+        // for an ack packet, the src and the pktId are both the same as the packet it's acking
         System.out.println("perfectlink deliver ACK");
         System.out.println("ACK:" + pktRecv);
-        pendingPlPktIds.remove(pktRecv.plPktId);
+        pendingPktIds.removePacket(pktRecv.src, pktRecv.pktId);
+        //System.out.println("after remove, " + pendingPktIds.alreadyContainsPacket(pktRecv.src, ));
         return null;
     }
 

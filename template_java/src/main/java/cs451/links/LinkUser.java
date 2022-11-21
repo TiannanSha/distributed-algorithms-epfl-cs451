@@ -20,7 +20,7 @@ public class LinkUser {
     Host myHost;
     int numMsgsToSend;
     Host sendToHost;
-    int pktId = 0;
+    int pktId = 1;
     // todo can use maybe 4 threads and 2 threads sending 2 threads receiving
     ExecutorService executorService = Executors.newFixedThreadPool(2);
     Logger logger;

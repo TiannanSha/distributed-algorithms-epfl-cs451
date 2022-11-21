@@ -32,6 +32,23 @@ public class NodeIDToPktIDs {
         return nodeIdToPktIds.get(src).contains(pktId);
     }
 
+    synchronized public int getTotalNumPkts() {
+        int res = 0;
+        for (Short nodeId: nodeIdToPktIds.keySet()) {
+            res += nodeIdToPktIds.get(nodeId).size();
+        }
+        return res;
+    }
+
+    /**
+     * remove a packet from this collection
+     * @param pktId
+     */
+    synchronized public void removePacket(short src, int pktId) {
+        HashSet<Integer> pktIds = nodeIdToPktIds.get(src);
+        pktIds.remove(pktId);
+    }
+
 //    /**
 //     * special method for reliable broadcast
 //     * 'this' object represents pending packets
