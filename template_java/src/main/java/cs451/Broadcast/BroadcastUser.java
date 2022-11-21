@@ -18,7 +18,7 @@ public class BroadcastUser {
     ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     public BroadcastUser() {
-        //todo start loops
+
     }
 
     public void broadcastAllMsgs() {
@@ -64,12 +64,13 @@ public class BroadcastUser {
 
     private void receivingLoop() {
         while (true) {
-            System.out.println("link user receivingLoop");
+            System.out.println("broadcast user receivingLoop");
             List<Packet> pkts = fifoBroadcast.deliver();
+            System.out.println("broadcast user after fifo deliver");
             if (pkts!=null && pkts.size()>0) {
                 NetworkGlobalInfo.getLogger().appendDeliveryLogs(pkts);
             }
-            System.out.println("link user receivingLoop after perfectLink deliver");
+            System.out.println("broadcast user receivingLoop after perfectLink deliver");
         }
     }
 
@@ -81,5 +82,9 @@ public class BroadcastUser {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public ExecutorService getExecutorService() {
+        return executorService;
     }
 }

@@ -1,5 +1,6 @@
 package cs451;
 
+import cs451.Broadcast.BroadcastUser;
 import cs451.links.LinkUser;
 
 import java.util.concurrent.TimeUnit;
@@ -20,6 +21,24 @@ public class Main {
             @Override
             public void run() {
                 handleSignal(linkUser);
+            }
+        });
+    }
+
+    private static void handleSignal(BroadcastUser broadcastUser) {
+        //immediately stop network packet processing
+        System.out.println("Immediately stopping network packet processing.");
+
+        //write/flush output file if necessary
+        System.out.println("Writing output.");
+        broadcastUser.stopBroadcastUserAndFlushLog();
+    }
+
+    private static void initSignalHandlers(BroadcastUser broadcastUser) {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                handleSignal(broadcastUser);
             }
         });
     }
@@ -55,20 +74,30 @@ public class Main {
         // *** my code ***
         Logger logger = new Logger(parser.output());
         ConfigParser configParser = parser.getConfigParser();
+        /**
+         * for testing perfect link
+         */
         configParser.readPerfectLinkConf();
+        /**
+         * for testing fifo broadcast
+         */
+//        configParser.readFifoBroadcastConf();
 
         Host myhost = parser.hosts().get(parser.myId()-1);
-        Host hostToSendTo = parser.hosts().get(configParser.getHostIdToSendTo()-1);
         NetworkGlobalInfo.init(myhost, parser.hosts(), logger, configParser.getNumMsgsToSend());
 
+        /**
+         * for testing perfect link
+         */
         // todo comment out this when testing broadcast
+        Host hostToSendTo = parser.hosts().get(configParser.getHostIdToSendTo()-1);
         LinkUser linkUser = new LinkUser(myhost,
                 configParser.getNumMsgsToSend(),
                 hostToSendTo, logger, parser.hosts());
         initSignalHandlers(linkUser);
 
         System.out.println("Broadcasting and delivering messages...\n");
-        // *** my code ***
+
         if (myhost.getId() != configParser.getHostIdToSendTo()) {
             linkUser.sendAllMsgs();
         }
@@ -76,11 +105,14 @@ public class Main {
         linkUser.getExecutorService().shutdown();
         linkUser.getExecutorService().awaitTermination(30, TimeUnit.MINUTES);
 
-        // After a process finishes broadcasting,
-        // it waits forever for the delivery of messages.
-//        while (true) {
-//            // Sleep for 1 hour
-//            Thread.sleep(60 * 60 * 1000);
-//        }
+
+        /**
+         * for testing fifo broadcast
+         */
+//        BroadcastUser broadcastUser = new BroadcastUser();
+//        broadcastUser.broadcastAllMsgs();
+//        broadcastUser.startReceivingLoop();
+//        broadcastUser.getExecutorService().shutdown();
+//        broadcastUser.getExecutorService().awaitTermination(30, TimeUnit.MINUTES);
     }
 }

@@ -1,7 +1,5 @@
 package cs451.links;
 
-import java.io.Serializable;
-import java.nio.ByteBuffer;
 import java.util.List;
 
 /**
@@ -18,8 +16,19 @@ public class Packet {
     short src; // todo maybe can fit in one byte or char since maximum 128 processes
     short dst;
     short relayedBy;
+    int plPktId; // id used by perfect link
 
-    public Packet(List<Message> messages, int pktId, boolean isACK, short src, short dst, short relayedBy) {
+    /**
+     * used for creating packets for upper layer, no need to worry about plPktId
+     * @param messages
+     * @param pktId
+     * @param isACK
+     * @param src
+     * @param dst
+     * @param relayedBy
+     */
+    public Packet(List<Message> messages, int pktId, boolean isACK, short src, short dst,
+                  short relayedBy) {
         this.data = PacketSerializer.serializeMessagesToData(messages);
         this.pktId = pktId;
         numMsgs = messages.size();
@@ -33,9 +42,30 @@ public class Packet {
         this.src = (short)src;
         this.dst = (short)dst;
         this.relayedBy = (short)relayedBy;
+
     }
 
-    public Packet(byte[] data, int numMsgs, int firstMsgId, int pktId, boolean isACK, short src, short dst, short relayedBy) {
+    public Packet(List<Message> messages, int pktId, boolean isACK, short src, short dst,
+                  short relayedBy, int plPktId) {
+        this.data = PacketSerializer.serializeMessagesToData(messages);
+        this.pktId = pktId;
+        numMsgs = messages.size();
+        if (isACK) {
+            System.out.println("info: creating ACK packet");
+            firstMsgId = -1;
+        } else {
+            firstMsgId = messages.get(0).msgId;
+        }
+        this.isACK = isACK;
+        this.src = (short)src;
+        this.dst = (short)dst;
+        this.relayedBy = (short)relayedBy;
+        this.plPktId = plPktId;
+        // todo add new field here
+    }
+
+    public Packet(byte[] data, int numMsgs, int firstMsgId, int pktId, boolean isACK,
+                  short src, short dst, short relayedBy, int plPktId) {
         this.data = data;
         this.pktId= pktId;
         this.numMsgs = numMsgs;
@@ -43,6 +73,8 @@ public class Packet {
         this.src = (short)src;
         this.dst = (short)dst;
         this.isACK = isACK;
+        this.plPktId = plPktId;
+        // todo add new field here
     }
 
     public byte[] marshalPacket() {
@@ -55,7 +87,8 @@ public class Packet {
 
     @Override
     public String toString() {
-       return "pkt.src = " + this.src + ", pkt.pktId" + this.pktId + ",pkt.isACK = " + isACK;
+       return "{ pkt.src = " + this.src + ", pkt.pktId" + this.pktId + ",pkt.isACK = "
+               + isACK + " this.plPktId = " + this.plPktId;
     }
 
     public int getPktId() {
@@ -92,5 +125,13 @@ public class Packet {
 
     public void setRelayedBy(short relayedBy) {
         this.relayedBy = relayedBy;
+    }
+
+    public int getPlPktId() {
+        return plPktId;
+    }
+
+    public void setPerfectLinkId(int linkLayerId) {
+        this.plPktId = linkLayerId;
     }
 }

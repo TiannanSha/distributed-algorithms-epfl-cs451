@@ -4,6 +4,7 @@ import cs451.NetworkGlobalInfo;
 import cs451.links.NodeIDToPktIDs;
 import cs451.links.Packet;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class UniformReliableBroadcast {
@@ -38,17 +39,23 @@ public class UniformReliableBroadcast {
 
 
     public List<Packet> deliver() {
-
+        System.out.println("in urb deliver()");
         Packet pkt = bestEffortBroadcast.deliver();
+        System.out.println("beb deliver after beb deliver " + pkt);
+        if (pkt==null) {
+            // this is not a data packet
+            System.out.println("in urb deliver packet is null");
+            return new LinkedList<>();
+        }
         acks.addAck(pkt.getSrc(), pkt.getPktId(), pkt.getRelayedBy());
         // relay a beb delivered packet if haven't done so
         if (!pending.alreadyContainsPacket(pkt)) {
             pending.addPacket(pkt);
-            // FIXME: 20.11.22 rebroadcas, need to change the relay by field. do it in beb.broadcast
             bestEffortBroadcast.broadcast(pkt);
         }
 
         List<Packet> res = pending.getDeliverablePackets(acks, delivered);
+        System.out.println("in urb deliver res: " + res);
         // todo maybe delete acks for deleted packet, maybe can also delete pending?
         return res;
     }

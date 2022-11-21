@@ -14,7 +14,9 @@ public class PacketSerializer {
     public static final int SRC_OFFSET=14; // src is short, 2bytes
     public static final int DST_OFFSET=16; // dst is short, 2bytes
     public static final int RELAYED_BY_OFFSET=18; // relayedby is short, 2bytes
-    public static final int DATA_OFFSET =20;
+    public static final int PL_PKT_ID_OFFSET = 20; // plpktid is int 4 bytes
+    // todo add new field here
+    public static final int DATA_OFFSET =24;
 
     public static final int MAX_DATA_SIZE = 8 * Message.MAX_MSG_CONTENT_SIZE;
     public static final int MAX_PACKET_SIZE = DATA_OFFSET+ MAX_DATA_SIZE;
@@ -33,6 +35,9 @@ public class PacketSerializer {
         byteBuffer.putShort(packet.src);
         byteBuffer.putShort(packet.dst);
         byteBuffer.putShort(packet.relayedBy);
+        byteBuffer.putInt(packet.plPktId);
+        // todo add new field here
+
         byteBuffer.put(packet.data);
 
         return byteBuffer.array();
@@ -55,7 +60,10 @@ public class PacketSerializer {
         short src = byteBuffer.getShort();
         short dst = byteBuffer.getShort();
         short relayedBy = byteBuffer.getShort();
+        int plPktId = byteBuffer.getInt();
+        // todo add new field here
+
         byte[] data = new byte[bytes.length-DATA_OFFSET];
-        return new Packet(data, numMsgs, firstMsgId, pktId, isACK, src, dst, relayedBy);
+        return new Packet(data, numMsgs, firstMsgId, pktId, isACK, src, dst, relayedBy, plPktId);
     }
 }

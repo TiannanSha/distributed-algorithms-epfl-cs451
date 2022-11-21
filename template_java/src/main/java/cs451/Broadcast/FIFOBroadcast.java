@@ -4,6 +4,7 @@ import cs451.Host;
 import cs451.NetworkGlobalInfo;
 import cs451.links.Packet;
 
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class FIFOBroadcast {
     public List<Packet> deliver() {
         List<Packet> res = new LinkedList<>();
         List<Packet> pkts = uniformReliableBroadcast.deliver();
+        System.out.println("fifo deliver after urb deliver");
         for (Packet pkt: pkts) {
             if (canDeliver(pkt)) {
                 res.add(pkt);

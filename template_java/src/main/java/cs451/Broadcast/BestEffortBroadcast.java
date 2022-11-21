@@ -23,8 +23,8 @@ public class BestEffortBroadcast {
 
     public void broadcast(Packet pkt) {
         for (Host host: NetworkGlobalInfo.getOtherHosts()) {
-            //fixme pkt.src should be set when creating the packet at the src node
-            // fixme but relayedBy and dst need to be changed
+            // pkt.src should be set when creating the packet at the src node
+            // but relayedBy and dst need to be changed
             pkt.setDst(host.getId());
             pkt.setRelayedBy(NetworkGlobalInfo.getMyHost().getId());
             perfectLink.send(pkt, host);
@@ -36,6 +36,9 @@ public class BestEffortBroadcast {
      * blocks until an unseen data packet can be returned...
      */
     public Packet deliver() {
-        return perfectLink.deliverDataPacket();
+        System.out.println("in beb deliver");
+        return perfectLink.deliver();
+        //return perfectLink.deliverDataPacket();
+
     }
 }

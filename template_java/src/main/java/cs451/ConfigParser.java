@@ -8,7 +8,7 @@ public class ConfigParser {
 
     // config for perfectLink test
     private int numMsgsToSend;
-    private int hostIdToSendTo;
+    private int hostIdToSendTo = -1;  // for fifo conf, there's no speicific host to send to
 
     public boolean populate(String value) {
         File file = new File(value);
@@ -27,6 +27,20 @@ public class ConfigParser {
             String[] splits = line.split(" ");
             numMsgsToSend = Integer.parseInt(splits[0]);
             hostIdToSendTo = Integer.parseInt(splits[1]);
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void readFifoBroadcastConf() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(path));
+            String line = reader.readLine();
+            String[] splits = line.split(" ");
+            numMsgsToSend = Integer.parseInt(splits[0]);
+            //hostIdToSendTo = Integer.parseInt(splits[1]);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
