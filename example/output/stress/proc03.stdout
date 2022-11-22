@@ -1,6 +1,6 @@
-My PID: 6539
+My PID: 15303
 
-From a new terminal type `kill -SIGINT 6539` or `kill -SIGTERM 6539` to stop processing packets
+From a new terminal type `kill -SIGINT 15303` or `kill -SIGTERM 15303` to stop processing packets
 
 My ID: 3
 
@@ -18,6 +18,14 @@ Human-readable Port: 11002
 Human-readable IP: 127.0.0.1
 Human-readable Port: 11003
 
+4
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11004
+
+5
+Human-readable IP: 127.0.0.1
+Human-readable Port: 11005
+
 
 Path to output:
 ===============
@@ -29,26 +37,22 @@ Path to config:
 
 Doing some initialization
 
-cs451.links.LinkUser@66a29884
-in sendingLoop
+cs451.links.LinkUser@6f539caf
 Broadcasting and delivering messages...
 
 sendAllMsgs()
 
 sendMsgs()
 
+in sendingLoop
+packet.dst1
+packet.dst1
+packet.dst1
+packet.dst1
+packet.dst1
 packet.dst1
 packet.dst1
 in perfect link submitasendtask()
-packet.dst1
-packet.dst1
-packet.dst1
-packet.dst1
-packet.dst1
-packet.dst1
-packet.dst1
-packet.dst1
-packet.dst1
 link user receivingLoop
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
@@ -70,10 +74,10 @@ append to log with entry: b 8
 
 in sendingLoop
 in perfect link submitasendtask()
-in perfect link send() loop, pktId = 0
-in fairloss link send()
 append to log with entry: b 9
 
+in perfect link send() loop, pktId = 1
+in fairloss link send()
 append to log with entry: b 10
 
 append to log with entry: b 11
@@ -90,8 +94,6 @@ append to log with entry: b 16
 
 in sendingLoop
 in perfect link submitasendtask()
-in perfect link send() loop, pktId = 1
-in fairloss link send()
 append to log with entry: b 17
 
 append to log with entry: b 18
@@ -116,11 +118,8 @@ append to log with entry: b 26
 
 append to log with entry: b 27
 
-in perfect link send() loop, pktId = 2
-send to addr:/127.0.0.1, port:11001
 append to log with entry: b 28
 
-in fairloss link send()
 append to log with entry: b 29
 
 append to log with entry: b 30
@@ -131,8 +130,6 @@ append to log with entry: b 32
 
 in sendingLoop
 in perfect link submitasendtask()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
 append to log with entry: b 33
 
 append to log with entry: b 34
@@ -173,198 +170,49 @@ append to log with entry: b 49
 
 append to log with entry: b 50
 
-append to log with entry: b 51
-
-append to log with entry: b 52
-
-append to log with entry: b 53
-
-append to log with entry: b 54
-
-append to log with entry: b 55
-
-append to log with entry: b 56
-
 in sendingLoop
-in perfect link submitasendtask()
-append to log with entry: b 57
-
-append to log with entry: b 58
-
-append to log with entry: b 59
-
-append to log with entry: b 60
-
-append to log with entry: b 61
-
-append to log with entry: b 62
-
-append to log with entry: b 63
-
-append to log with entry: b 64
-
-in sendingLoop
-in perfect link submitasendtask()
-append to log with entry: b 65
-
-append to log with entry: b 66
-
-append to log with entry: b 67
-
-append to log with entry: b 68
-
-append to log with entry: b 69
-
-append to log with entry: b 70
-
-append to log with entry: b 71
-
-append to log with entry: b 72
-
-in sendingLoop
-in perfect link submitasendtask()
-append to log with entry: b 73
-
-append to log with entry: b 74
-
-append to log with entry: b 75
-
-append to log with entry: b 76
-
-append to log with entry: b 77
-
-append to log with entry: b 78
-
-append to log with entry: b 79
-
-append to log with entry: b 80
-
-in sendingLoop
-in perfect link submitasendtask()
-append to log with entry: b 81
-
-append to log with entry: b 82
-
-append to log with entry: b 83
-
-append to log with entry: b 84
-
-append to log with entry: b 85
-
-append to log with entry: b 86
-
-append to log with entry: b 87
-
-append to log with entry: b 88
-
-in sendingLoop
-in perfect link send() loop, pktId = 0
+send to addr:/127.0.0.1, port:11001
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliver{ pkt.src = 3, pkt.pktId = 1, pkt.isACK = true, relayedBy = 1
+perfectlink deliver ACK
+ACK:{ pkt.src = 3, pkt.pktId = 1, pkt.isACK = true, relayedBy = 1
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
 in perfect link send() loop, pktId = 2
 in fairloss link send()
-in perfect link send() loop, pktId = 1
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
 send to addr:/127.0.0.1, port:11001
 fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId0,pkt.isACK = true
+perfectlink after flink deliver()
+pktRecv in perfect link deliver{ pkt.src = 3, pkt.pktId = 2, pkt.isACK = true, relayedBy = 1
 perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId1,pkt.isACK = true
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId2,pkt.isACK = true
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId2,pkt.isACK = true
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId0,pkt.isACK = true
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId1,pkt.isACK = true
-perfectlink deliver ACK
+ACK:{ pkt.src = 3, pkt.pktId = 2, pkt.isACK = true, relayedBy = 1
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
 in perfect link send() loop, pktId = 3
 in fairloss link send()
+send to addr:/127.0.0.1, port:11001
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliver{ pkt.src = 3, pkt.pktId = 3, pkt.isACK = true, relayedBy = 1
+perfectlink deliver ACK
+ACK:{ pkt.src = 3, pkt.pktId = 3, pkt.isACK = true, relayedBy = 1
+link user receivingLoop after perfectLink deliver
+link user receivingLoop
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
 in perfect link send() loop, pktId = 4
 in fairloss link send()
 send to addr:/127.0.0.1, port:11001
-in perfect link send() loop, pktId = 5
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
 fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId4,pkt.isACK = true
+perfectlink after flink deliver()
+pktRecv in perfect link deliver{ pkt.src = 3, pkt.pktId = 4, pkt.isACK = true, relayedBy = 1
 perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId5,pkt.isACK = true
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId3,pkt.isACK = true
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-in perfect link send() loop, pktId = 6
-in fairloss link send()
-in perfect link send() loop, pktId = 8
-in fairloss link send()
-in perfect link send() loop, pktId = 7
-in fairloss link send()
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-send to addr:/127.0.0.1, port:11001
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId8,pkt.isACK = true
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId6,pkt.isACK = true
-perfectlink deliver ACK
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 1, pkt.pktId7,pkt.isACK = true
-perfectlink deliver ACK
+ACK:{ pkt.src = 3, pkt.pktId = 4, pkt.isACK = true, relayedBy = 1
 link user receivingLoop after perfectLink deliver
 link user receivingLoop
 perfectlink deliver()

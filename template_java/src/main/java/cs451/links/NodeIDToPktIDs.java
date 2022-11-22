@@ -64,4 +64,11 @@ public class NodeIDToPktIDs {
 //        }
 //    }
 
+
+    @Override
+    public String toString() {
+        return "NodeIDToPktIDs{" +
+                "nodeIdToPktIds=" + nodeIdToPktIds +
+                '}';
+    }
 }

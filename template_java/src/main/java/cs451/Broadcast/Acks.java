@@ -50,4 +50,11 @@ public class Acks {
     public boolean ackedByMajority(short src, int packetId) {
         return acks.get(src).get(packetId).size() > NetworkGlobalInfo.getAllHosts().size()/2;
     }
+
+    @Override
+    public String toString() {
+        return "Acks{" +
+                "acks=" + acks +
+                '}';
+    }
 }

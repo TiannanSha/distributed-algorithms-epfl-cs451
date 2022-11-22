@@ -1,6 +1,5 @@
 package cs451.links;
 
-import cs451.Broadcast.NodeIdToPackets;
 import cs451.Host;
 import cs451.NetworkGlobalInfo;
 
@@ -38,7 +37,8 @@ public class PerfectLink implements Link {
     NodeIDToPktIDs pendingPktIds = new NodeIDToPktIDs();
 
     private final FairLossLink fLink;
-    private ExecutorService executorService = Executors.newFixedThreadPool(2);
+    private ExecutorService threadPoolForSendingTasks = Executors.newFixedThreadPool(2);
+    private ExecutorService threadForSendingLoop = Executors.newSingleThreadExecutor();
 
     public static final int resendWaitingTimeMs = 1000;
 
@@ -53,7 +53,7 @@ public class PerfectLink implements Link {
 
     public PerfectLink() {
         fLink = new FairLossLink();
-        executorService.submit(this::startSendingLoop);
+        threadForSendingLoop.submit(this::startSendingLoop);
     }
 
 
@@ -63,18 +63,21 @@ public class PerfectLink implements Link {
     @Override
     public void send(Packet packet, Host host) {
 //        packet.setPerfectLinkId(plPktId);
-        System.out.println("packet.dst" + packet.dst);
+        System.out.println("packet.dst:" + packet.dst);
         sendQueue.add(packet);
+        System.out.println("in send, sendQueue add packet:" + packet);
+        System.out.println("sendQueue: "+sendQueue);
     }
 
     private void submitASendTask(Packet packet, Host host) {
         // todo debug this
         System.out.println("in perfect link submitasendtask()");
         pendingPktIds.addPacket(packet.src, packet.pktId);
-        NetworkGlobalInfo.getLogger().appendBroadcastLogs(packet.firstMsgId, packet.firstMsgId+packet.numMsgs-1);
+        //NetworkGlobalInfo.getLogger().appendBroadcastLogs(packet.firstMsgId, packet.firstMsgId+packet.numMsgs-1);
         byte[] buf = packet.marshalPacket();
+        //System.out.println("in submit A send task after marshalPacket");
         DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, host.getInetIp(), host.getPort());
-        Future<?> future = executorService.submit(
+        Future<?> future = threadPoolForSendingTasks.submit(
                 ()-> {
                     // keep sending until ACK is received
                     while (pendingPktIds.alreadyContainsPacket(packet.src, packet.pktId)) {
@@ -88,6 +91,7 @@ public class PerfectLink implements Link {
                     }
                 }
                 );
+        //System.out.println("after submit task to threadpool");
     }
 
     private void startSendingLoop() {
@@ -96,11 +100,19 @@ public class PerfectLink implements Link {
             System.out.println("in sendingLoop");
             if (pendingPktIds.getTotalNumPkts()<MAX_PENDING_PKTS) {
                 try {
+                    //System.out.println("in send loop before sendQueue.take()");
                     Packet pkt = sendQueue.take();
+                    //System.out.println("in send loop after sendQueue.take()");
                     submitASendTask(pkt, NetworkGlobalInfo.getHostById(pkt.dst));
+                    //System.out.println("in send loop after submit an task");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -113,17 +125,20 @@ public class PerfectLink implements Link {
     public Packet deliver() {
         System.out.println("perfectlink deliver()");
         Packet pktRecv = fLink.deliver();
+        if (pktRecv==null) return null;
         System.out.println("perfectlink after flink deliver()");
         System.out.println("pktRecv in perfect link deliver"+pktRecv);
         if (!pktRecv.isACK) {
             // received actual message packet pktRecv
-            System.out.println("perfectlink deliver not ACK");
+            //System.out.println("perfectlink deliver not ACK");
             // send an ACK for this packet, and update received pktRecv
-            System.out.println("perfectlink deliver before reply ACK");
+            //System.out.println("perfectlink deliver before reply ACK");
             Packet ACK = new Packet(new ArrayList<Message>(), pktRecv.pktId, true,
                     pktRecv.src, pktRecv.dst, NetworkGlobalInfo.getMyHost().getId());
-            fLink.send(ACK, NetworkGlobalInfo.getAllHosts().get(pktRecv.src-1));
-            System.out.println("after flink send");
+            // ack should be sent to the relayedby to tell it we received the relayedby
+            fLink.send(ACK, NetworkGlobalInfo.getAllHosts().get(pktRecv.relayedBy-1));
+            //fLink.send(ACK, NetworkGlobalInfo.getAllHosts().get(pktRecv.src-1));
+            //System.out.println("after flink send");
 
 //            List<Integer> pktIdTuple = new LinkedList<>();
 //            pktIdTuple.add((int)pktRecv.src);
@@ -161,9 +176,9 @@ public class PerfectLink implements Link {
 
     // for testing purpose
     public void waitTillAllTaskFinished() {
-        executorService.shutdown();
+        threadPoolForSendingTasks.shutdown();
         try {
-            executorService.awaitTermination(10, TimeUnit.SECONDS);
+            threadPoolForSendingTasks.awaitTermination(10, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

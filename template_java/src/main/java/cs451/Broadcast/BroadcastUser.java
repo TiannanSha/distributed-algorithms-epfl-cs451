@@ -45,6 +45,8 @@ public class BroadcastUser {
                         (short)-1, NetworkGlobalInfo.getMyHost().getId());
                 fifoBroadcast.broadcast(pkt);
                 //logger.appendBroadcastLogs(msgs.get(0).msgId, msgs.get(0).msgId+msgs.size()-1);
+                NetworkGlobalInfo.getLogger().appendBroadcastLogs(msgs.get(0).getMsgId(),
+                        msgs.get(msgs.size()-1).getMsgId());
                 pktId++;
                 msgs = new ArrayList<>();
             }
@@ -54,6 +56,8 @@ public class BroadcastUser {
             // there is a last batch of messages need to be sent
             Packet pkt = new Packet(msgs, pktId, false, NetworkGlobalInfo.getMyHost().getId(), (short)-1, NetworkGlobalInfo.getMyHost().getId());
             fifoBroadcast.broadcast(pkt);
+            NetworkGlobalInfo.getLogger().appendBroadcastLogs(msgs.get(0).getMsgId(),
+                    msgs.get(msgs.size()-1).getMsgId());
             pktId++;
         }
     }
@@ -68,6 +72,7 @@ public class BroadcastUser {
             List<Packet> pkts = fifoBroadcast.deliver();
             System.out.println("broadcast user after fifo deliver");
             if (pkts!=null && pkts.size()>0) {
+                System.out.println("broadcast user gets finally gets packets!");
                 NetworkGlobalInfo.getLogger().appendDeliveryLogs(pkts);
             }
             System.out.println("broadcast user receivingLoop after perfectLink deliver");

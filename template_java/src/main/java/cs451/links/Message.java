@@ -18,4 +18,8 @@ public class Message {
 //        ByteBuffer byteBuffer = ByteBuffer.allocate(content.length());
         return content;
     }
+
+    public int getMsgId() {
+        return msgId;
+    }
 }

@@ -1,6 +1,6 @@
-My PID: 6537
+My PID: 29302
 
-From a new terminal type `kill -SIGINT 6537` or `kill -SIGTERM 6537` to stop processing packets
+From a new terminal type `kill -SIGINT 29302` or `kill -SIGTERM 29302` to stop processing packets
 
 My ID: 1
 
@@ -14,10 +14,6 @@ Human-readable Port: 11001
 Human-readable IP: 127.0.0.1
 Human-readable Port: 11002
 
-3
-Human-readable IP: 127.0.0.1
-Human-readable Port: 11003
-
 
 Path to output:
 ===============
@@ -29,138 +25,520 @@ Path to config:
 
 Doing some initialization
 
-cs451.links.LinkUser@66a29884
-Broadcasting and delivering messages...
-
 in sendingLoop
-link user receivingLoop
+broadcastAllMsgs()
+
+broadcast Msgs()
+
+packet.dst:2
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 1
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+in send, sendQueue add packet:Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}
+sendQueue: []
+append to log with entry: b 1
+
+append to log with entry: b 2
+
+append to log with entry: b 3
+
+append to log with entry: b 4
+
+append to log with entry: b 5
+
+append to log with entry: b 6
+
+append to log with entry: b 7
+
+append to log with entry: b 8
+
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}]
+append to log with entry: b 9
+
+append to log with entry: b 10
+
+append to log with entry: b 11
+
+append to log with entry: b 12
+
+append to log with entry: b 13
+
+append to log with entry: b 14
+
+append to log with entry: b 15
+
+append to log with entry: b 16
+
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}]
+append to log with entry: b 17
+
+append to log with entry: b 18
+
+append to log with entry: b 19
+
+append to log with entry: b 20
+
+append to log with entry: b 21
+
+append to log with entry: b 22
+
+append to log with entry: b 23
+
+append to log with entry: b 24
+
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}]
+append to log with entry: b 25
+
+append to log with entry: b 26
+
+append to log with entry: b 27
+
+append to log with entry: b 28
+
+append to log with entry: b 29
+
+append to log with entry: b 30
+
+append to log with entry: b 31
+
+append to log with entry: b 32
+
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}]
+append to log with entry: b 33
+
+append to log with entry: b 34
+
+append to log with entry: b 35
+
+append to log with entry: b 36
+
+append to log with entry: b 37
+
+append to log with entry: b 38
+
+append to log with entry: b 39
+
+append to log with entry: b 40
+
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}]
+append to log with entry: b 41
+
+append to log with entry: b 42
+
+append to log with entry: b 43
+
+append to log with entry: b 44
+
+append to log with entry: b 45
+
+append to log with entry: b 46
+
+append to log with entry: b 47
+
+append to log with entry: b 48
+
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}]
+append to log with entry: b 49
+
+append to log with entry: b 50
+
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
 fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId0,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=1, relayedBy=2}
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-packet.src = 1, packet.pktId = 0
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 2, packet.pktId = 1
 fairloss link after send ACK
-after flink send
-d 3 1
-
-d 3 2
-
-d 3 3
-
-d 3 4
-
-d 3 5
-
-d 3 6
-
-d 3 7
-
-d 3 8
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+beb deliver after beb deliver Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=1, relayedBy=2}
+rebroadcast pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=1, relayedBy=2}
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
 fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId1,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=1, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=1, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 2
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=1, relayedBy=2}
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 2, packet.pktId = 2
+fairloss link after send ACK
+beb deliver after beb deliver Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=1, relayedBy=2}
+rebroadcast pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=1, relayedBy=2}
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=2, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=2, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 3
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=1, relayedBy=2}
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 2, packet.pktId = 3
+fairloss link after send ACK
+beb deliver after beb deliver Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=1, relayedBy=2}
+rebroadcast pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=1, relayedBy=2}
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=3, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=3, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 4
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=1, relayedBy=2}
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 2, packet.pktId = 4
+fairloss link after send ACK
+beb deliver after beb deliver Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=1, relayedBy=2}
+rebroadcast pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=1, relayedBy=2}
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=4, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=4, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 5
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=5, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=5, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=1, relayedBy=2}
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 2, packet.pktId = 5
+fairloss link after send ACK
+beb deliver after beb deliver Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=1, relayedBy=2}
+rebroadcast pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=1, relayedBy=2}
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 6
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=6, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=6, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=1, relayedBy=2}
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 2, packet.pktId = 6
+fairloss link after send ACK
+beb deliver after beb deliver Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=1, relayedBy=2}
+rebroadcast pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=1, relayedBy=2}
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 7
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=1, relayedBy=2}
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 2, packet.pktId = 7
+fairloss link after send ACK
+beb deliver after beb deliver Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=1, relayedBy=2}
+rebroadcast pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=1, relayedBy=2}
+packet.dst:2
+in send, sendQueue add packet:Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}
+sendQueue: [Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=7, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=7, numMsgs=0, firstMsgId=-1, isACK=true, src=1, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 1
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=1, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=1, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=1, relayedBy=2}
+info: creating ACK packet
+fairloss link send ACK to host /127.0.0.1port 11002
 packet.src = 1, packet.pktId = 1
 fairloss link after send ACK
-after flink send
-d 3 9
+beb deliver after beb deliver Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=1, relayedBy=2}
+*** pending: NodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+*** ACKAcks{acks={1={1=[1, 2], 2=[1], 3=[1], 4=[1], 5=[1], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@in get deliverable packets
+@@@pendingNodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+@@@acks:Acks{acks={1={1=[1, 2], 2=[1], 3=[1], 4=[1], 5=[1], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@deliveredNodeIDToPktIDs{nodeIdToPktIds={1=[], 2=[]}}
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+in urb deliver res: [Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: [Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]
+broadcast user after fifo deliver
+broadcast user gets finally gets packets!
+d 1 1
 
-d 3 10
+d 1 2
 
-d 3 11
+d 1 3
 
-d 3 12
+d 1 4
 
-d 3 13
+d 1 5
 
-d 3 14
+d 1 6
 
-d 3 15
+d 1 7
 
-d 3 16
+d 1 8
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId2,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-packet.src = 1, packet.pktId = 2
-fairloss link after send ACK
-after flink send
-d 3 17
-
-d 3 18
-
-d 3 19
-
-d 3 20
-
-d 3 21
-
-d 3 22
-
-d 3 23
-
-d 3 24
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId2,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 2
-fairloss link after send ACK
-after flink send
-d 2 17
-
-d 2 18
-
-d 2 19
-
-d 2 20
-
-d 2 21
-
-d 2 22
-
-d 2 23
-
-d 2 24
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId0,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 0
-fairloss link after send ACK
-after flink send
 d 2 1
 
 d 2 2
@@ -177,19 +555,6 @@ d 2 7
 
 d 2 8
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId1,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 1
-fairloss link after send ACK
-after flink send
 d 2 9
 
 d 2 10
@@ -206,97 +571,43 @@ d 2 15
 
 d 2 16
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+d 2 17
+
+d 2 18
+
+d 2 19
+
+d 2 20
+
+d 2 21
+
+d 2 22
+
+d 2 23
+
+d 2 24
+
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 2
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
 fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId2,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-packet.src = 1, packet.pktId = 2
-fairloss link after send ACK
-after flink send
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId0,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-packet.src = 1, packet.pktId = 0
-fairloss link after send ACK
-after flink send
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId1,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-packet.src = 1, packet.pktId = 1
-fairloss link after send ACK
-after flink send
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId2,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 2
-fairloss link after send ACK
-after flink send
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId0,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 0
-fairloss link after send ACK
-after flink send
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId1,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 1
-fairloss link after send ACK
-after flink send
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId3,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 3
-fairloss link after send ACK
-after flink send
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=2, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=2, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user gets finally gets packets!
 d 2 25
 
 d 2 26
@@ -313,19 +624,89 @@ d 2 31
 
 d 2 32
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
 fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId4,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=1, relayedBy=2}
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 4
+packet.src = 1, packet.pktId = 2
 fairloss link after send ACK
-after flink send
+beb deliver after beb deliver Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=1, relayedBy=2}
+*** pending: NodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+*** ACKAcks{acks={1={1=[1, 2], 2=[1, 2], 3=[1], 4=[1], 5=[1], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@in get deliverable packets
+@@@pendingNodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+@@@acks:Acks{acks={1={1=[1, 2], 2=[1, 2], 3=[1], 4=[1], 5=[1], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@deliveredNodeIDToPktIDs{nodeIdToPktIds={1=[1], 2=[1, 2, 3, 4, 5, 6, 7]}}
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+in urb deliver res: [Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: [Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}]
+broadcast user after fifo deliver
+broadcast user gets finally gets packets!
+d 1 9
+
+d 1 10
+
+d 1 11
+
+d 1 12
+
+d 1 13
+
+d 1 14
+
+d 1 15
+
+d 1 16
+
 d 2 33
 
 d 2 34
@@ -342,19 +723,6 @@ d 2 39
 
 d 2 40
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId5,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 5
-fairloss link after send ACK
-after flink send
 d 2 41
 
 d 2 42
@@ -371,329 +739,521 @@ d 2 47
 
 d 2 48
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 3
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
 fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId4,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-packet.src = 1, packet.pktId = 4
-fairloss link after send ACK
-after flink send
-d 3 33
-
-d 3 34
-
-d 3 35
-
-d 3 36
-
-d 3 37
-
-d 3 38
-
-d 3 39
-
-d 3 40
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId5,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-packet.src = 1, packet.pktId = 5
-fairloss link after send ACK
-after flink send
-d 3 41
-
-d 3 42
-
-d 3 43
-
-d 3 44
-
-d 3 45
-
-d 3 46
-
-d 3 47
-
-d 3 48
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId3,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-packet.src = 1, packet.pktId = 3
-fairloss link after send ACK
-after flink send
-d 3 25
-
-d 3 26
-
-d 3 27
-
-d 3 28
-
-d 3 29
-
-d 3 30
-
-d 3 31
-
-d 3 32
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId6,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 6
-fairloss link after send ACK
-after flink send
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=3, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=3, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user gets finally gets packets!
 d 2 49
 
 d 2 50
 
-d 2 51
-
-d 2 52
-
-d 2 53
-
-d 2 54
-
-d 2 55
-
-d 2 56
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
 fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId7,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=1, relayedBy=2}
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 7
+packet.src = 1, packet.pktId = 3
 fairloss link after send ACK
-after flink send
-d 2 57
+beb deliver after beb deliver Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=1, relayedBy=2}
+*** pending: NodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+*** ACKAcks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1], 5=[1], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@in get deliverable packets
+@@@pendingNodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+@@@acks:Acks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1], 5=[1], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@deliveredNodeIDToPktIDs{nodeIdToPktIds={1=[1, 2], 2=[1, 2, 3, 4, 5, 6, 7]}}
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+in urb deliver res: [Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: [Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}]
+broadcast user after fifo deliver
+broadcast user gets finally gets packets!
+d 1 17
 
-d 2 58
+d 1 18
 
-d 2 59
+d 1 19
 
-d 2 60
+d 1 20
 
-d 2 61
+d 1 21
 
-d 2 62
+d 1 22
 
-d 2 63
+d 1 23
 
-d 2 64
+d 1 24
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 4
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=4, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=4, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
 fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId8,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=1, relayedBy=2}
 info: creating ACK packet
 fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 8
+packet.src = 1, packet.pktId = 4
 fairloss link after send ACK
-after flink send
-d 2 65
+beb deliver after beb deliver Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=1, relayedBy=2}
+*** pending: NodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+*** ACKAcks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@in get deliverable packets
+@@@pendingNodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+@@@acks:Acks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@deliveredNodeIDToPktIDs{nodeIdToPktIds={1=[1, 2, 3], 2=[1, 2, 3, 4, 5, 6, 7]}}
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+in urb deliver res: [Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: [Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}]
+broadcast user after fifo deliver
+broadcast user gets finally gets packets!
+d 1 25
 
-d 2 66
+d 1 26
 
-d 2 67
+d 1 27
 
-d 2 68
+d 1 28
 
-d 2 69
+d 1 29
 
-d 2 70
+d 1 30
 
-d 2 71
+d 1 31
 
-d 2 72
+d 1 32
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 5
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=5, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=5, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
 fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId8,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=1, relayedBy=2}
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
-packet.src = 1, packet.pktId = 8
+fairloss link send ACK to host /127.0.0.1port 11002
+packet.src = 1, packet.pktId = 5
 fairloss link after send ACK
-after flink send
-d 3 65
+beb deliver after beb deliver Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=1, relayedBy=2}
+*** pending: NodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+*** ACKAcks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@in get deliverable packets
+@@@pendingNodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+@@@acks:Acks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@deliveredNodeIDToPktIDs{nodeIdToPktIds={1=[1, 2, 3, 4], 2=[1, 2, 3, 4, 5, 6, 7]}}
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+in urb deliver res: [Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: [Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}]
+broadcast user after fifo deliver
+broadcast user gets finally gets packets!
+d 1 33
 
-d 3 66
+d 1 34
 
-d 3 67
+d 1 35
 
-d 3 68
+d 1 36
 
-d 3 69
+d 1 37
 
-d 3 70
+d 1 38
 
-d 3 71
+d 1 39
 
-d 3 72
+d 1 40
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 6
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=6, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=6, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
 fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId6,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=1, relayedBy=2}
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
+fairloss link send ACK to host /127.0.0.1port 11002
 packet.src = 1, packet.pktId = 6
 fairloss link after send ACK
-after flink send
-d 3 49
+beb deliver after beb deliver Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=1, relayedBy=2}
+*** pending: NodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+*** ACKAcks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@in get deliverable packets
+@@@pendingNodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+@@@acks:Acks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@deliveredNodeIDToPktIDs{nodeIdToPktIds={1=[1, 2, 3, 4, 5], 2=[1, 2, 3, 4, 5, 6, 7]}}
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):false
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+in urb deliver res: [Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: [Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}]
+broadcast user after fifo deliver
+broadcast user gets finally gets packets!
+d 1 41
 
-d 3 50
+d 1 42
 
-d 3 51
+d 1 43
 
-d 3 52
+d 1 44
 
-d 3 53
+d 1 45
 
-d 3 54
+d 1 46
 
-d 3 55
+d 1 47
 
-d 3 56
+d 1 48
 
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
+perfectlink deliver()
+before socket receive, which blocks if no packet is received
+in sendingLoop
+in perfect link submitasendtask()
+in perfect link send() loop, pktId = 7
+in fairloss link send()
+send to addr:/127.0.0.1, port:11002
+fair loss link deliver() after socket.receive()
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=7, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+perfectlink deliver ACK
+ACK:Packet{dataLen=32, pktId=7, numMsgs=0, firstMsgId=-1, isACK=true, src=2, dst=2, relayedBy=2}
+beb deliver after beb deliver null
+in urb deliver packet is null
+fifo deliver after urb deliver, pkts from urb: []
+broadcast user after fifo deliver
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
 fair loss link deliver() after socket.receive()
-pkt.src = 3, pkt.pktId7,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
+perfectlink after flink deliver()
+pktRecv in perfect link deliverPacket{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=1, relayedBy=2}
 info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11003
+fairloss link send ACK to host /127.0.0.1port 11002
 packet.src = 1, packet.pktId = 7
 fairloss link after send ACK
-after flink send
-d 3 57
+beb deliver after beb deliver Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=1, relayedBy=2}
+*** pending: NodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+*** ACKAcks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@in get deliverable packets
+@@@pendingNodeIdToPackets{nodeIdToPackets={1=[Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}], 2=[Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}, Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}]}}
+@@@acks:Acks{acks={1={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}, 2={1=[1, 2], 2=[1, 2], 3=[1, 2], 4=[1, 2], 5=[1, 2], 6=[1, 2], 7=[1, 2]}}}
+@@@deliveredNodeIDToPktIDs{nodeIdToPktIds={1=[1, 2, 3, 4, 5, 6], 2=[1, 2, 3, 4, 5, 6, 7]}}
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))true
+@@@added to result
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=1, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=5, numMsgs=8, firstMsgId=33, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=4, numMsgs=8, firstMsgId=25, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=6, numMsgs=8, firstMsgId=41, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=1, numMsgs=8, firstMsgId=1, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=3, numMsgs=8, firstMsgId=17, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+@@@pkt: Packet{dataLen=32, pktId=2, numMsgs=8, firstMsgId=9, isACK=false, src=2, dst=2, relayedBy=1}
+@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):true
+@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))false
+in urb deliver res: [Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}]
+fifo deliver after urb deliver, pkts from urb: [Packet{dataLen=32, pktId=7, numMsgs=2, firstMsgId=49, isACK=false, src=1, dst=2, relayedBy=1}]
+broadcast user after fifo deliver
+broadcast user gets finally gets packets!
+d 1 49
 
-d 3 58
+d 1 50
 
-d 3 59
-
-d 3 60
-
-d 3 61
-
-d 3 62
-
-d 3 63
-
-d 3 64
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
+broadcast user receivingLoop after perfectLink deliver
+broadcast user receivingLoop
+in urb deliver()
+in beb deliver
 perfectlink deliver()
 before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId9,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 9
-fairloss link after send ACK
-after flink send
-d 2 73
-
-d 2 74
-
-d 2 75
-
-d 2 76
-
-d 2 77
-
-d 2 78
-
-d 2 79
-
-d 2 80
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
-fair loss link deliver() after socket.receive()
-pkt.src = 2, pkt.pktId10,pkt.isACK = false
-perfectlink deliver not ACK
-perfectlink deliver before reply ACK
-info: creating ACK packet
-fairloss link send ACK to host /127.0.0.1port 11002
-packet.src = 1, packet.pktId = 10
-fairloss link after send ACK
-after flink send
-d 2 81
-
-d 2 82
-
-d 2 83
-
-d 2 84
-
-d 2 85
-
-d 2 86
-
-d 2 87
-
-d 2 88
-
-link user receivingLoop after perfectLink deliver
-link user receivingLoop
-perfectlink deliver()
-before socket receive, which blocks if no packet is received
+in sendingLoop
 Immediately stopping network packet processing.
 Writing output.
 enter flushToDisk, outputfile: /Users/sha/Desktop/EPFL/2022-2023fall/distributed-algorithms/CS451-2022-project/example/output/stress/proc01.output

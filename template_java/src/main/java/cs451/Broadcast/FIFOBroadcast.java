@@ -4,7 +4,6 @@ import cs451.Host;
 import cs451.NetworkGlobalInfo;
 import cs451.links.Packet;
 
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +14,11 @@ import java.util.List;
  */
 public class FIFOBroadcast {
     UniformReliableBroadcast uniformReliableBroadcast = new UniformReliableBroadcast();
+
+    /**
+     * pkts delivered by urb but didn't satisfy the fifo property last time checked
+     */
+    List<Packet> pktsViolatedFifo = new LinkedList<>();
 
     /**
      * for each node stores the last delivered packet id.
@@ -33,14 +37,31 @@ public class FIFOBroadcast {
 
     public List<Packet> deliver() {
         List<Packet> res = new LinkedList<>();
+
         List<Packet> pkts = uniformReliableBroadcast.deliver();
-        System.out.println("fifo deliver after urb deliver");
+        // todo maybe sort by pktid
+        System.out.println("fifo deliver after urb deliver, pkts from urb: " + pkts);
         for (Packet pkt: pkts) {
             if (canDeliver(pkt)) {
                 res.add(pkt);
                 // increment next pktId for source
                 nodeIdToNextPktId.put(pkt.getSrc(), nodeIdToNextPktId.get(pkt.getSrc()) + 1);
+            } else {
+                pktsViolatedFifo.add(pkt);
             }
+        }
+
+        // check again whether some pkts didn't satisfy the fifo order can now be delivered
+        for (Packet pkt: pktsViolatedFifo) {
+            if (canDeliver(pkt)) {
+                res.add(pkt);
+                // increment next pktId for source
+                nodeIdToNextPktId.put(pkt.getSrc(), nodeIdToNextPktId.get(pkt.getSrc()) + 1);
+            }
+        }
+        for (Packet pkt: res) {
+            // these packets no longer violate fifo and can be delivered now
+            pktsViolatedFifo.remove(pkt);
         }
         return res;
     }
@@ -48,6 +69,14 @@ public class FIFOBroadcast {
     private boolean canDeliver(Packet pkt) {
         int nextPktId = nodeIdToNextPktId.get(pkt.getSrc());
         return pkt.getPktId() == nextPktId;
+    }
+
+    /**
+     * this function should be repeatedly called
+     * @return
+     */
+    public List<Packet> getDeliverablePackets() {
+        return uniformReliableBroadcast.getDeliverablePackets();
     }
 
 }

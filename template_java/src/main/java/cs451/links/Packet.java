@@ -1,6 +1,8 @@
 package cs451.links;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * a packet contains messages with continuous ids sorted in ascending order
@@ -87,12 +89,27 @@ public class Packet {
         return PacketSerializer.deserializePacket(data);
     }
 
+//    @Override
+//    public String toString() {
+////       return "{ pkt.src = " + this.src + ", pkt.pktId" + this.pktId + ",pkt.isACK = "
+////               + isACK + " this.plPktId = " + this.plPktId;
+//        return "{ pkt.src = " + this.src + ", pkt.pktId = " + this.pktId + ", pkt.isACK = "
+//                + isACK + ", relayedBy = "+this.relayedBy ;
+//    }
+
+
     @Override
     public String toString() {
-//       return "{ pkt.src = " + this.src + ", pkt.pktId" + this.pktId + ",pkt.isACK = "
-//               + isACK + " this.plPktId = " + this.plPktId;
-        return "{ pkt.src = " + this.src + ", pkt.pktId = " + this.pktId + ", pkt.isACK = "
-                + isACK + ", relayedBy = "+this.relayedBy ;
+        return "Packet{" +
+                "dataLen=" + data.length +
+                ", pktId=" + pktId +
+                ", numMsgs=" + numMsgs +
+                ", firstMsgId=" + firstMsgId +
+                ", isACK=" + isACK +
+                ", src=" + src +
+                ", dst=" + dst +
+                ", relayedBy=" + relayedBy +
+                '}';
     }
 
     public int getPktId() {
@@ -131,7 +148,20 @@ public class Packet {
         this.relayedBy = relayedBy;
     }
 
-//    public int getPlPktId() {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Packet packet = (Packet) o;
+        return pktId == packet.pktId && isACK == packet.isACK && src == packet.src;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pktId, isACK, src);
+    }
+
+    //    public int getPlPktId() {
 //        return plPktId;
 //    }
 //

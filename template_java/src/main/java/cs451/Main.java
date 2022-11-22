@@ -77,11 +77,11 @@ public class Main {
         /**
          * for testing perfect link
          */
-        configParser.readPerfectLinkConf();
+//        configParser.readPerfectLinkConf();
         /**
          * for testing fifo broadcast
          */
-//        configParser.readFifoBroadcastConf();
+        configParser.readFifoBroadcastConf();
 
         Host myhost = parser.hosts().get(parser.myId()-1);
         NetworkGlobalInfo.init(myhost, parser.hosts(), logger, configParser.getNumMsgsToSend());
@@ -90,29 +90,28 @@ public class Main {
          * for testing perfect link
          */
         // todo comment out this when testing broadcast
-        Host hostToSendTo = parser.hosts().get(configParser.getHostIdToSendTo()-1);
-        LinkUser linkUser = new LinkUser(myhost,
-                configParser.getNumMsgsToSend(),
-                hostToSendTo, logger, parser.hosts());
-        initSignalHandlers(linkUser);
-
-        System.out.println("Broadcasting and delivering messages...\n");
-
-        if (myhost.getId() != configParser.getHostIdToSendTo()) {
-            linkUser.sendAllMsgs();
-        }
-        linkUser.startReceivingLoop();
-        linkUser.getExecutorService().shutdown();
-        linkUser.getExecutorService().awaitTermination(30, TimeUnit.MINUTES);
+//        Host hostToSendTo = parser.hosts().get(configParser.getHostIdToSendTo()-1);
+//        LinkUser linkUser = new LinkUser(myhost,
+//                configParser.getNumMsgsToSend(),
+//                hostToSendTo, logger, parser.hosts());
+//        initSignalHandlers(linkUser);
+//        System.out.println("Broadcasting and delivering messages...\n");
+//        if (myhost.getId() != configParser.getHostIdToSendTo()) {
+//            linkUser.sendAllMsgs();
+//        }
+//        linkUser.startReceivingLoop();
+//        linkUser.getExecutorService().shutdown();
+//        linkUser.getExecutorService().awaitTermination(30, TimeUnit.MINUTES);
 
 
         /**
          * for testing fifo broadcast
          */
-//        BroadcastUser broadcastUser = new BroadcastUser();
-//        broadcastUser.broadcastAllMsgs();
-//        broadcastUser.startReceivingLoop();
-//        broadcastUser.getExecutorService().shutdown();
-//        broadcastUser.getExecutorService().awaitTermination(30, TimeUnit.MINUTES);
+        BroadcastUser broadcastUser = new BroadcastUser();
+        initSignalHandlers(broadcastUser);
+        broadcastUser.broadcastAllMsgs();
+        broadcastUser.startReceivingLoop();
+        broadcastUser.getExecutorService().shutdown();
+        broadcastUser.getExecutorService().awaitTermination(30, TimeUnit.MINUTES);
     }
 }

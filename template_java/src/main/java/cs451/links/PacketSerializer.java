@@ -22,24 +22,33 @@ public class PacketSerializer {
     public static final int MAX_PACKET_SIZE = DATA_OFFSET+ MAX_DATA_SIZE;
 
     public static byte[] serialize(Packet packet) {
+//        System.out.println("in serialize, serialzing packet: " + packet);
         ByteBuffer byteBuffer = ByteBuffer.allocate(MAX_PACKET_SIZE);
-        byteBuffer.putInt(packet.pktId);
-        byteBuffer.putInt(packet.numMsgs);
-        byteBuffer.putInt(packet.firstMsgId);
+        try {
+            byteBuffer.putInt(packet.pktId);
+            byteBuffer.putInt(packet.numMsgs);
+            byteBuffer.putInt(packet.firstMsgId);
 
-        if (packet.isACK) {
-            byteBuffer.putChar('T');
-        } else {
-            byteBuffer.putChar('F');
+            if (packet.isACK) {
+                byteBuffer.putChar('T');
+            } else {
+                byteBuffer.putChar('F');
+            }
+//            System.out.println("after put ack");
+            byteBuffer.putShort(packet.src);
+            byteBuffer.putShort(packet.dst);
+            byteBuffer.putShort(packet.relayedBy);
+//            System.out.println("after put relayby");
+//            System.out.println("byteBuffer: "+byteBuffer);
+            //byteBuffer.putInt(packet.plPktId);
+            // todo add new field here
+
+            byteBuffer.put(packet.data);
+            //System.out.println("after put packet.data");
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        byteBuffer.putShort(packet.src);
-        byteBuffer.putShort(packet.dst);
-        byteBuffer.putShort(packet.relayedBy);
-        //byteBuffer.putInt(packet.plPktId);
-        // todo add new field here
-
-        byteBuffer.put(packet.data);
-
         return byteBuffer.array();
     }
 
@@ -63,7 +72,7 @@ public class PacketSerializer {
         //int plPktId = byteBuffer.getInt();
         // todo add new field here
 
-        byte[] data = new byte[bytes.length-DATA_OFFSET];
+        byte[] data = new byte[MAX_DATA_SIZE];
         return new Packet(data, numMsgs, firstMsgId, pktId, isACK, src, dst, relayedBy);
     }
 }
