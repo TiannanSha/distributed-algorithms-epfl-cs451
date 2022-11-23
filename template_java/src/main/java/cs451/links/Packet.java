@@ -18,7 +18,7 @@ public class Packet {
     short src; // todo maybe can fit in one byte or char since maximum 128 processes
     short dst;
     short relayedBy;
-    //int plPktId; // id used by perfect link
+    int plPktId; // id used by perfect link when sending
 
     /**
      * used for creating packets for upper layer, no need to worry about plPktId
@@ -46,6 +46,16 @@ public class Packet {
         this.relayedBy = (short)relayedBy;
         // todo add new field here
 
+    }
+
+    /**
+     * create a deep copy of input packet
+     */
+    static public Packet clonePacket(Packet packet) {
+        byte[] data = packet.data.clone();
+        return new Packet(data, packet.numMsgs, packet.firstMsgId,
+                packet.pktId, packet.isACK,
+                packet.src, packet.dst, packet.relayedBy);
     }
 
 //    public Packet(List<Message> messages, int pktId, boolean isACK, short src, short dst,
@@ -161,11 +171,11 @@ public class Packet {
         return Objects.hash(pktId, isACK, src);
     }
 
-    //    public int getPlPktId() {
-//        return plPktId;
-//    }
+        public int getPlPktId() {
+        return plPktId;
+    }
 //
-//    public void setPerfectLinkId(int linkLayerId) {
-//        this.plPktId = linkLayerId;
-//    }
+    public void setPerfectLinkId(int linkLayerId) {
+        this.plPktId = linkLayerId;
+    }
 }

@@ -25,9 +25,10 @@ public class BestEffortBroadcast {
         for (Host host: NetworkGlobalInfo.getOtherHosts()) {
             // pkt.src should be set when creating the packet at the src node
             // but relayedBy and dst need to be changed
-            pkt.setDst(host.getId());
-            pkt.setRelayedBy(NetworkGlobalInfo.getMyHost().getId());
-            perfectLink.send(pkt, host);
+            Packet pktCpy = Packet.clonePacket(pkt);
+            pktCpy.setDst(host.getId());
+            pktCpy.setRelayedBy(NetworkGlobalInfo.getMyHost().getId());
+            perfectLink.send(pktCpy, host);
         }
     }
 
