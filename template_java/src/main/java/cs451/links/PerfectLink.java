@@ -53,7 +53,8 @@ public class PerfectLink implements Link {
      *   packets can be taken off the queue only when pending packets (scheduled in thread pool but not Acked)
      *   is smaller than certain threshold
      */
-    BlockingQueue<Packet> sendQueue = new LinkedBlockingQueue<>(32);
+//    BlockingQueue<Packet> sendQueue = new LinkedBlockingQueue<>(32);
+    BlockingQueue<Packet> sendQueue = new LinkedBlockingQueue<>();
 
     public PerfectLink() {
         fLink = new FairLossLink();
