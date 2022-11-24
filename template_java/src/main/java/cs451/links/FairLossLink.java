@@ -20,7 +20,7 @@ public class FairLossLink implements Link {
     public FairLossLink()  {
         try {
             socket = new DatagramSocket(NetworkGlobalInfo.getMyHost().getPort());
-            //socket.setSoTimeout(1000);
+//            socket.setSoTimeout(1000);
         } catch (SocketException e) {
             e.printStackTrace();
         }

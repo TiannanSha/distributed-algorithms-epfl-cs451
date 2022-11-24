@@ -14,6 +14,9 @@ import java.util.List;
  */
 // todo check if we need thread safe version
 public class Acks {
+    /**
+     * src -> pktid -> [nodes beb seen this pkt then rebroadcast it]
+     */
     HashMap<Short, HashMap<Integer, HashSet<Short>>> acks = new HashMap<>();
 
     public Acks() {
