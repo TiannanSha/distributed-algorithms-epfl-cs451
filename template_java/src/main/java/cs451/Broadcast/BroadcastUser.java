@@ -17,6 +17,12 @@ public class BroadcastUser {
     int pktId = 1;
     ExecutorService executorService = Executors.newFixedThreadPool(2);
 
+    /**
+     * time to wait after broadcast one packet until broadcast next packet. This is for avoiding submitting too many
+     * sending tasks to perfect link
+     */
+    public static int SLEEP_TIME_BEFORE_NEXT_BROADCAST = 200;
+
     public BroadcastUser() {
 
     }
@@ -24,13 +30,13 @@ public class BroadcastUser {
     public void broadcastAllMsgs() {
         // todo try split to multiple threads sending concurrently
         // message id starts from
-        System.out.println("broadcastAllMsgs()\n");
+       // //System.out.println("broadcastAllMsgs()\n");
         //executorService.submit(()->sendMsgs(1, numMsgsToSend));
         broadcastMsgs(1, NetworkGlobalInfo.getNumMsgsToSend());
     }
 
     public void broadcastMsgs(int msgIdLow, int msgIdHigh) {
-        System.out.println("broadcast Msgs()\n");
+        ////System.out.println("broadcast Msgs()\n");
         List<Message> msgs= new ArrayList<>();
         int msgId = msgIdLow;
         for (msgId=msgIdLow; msgId <= msgIdHigh; msgId++) {
@@ -50,6 +56,11 @@ public class BroadcastUser {
                 pktId++;
                 msgs = new ArrayList<>();
             }
+            try {
+                Thread.sleep(SLEEP_TIME_BEFORE_NEXT_BROADCAST);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         int numMsgToSend = msgIdHigh - msgIdLow + 1;
         if (numMsgToSend % Packet.MAX_NUM_MSG != 0) {
@@ -62,20 +73,23 @@ public class BroadcastUser {
         }
     }
 
+    /**
+     * keep polling packets from lower layer. And the layer below would poll item from the layer below it, and so on...
+     */
     public void startReceivingLoop() {
         executorService.submit(this::receivingLoop);
     }
 
     private void receivingLoop() {
         while (true) {
-            System.out.println("broadcast user receivingLoop");
+            //System.out.println("broadcast user receivingLoop");
             List<Packet> pkts = fifoBroadcast.deliver();
-            System.out.println("broadcast user after fifo deliver");
+            //System.out.println("broadcast user after fifo deliver");
             if (pkts!=null && pkts.size()>0) {
-                System.out.println("broadcast user gets finally gets packets!");
+                //System.out.println("broadcast user gets finally gets packets!");
                 NetworkGlobalInfo.getLogger().appendDeliveryLogs(pkts);
             }
-            System.out.println("broadcast user receivingLoop after perfectLink deliver");
+            //System.out.println("broadcast user receivingLoop after perfectLink deliver");
         }
     }
 

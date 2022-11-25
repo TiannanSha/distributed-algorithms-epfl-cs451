@@ -24,7 +24,7 @@ public class Logger {
 
     public void appendBroadcastLog(int msgId) {
         String entry = String.format("b %d\n", msgId);
-        System.out.println(entry);
+        //System.out.println(entry);
         stringBuffer.append(entry);
     }
 
@@ -32,7 +32,7 @@ public class Logger {
     public void appendBroadcastLogs(int lowMsgId, int highMsgId) {
         for (int msgId=lowMsgId; msgId<=highMsgId; msgId++) {
             String entry = String.format("b %d\n", msgId);
-            System.out.println("append to log with entry: " + entry);
+            //System.out.println("append to log with entry: " + entry);
             stringBuffer.append(entry);
         }
     }
@@ -40,7 +40,7 @@ public class Logger {
     public void appendDeliveryLogs( short src, int msgIdLow, int msgIdHigh) {
         for (int msgId=msgIdLow; msgId<=msgIdHigh; msgId++) {
             String entry = String.format("d %d %d\n", src, msgId);
-            System.out.println(entry);
+            //System.out.println(entry);
             stringBuffer.append(entry);
         }
     }

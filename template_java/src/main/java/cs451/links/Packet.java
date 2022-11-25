@@ -35,7 +35,7 @@ public class Packet {
         this.pktId = pktId;
         numMsgs = messages.size();
         if (isACK) {
-            System.out.println("info: creating ACK packet");
+            //System.out.println("info: creating ACK packet");
             firstMsgId = -1;
         } else {
             firstMsgId = messages.get(0).msgId;
@@ -64,7 +64,7 @@ public class Packet {
 //        this.pktId = pktId;
 //        numMsgs = messages.size();
 //        if (isACK) {
-//            System.out.println("info: creating ACK packet");
+//            //System.out.println("info: creating ACK packet");
 //            firstMsgId = -1;
 //        } else {
 //            firstMsgId = messages.get(0).msgId;

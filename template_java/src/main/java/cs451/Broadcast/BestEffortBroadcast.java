@@ -37,7 +37,7 @@ public class BestEffortBroadcast {
      * blocks until an unseen data packet can be returned...
      */
     public Packet deliver() {
-        System.out.println("in beb deliver");
+        //System.out.println("in beb deliver");
         return perfectLink.deliver();
         //return perfectLink.deliverDataPacket();
 

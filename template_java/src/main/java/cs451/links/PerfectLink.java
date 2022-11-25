@@ -41,12 +41,28 @@ public class PerfectLink implements Link {
     private final FairLossLink fLink;
 
 //    private ExecutorService threadPoolForSendingTasks = Executors.newFixedThreadPool(2);
-    private ScheduledExecutorService schedulerForSendingTasks = Executors.newScheduledThreadPool(2);
-    private ExecutorService threadForSendingLoop = Executors.newSingleThreadExecutor();
+    /**
+     * scheduler for periodically send tasks
+     */
+    private ScheduledExecutorService schedulerForExecSendTasks = Executors.newScheduledThreadPool(2);
+
+    /**
+     * scheduler for periodically submit tasks
+     */
+    private ScheduledExecutorService schedulerForSubmitSendTasks = Executors.newScheduledThreadPool(1);
 
     //public static final int resendWaitingTimeMs = 1000;
 
-    static final int MAX_PENDING_PKTS = 1024; // max num packets scheduled in thread pool but not acked
+    static final int MAX_PENDING_PKTS = Integer.MAX_VALUE; // max num packets scheduled in thread pool but not acked
+
+    /**
+     * milliseconds between two checks of whether ACK is received for a packet and then retry
+     */
+    static final int PERIOD_CHECK_ACK_RETRY = 1000;
+    /**
+     * milliseconds between two submissions of send tasks. To avoid submitting too many tasks and use up memory
+     */
+    static final int PERIOD_SUBMIT = 1000;
 
     /**
      *   maximum 32 packets that are waiting to be sent
@@ -58,13 +74,20 @@ public class PerfectLink implements Link {
 
     public PerfectLink() {
         fLink = new FairLossLink();
-        threadForSendingLoop.submit(this::startSendingLoop);
+        schedulerForSubmitSendTasks.scheduleAtFixedRate(this::submitSendingTaskToScheduler,
+                0, PERIOD_SUBMIT, TimeUnit.MILLISECONDS);
     }
 
 
     // todo use a scheduled thread pool https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/ScheduledExecutorService.html
     // have a hashmap store all pktId->Future
     // when receives a pkt, just cancel the future
+
+    /**
+     * send a packet to host; blocks if the send queue is currently full
+     * @param packet
+     * @param host the id of the host. A host is basically a process listening on one socket
+     */
     @Override
     public void send(Packet packet, Host host) {
         packet.setRelayedBy(NetworkGlobalInfo.getMyHost().getId());
@@ -72,27 +95,27 @@ public class PerfectLink implements Link {
         packet.setPerfectLinkId(plPktId);
         plPktId++;
 
-        System.out.println("packet.dst:" + packet.dst);
+        //System.out.println("packet.dst:" + packet.dst);
         sendQueue.add(packet);
-        System.out.println("in send, sendQueue add packet:" + packet);
-        System.out.println("sendQueue: "+sendQueue);
+        //System.out.println("in send, sendQueue add packet:" + packet);
+        //System.out.println("sendQueue: "+sendQueue);
     }
 
     private void submitASendTask(Packet packet, Host host) {
         // todo debug this
-        System.out.println("###in perfect link submitasendtask() submitting sending packet: " + packet);
+        //System.out.println("###in perfect link submitasendtask() submitting sending packet: " + packet);
         pendingPlPktIds.addPacket(packet.relayedBy, packet.plPktId);
-        System.out.println("###in perfect link submitasendtask() pendingPktIds" + pendingPlPktIds);
+        //System.out.println("###in perfect link submitasendtask() pendingPktIds" + pendingPlPktIds);
         //NetworkGlobalInfo.getLogger().appendBroadcastLogs(packet.firstMsgId, packet.firstMsgId+packet.numMsgs-1);
         byte[] buf = packet.marshalPacket();
-        //System.out.println("in submit A send task after marshalPacket");
+        ////System.out.println("in submit A send task after marshalPacket");
         DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, host.getInetIp(), host.getPort());
-        Future<?> future = schedulerForSendingTasks.scheduleAtFixedRate(
+        Future<?> future = schedulerForExecSendTasks.scheduleAtFixedRate(
                 ()-> {
                     // todo maybe change while to if and use scheduled thread pool to avoid busy waiting?
                     // periodically checking whether ACK is received, if not, resend
                     if (pendingPlPktIds.alreadyContainsPacket(packet.relayedBy, packet.plPktId)) {
-                        System.out.println("###inside perfect link scheduler send loop, pkt = " + packet);
+                        //System.out.println("###inside perfect link scheduler send loop, pkt = " + packet);
                         fLink.send(datagramPacket, host);
 //                        try {
 //                            Thread.sleep(resendWaitingTimeMs);
@@ -101,34 +124,53 @@ public class PerfectLink implements Link {
 //                        }
                     }
                 },
-                0, 1000, TimeUnit.MILLISECONDS
+                0, PERIOD_CHECK_ACK_RETRY, TimeUnit.MILLISECONDS
                 );
-        System.out.println("after submit send task of sending packet: " + packet);
+        //System.out.println("after submit send task of sending packet: " + packet);
     }
 
-    private void startSendingLoop() {
-        while (true) {
-            // todo maybe this should sleep sometime between check
-            System.out.println("$$$submitloop in sendingLoop");
-            System.out.println("$$$submitloop  sendQueue:" + sendQueue);
-            if (pendingPlPktIds.getTotalNumPkts()<MAX_PENDING_PKTS) {
-                try {
-                    System.out.println("$$$submitloop before sendQueue.take()");
-                    Packet pkt = sendQueue.take();
-                    System.out.println("$$$submitloop  after sendQueue.take() pkt: " + pkt);
-                    submitASendTask(pkt, NetworkGlobalInfo.getHostById(pkt.dst));
-                    System.out.println("$$$submitloop  after submit an task");
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+    private void submitSendingTaskToScheduler() {
+        // todo maybe this should sleep sometime between check
+        //System.out.println("$$$submitloop in sendingLoop");
+        //System.out.println("$$$submitloop  sendQueue:" + sendQueue);
+        if (pendingPlPktIds.getTotalNumPkts()<MAX_PENDING_PKTS) {
             try {
-                Thread.sleep(1000);
+                //System.out.println("$$$submitloop before sendQueue.take()");
+                Packet pkt = sendQueue.take();
+                //System.out.println("$$$submitloop  after sendQueue.take() pkt: " + pkt);
+                submitASendTask(pkt, NetworkGlobalInfo.getHostById(pkt.dst));
+                //System.out.println("$$$submitloop  after submit an task");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
+
+
+//    private void submitSendingTaskToScheduler() {
+//        while (true) {
+//            // todo maybe this should sleep sometime between check
+//            //System.out.println("$$$submitloop in sendingLoop");
+//            //System.out.println("$$$submitloop  sendQueue:" + sendQueue);
+//            if (pendingPlPktIds.getTotalNumPkts()<MAX_PENDING_PKTS) {
+//                try {
+//                    //System.out.println("$$$submitloop before sendQueue.take()");
+//                    Packet pkt = sendQueue.take();
+//                    //System.out.println("$$$submitloop  after sendQueue.take() pkt: " + pkt);
+//                    submitASendTask(pkt, NetworkGlobalInfo.getHostById(pkt.dst));
+//                    //System.out.println("$$$submitloop  after submit an task");
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            try {
+//                //todo tune this?
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
     @Override
     /**
@@ -136,25 +178,25 @@ public class PerfectLink implements Link {
      * @return return a packet if this packet is new and contains unseen messages. return null if received
      */
     public Packet deliver() {
-        System.out.println("perfectlink deliver()");
+        //System.out.println("perfectlink deliver()");
         Packet pktRecv = fLink.deliver();
         if (pktRecv==null) return null;
-        System.out.println("perfectlink after flink deliver()");
-        System.out.println("pktRecv in perfect link deliver"+pktRecv);
+        //System.out.println("perfectlink after flink deliver()");
+        //System.out.println("pktRecv in perfect link deliver"+pktRecv);
         if (!pktRecv.isACK) {
             // received actual message packet pktRecv
-            //System.out.println("perfectlink deliver not ACK");
+            ////System.out.println("perfectlink deliver not ACK");
             // send an ACK for this packet, and update received pktRecv
             // todo an ACK only changes data field, isACK field
             // todo put this to a Packet function create ACK
-            //System.out.println("perfectlink deliver before reply ACK");
+            ////System.out.println("perfectlink deliver before reply ACK");
             Packet ACK = new Packet(new ArrayList<Message>(), pktRecv.pktId, true,
                     pktRecv.src, pktRecv.dst, pktRecv.relayedBy);
             ACK.setPerfectLinkId(pktRecv.plPktId);
             // ack should be sent to the relayedby to tell it we received the relayedby
             fLink.send(ACK, NetworkGlobalInfo.getAllHosts().get(pktRecv.relayedBy-1));
             //fLink.send(ACK, NetworkGlobalInfo.getAllHosts().get(pktRecv.src-1));
-            //System.out.println("after flink send");
+            ////System.out.println("after flink send");
 
 //            List<Integer> pktIdTuple = new LinkedList<>();
 //            pktIdTuple.add((int)pktRecv.src);
@@ -170,11 +212,11 @@ public class PerfectLink implements Link {
         }
         // this is an ACK packet
         // for an ack packet, the src and the pktId are both the same as the packet it's acking
-        System.out.println("perfectlink deliver ACK");
-        System.out.println("ACK:" + pktRecv);
-        System.out.println("pendingPlPktIds " + pendingPlPktIds);
+        //System.out.println("perfectlink deliver ACK");
+        //System.out.println("ACK:" + pktRecv);
+        //System.out.println("pendingPlPktIds " + pendingPlPktIds);
         pendingPlPktIds.removePacket(pktRecv.relayedBy, pktRecv.plPktId);
-        //System.out.println("after remove, " + pendingPktIds.alreadyContainsPacket(pktRecv.src, ));
+        ////System.out.println("after remove, " + pendingPktIds.alreadyContainsPacket(pktRecv.src, ));
         return null;
     }
 
@@ -193,9 +235,9 @@ public class PerfectLink implements Link {
 
     // for testing purpose
     public void waitTillAllTaskFinished() {
-        schedulerForSendingTasks.shutdown();
+        schedulerForExecSendTasks.shutdown();
         try {
-            schedulerForSendingTasks.awaitTermination(10, TimeUnit.SECONDS);
+            schedulerForExecSendTasks.awaitTermination(10, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -32,11 +32,11 @@ public class FairLossLink implements Link {
 
         byte[] buf = packet.marshalPacket();
         try {
-            System.out.println("fairloss link send ACK to host " + host.getInetIp() + "port " + host.getPort());
-            System.out.println("packet.src = " + packet.src + ", packet.pktId = "+packet.pktId);
+            //System.out.println("fairloss link send ACK to host " + host.getInetIp() + "port " + host.getPort());
+            //System.out.println("packet.src = " + packet.src + ", packet.pktId = "+packet.pktId);
             DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, host.getInetIp(), host.getPort());
             socket.send(datagramPacket);
-            System.out.println("fairloss link after send ACK");
+            //System.out.println("fairloss link after send ACK");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,11 +44,11 @@ public class FairLossLink implements Link {
 
     public void send(DatagramPacket datagramPacket, Host host) {
         try {
-            System.out.println("in fairloss link send()");
-            System.out.println("send to addr:" + datagramPacket.getAddress() + ", port:" + datagramPacket.getPort());
+            //System.out.println("in fairloss link send()");
+            //System.out.println("send to addr:" + datagramPacket.getAddress() + ", port:" + datagramPacket.getPort());
             socket.send(datagramPacket);
         } catch (IOException e) {
-            System.out.println("exception after socket.send() in fairloss link");
+            //System.out.println("exception after socket.send() in fairloss link");
             e.printStackTrace();
         }
     }
@@ -61,9 +61,9 @@ public class FairLossLink implements Link {
         try {
             byte[] buf = new byte[Link.BUF_SIZE];
             DatagramPacket datagramPacket = new DatagramPacket(buf, Link.BUF_SIZE);
-            System.out.println("before socket receive, which blocks if no packet is received");
+            //System.out.println("before socket receive, which blocks if no packet is received");
             socket.receive(datagramPacket); // this blocks
-            System.out.println("fair loss link deliver() after socket.receive()");
+            //System.out.println("fair loss link deliver() after socket.receive()");
             return Packet.unmarshalPacket(datagramPacket.getData());
         } catch (IOException e) {
             e.printStackTrace();

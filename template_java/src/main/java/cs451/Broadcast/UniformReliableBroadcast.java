@@ -6,6 +6,8 @@ import cs451.links.Packet;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class UniformReliableBroadcast {
 
@@ -26,6 +28,7 @@ public class UniformReliableBroadcast {
     Acks acks = new Acks();
 
     BestEffortBroadcast bestEffortBroadcast = new BestEffortBroadcast();
+    //ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     public UniformReliableBroadcast() {
 
@@ -44,12 +47,12 @@ public class UniformReliableBroadcast {
 
 
     public List<Packet> deliver() {
-        System.out.println("in urb deliver()");
+        //System.out.println("in urb deliver()");
         Packet pkt = bestEffortBroadcast.deliver();
-        System.out.println("beb deliver after beb deliver " + pkt);
+        //System.out.println("beb deliver after beb deliver " + pkt);
         if (pkt==null) {
             // this is not a data packet
-            System.out.println("in urb deliver packet is null");
+//            //System.out.println("in urb deliver packet is null");
             return new LinkedList<>();
         }
         // add the relayedby and myself to the set of nodes have seen <src, pktId>
@@ -58,14 +61,16 @@ public class UniformReliableBroadcast {
         // relay a beb delivered packet if haven't done so
         if (!pending.alreadyContainsPacket(pkt)) {
             pending.addPacket(pkt);
-            System.out.println("rebroadcast pkt: " + pkt);
+            //System.out.println("rebroadcast pkt: " + pkt);
+            // broadcast might block if the sendqueue in perfect link is full
+            //executorService.submit(()->bestEffortBroadcast.broadcast(pkt));
             bestEffortBroadcast.broadcast(pkt);
         } else {
-            // we are dealing with a already broadcast data packet
-            System.out.println("*** pending: " + pending);
-            System.out.println("*** ACK" + acks);
+            // we are dealing with an already broadcast data packet
+            //System.out.println("*** pending: " + pending);
+            //System.out.println("*** ACK" + acks);
             List<Packet> res = pending.getDeliverablePackets(acks, delivered);
-            System.out.println("in urb deliver res: " + res);
+            //System.out.println("in urb deliver res: " + res);
             for (Packet packet: res) {
                 delivered.addPacket(packet.getSrc(), packet.getPktId());
             }
@@ -73,7 +78,7 @@ public class UniformReliableBroadcast {
         }
 
 //        List<Packet> res = pending.getDeliverablePackets(acks, delivered);
-//        System.out.println("in urb deliver res: " + res);
+//        //System.out.println("in urb deliver res: " + res);
         // todo maybe delete acks for deleted packet,
         return new LinkedList<>();
     }
@@ -85,7 +90,7 @@ public class UniformReliableBroadcast {
 
     public List<Packet> getDeliverablePackets() {
         List<Packet> res = pending.getDeliverablePackets(acks, delivered);
-        System.out.println("in urb deliver res: " + res);
+        //System.out.println("in urb deliver res: " + res);
         return res;
     }
 }

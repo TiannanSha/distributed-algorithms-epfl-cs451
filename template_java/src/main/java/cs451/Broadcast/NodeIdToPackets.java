@@ -37,21 +37,21 @@ public class NodeIdToPackets {
      * todo no actually pending should store actual pkts
      */
     synchronized List<Packet> getDeliverablePackets(Acks acks, NodeIDToPktIDs delivered) {
-        System.out.println("@@@in get deliverable packets");
-        System.out.println("@@@pending"+this);
-        System.out.println("@@@acks:" + acks);
-        System.out.println("@@@delivered" + delivered);
+        //System.out.println("@@@in get deliverable packets");
+        //System.out.println("@@@pending"+this);
+        //System.out.println("@@@acks:" + acks);
+        //System.out.println("@@@delivered" + delivered);
         List<Packet> res = new LinkedList<>();
         for (short nodeId: nodeIdToPackets.keySet()) {
             HashSet<Packet> pkts = nodeIdToPackets.get(nodeId);
             for (Packet pkt:pkts) {
-                System.out.println("@@@pkt: " + pkt);
-                System.out.println("@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):" + acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()));
-                System.out.println("@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))" + !delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()));
+                //System.out.println("@@@pkt: " + pkt);
+                //System.out.println("@@@acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()):" + acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()));
+                //System.out.println("@@@!delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()))" + !delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId()));
                 // check if packet that has been acked for majority
                 if (  acks.ackedByMajority(pkt.getSrc(), pkt.getPktId()) &&
                         !delivered.alreadyContainsPacket(pkt.getSrc(), pkt.getPktId())){
-                    System.out.println("@@@added to result");
+                    //System.out.println("@@@added to result");
                     res.add(pkt);
                 }
             }

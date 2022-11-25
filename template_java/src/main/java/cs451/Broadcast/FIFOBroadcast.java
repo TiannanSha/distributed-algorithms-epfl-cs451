@@ -4,6 +4,7 @@ import cs451.Host;
 import cs451.NetworkGlobalInfo;
 import cs451.links.Packet;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,8 +40,9 @@ public class FIFOBroadcast {
         List<Packet> res = new LinkedList<>();
 
         List<Packet> pkts = uniformReliableBroadcast.deliver();
-        // todo maybe sort by pktid
-        System.out.println("fifo deliver after urb deliver, pkts from urb: " + pkts);
+        // todo maybe sort by pktid ascendingly to make it possibly return more packets
+        //System.out.println("fifo deliver after urb deliver, pkts from urb: " + pkts);
+        Collections.sort(pkts, (Packet p1, Packet p2)-> (p1.getPktId()-p2.getPktId()));
         for (Packet pkt: pkts) {
             if (canDeliver(pkt)) {
                 res.add(pkt);
@@ -52,6 +54,7 @@ public class FIFOBroadcast {
         }
 
         // check again whether some pkts didn't satisfy the fifo order can now be delivered
+        Collections.sort(pktsViolatedFifo, (Packet p1, Packet p2)-> (p1.getPktId()-p2.getPktId()));
         for (Packet pkt: pktsViolatedFifo) {
             if (canDeliver(pkt)) {
                 res.add(pkt);
