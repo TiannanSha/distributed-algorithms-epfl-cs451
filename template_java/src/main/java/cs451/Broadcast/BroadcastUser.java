@@ -21,7 +21,7 @@ public class BroadcastUser {
      * time to wait after broadcast one packet until broadcast next packet. This is for avoiding submitting too many
      * sending tasks to perfect link
      */
-    public static int SLEEP_TIME_BEFORE_NEXT_BROADCAST = 200;
+    public static int SLEEP_TIME_BEFORE_NEXT_BROADCAST = 280;
 
     public BroadcastUser() {
 
