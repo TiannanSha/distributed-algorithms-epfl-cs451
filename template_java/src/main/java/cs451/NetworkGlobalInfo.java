@@ -2,6 +2,7 @@ package cs451;
 
 import cs451.Host;
 import cs451.links.Link;
+import cs451.links.PerfectLink;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,10 @@ public class NetworkGlobalInfo {
     static List<Host> otherHosts = new LinkedList<>();
     static Logger logger;
     static int numMsgsToSend;
+    /**
+     * every class share one socket
+     */
+    public static PerfectLink perfectLink;
 
     public static void init(Host myHost, List<Host> allHosts, Logger globalLogger, int numMsg) {
         hosts = allHosts;
@@ -56,5 +61,13 @@ public class NetworkGlobalInfo {
 
     public static int getNumMsgsToSend() {
         return numMsgsToSend;
+    }
+
+    public static int getMajorityThreshold() {
+        return hosts.size()/2+1;
+    }
+
+    public static void initPerfectLink() {
+        perfectLink = new PerfectLink();
     }
 }

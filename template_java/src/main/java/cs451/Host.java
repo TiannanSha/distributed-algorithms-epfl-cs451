@@ -71,4 +71,12 @@ public class Host {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return "Host{" +
+                "id=" + id +
+                ", ip='" + ip + '\'' +
+                ", port=" + port +
+                '}';
+    }
 }

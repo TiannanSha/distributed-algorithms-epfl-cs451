@@ -5,6 +5,8 @@ import cs451.links.Packet;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Logger {
@@ -63,5 +65,20 @@ public class Logger {
         for (Packet pkt: pkts) {
             appendDeliveryLogs(pkt.getSrc(), pkt.getFirstMsgId(), pkt.getLastMsgId());
         }
+    }
+
+    public void appendDecisionLogs(HashSet<Integer> decision) {
+        ArrayList<Integer> arrayDecision = new ArrayList<>(decision);
+        String entry = "";
+        for (int i=0; i<decision.size(); i++) {
+            if (i==decision.size()-1) {
+                // this is the last item in the decision
+                entry = entry + arrayDecision.get(i) + "\n";
+            } else {
+                // this is not the last item
+                entry = entry + arrayDecision.get(i) + " ";
+            }
+        }
+        stringBuffer.append(entry);
     }
 }

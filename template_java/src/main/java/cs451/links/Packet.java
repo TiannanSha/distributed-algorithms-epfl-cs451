@@ -9,16 +9,31 @@ import java.util.Objects;
  */
 
 public class Packet {
+    /**
+     * max num of msg in a pkt
+     */
+    public static final int MAX_NUM_MSG = 8;
+
+    /**
+     * different message types
+     */
+    public static final short PROPOSE_MSG = 0;
+    public static final short PROPOSE_ACK_MSG = 1;
+    public static final short PROPOSE_NACK_MSG = 2;
+    public static final short M2_MSG = 3;
+
     byte[] data;
-    int pktId;
+    int pktId;//todo maybe can delete irrelevant fields
     int numMsgs;
     int firstMsgId;
-    public static final int MAX_NUM_MSG = 8;
     boolean isACK;
     short src; // todo maybe can fit in one byte or char since maximum 128 processes
     short dst;
     short relayedBy;
-    int plPktId; // id used by perfect link when sending
+    int plPktId; // id used and set by perfect link when sending.
+    short msgType = M2_MSG;
+    int shotId = 0;  // which round of agreement does this packet belong to
+    int dataLen = 0;
 
     /**
      * used for creating packets for upper layer, no need to worry about plPktId
@@ -55,7 +70,8 @@ public class Packet {
         byte[] data = packet.data.clone();
         return new Packet(data, packet.numMsgs, packet.firstMsgId,
                 packet.pktId, packet.isACK,
-                packet.src, packet.dst, packet.relayedBy);
+                packet.src, packet.dst, packet.relayedBy,
+                packet.msgType, packet.shotId, packet.dataLen);
     }
 
 //    public Packet(List<Message> messages, int pktId, boolean isACK, short src, short dst,
@@ -78,7 +94,7 @@ public class Packet {
 //    }
 
     public Packet(byte[] data, int numMsgs, int firstMsgId, int pktId, boolean isACK,
-                  short src, short dst, short relayedBy) {
+                  short src, short dst, short relayedBy, short msgType, int shotId, int dataLen) {
         this.data = data;
         this.pktId= pktId;
         this.numMsgs = numMsgs;
@@ -88,6 +104,32 @@ public class Packet {
         this.isACK = isACK;
         this.relayedBy = relayedBy;
         //this.plPktId = plPktId;
+        this.msgType = msgType;
+        this.shotId = shotId;
+        this.dataLen = dataLen;
+        // todo add new field here
+    }
+
+    /**
+     * Packet constructor used for m3
+     * @param data
+     * @param src
+     * @param dst
+     * @param relayedBy
+     */
+    public Packet(byte[] data, int dataLen, short src, short dst, short relayedBy, short msgType, int shotId) {
+        this.data = data;
+        this.pktId= 0;
+        this.numMsgs = 1;
+        this.firstMsgId = 0;
+        this.src = (short)src;
+        this.dst = (short)dst;
+        this.isACK = false;
+        this.relayedBy = relayedBy;
+        //this.plPktId = plPktId;
+        this.msgType = msgType;
+        this.shotId = shotId;
+        this.dataLen = dataLen;
         // todo add new field here
     }
 
@@ -110,8 +152,8 @@ public class Packet {
 
     @Override
     public String toString() {
+        String[] msgTypes = new String[]{"Propose", "ProposeACK", "ProposeNACK"};
         return "Packet{" +
-                "dataLen=" + data.length +
                 ", pktId=" + pktId +
                 ", numMsgs=" + numMsgs +
                 ", firstMsgId=" + firstMsgId +
@@ -120,6 +162,10 @@ public class Packet {
                 ", dst=" + dst +
                 ", relayedBy=" + relayedBy +
                 ", plPktId=" + plPktId +
+                ", MsgType=" + msgTypes[msgType] +
+                ", shotId=" + shotId +
+                ", plPktId=" + plPktId +
+                ", dataLen=" + dataLen +
                 '}';
     }
 
@@ -159,6 +205,14 @@ public class Packet {
         this.relayedBy = relayedBy;
     }
 
+    public byte[] getData() {
+        return data;
+    }
+
+    public short getMsgType() {
+        return msgType;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -178,5 +232,17 @@ public class Packet {
 //
     public void setPerfectLinkId(int linkLayerId) {
         this.plPktId = linkLayerId;
+    }
+
+    public int getShotId() {
+        return shotId;
+    }
+
+    public int getDataLen() {
+        return dataLen;
+    }
+
+    public int getPacketSize() {
+        return PacketSerializer.DATA_OFFSET + dataLen;
     }
 }

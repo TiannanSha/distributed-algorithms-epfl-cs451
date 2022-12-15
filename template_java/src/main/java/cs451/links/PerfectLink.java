@@ -90,6 +90,7 @@ public class PerfectLink implements Link {
      */
     @Override
     public void send(Packet packet, Host host) {
+        System.out.println("in perfect link send packet:" + packet);
         packet.setRelayedBy(NetworkGlobalInfo.getMyHost().getId());
         // plPktId uniquely identifies the each packet send out of this perfect link
         packet.setPerfectLinkId(plPktId);
@@ -115,7 +116,7 @@ public class PerfectLink implements Link {
                     // todo maybe change while to if and use scheduled thread pool to avoid busy waiting?
                     // periodically checking whether ACK is received, if not, resend
                     if (pendingPlPktIds.alreadyContainsPacket(packet.relayedBy, packet.plPktId)) {
-                        //System.out.println("###inside perfect link scheduler send loop, pkt = " + packet);
+                        System.out.println("###inside perfect link scheduler send loop, pkt = " + packet);
                         fLink.send(datagramPacket, host);
 //                        try {
 //                            Thread.sleep(resendWaitingTimeMs);
@@ -190,8 +191,10 @@ public class PerfectLink implements Link {
             // todo an ACK only changes data field, isACK field
             // todo put this to a Packet function create ACK
             ////System.out.println("perfectlink deliver before reply ACK");
-            Packet ACK = new Packet(new ArrayList<Message>(), pktRecv.pktId, true,
-                    pktRecv.src, pktRecv.dst, pktRecv.relayedBy);
+//            Packet ACK = new Packet(new ArrayList<Message>(), pktRecv.pktId, true,
+//                    pktRecv.src, pktRecv.dst, pktRecv.relayedBy);
+            Packet ACK = new Packet(null, 0, 0, pktRecv.pktId, true,
+                    pktRecv.src, pktRecv.dst, pktRecv.relayedBy, pktRecv.msgType, pktRecv.shotId, 0);
             ACK.setPerfectLinkId(pktRecv.plPktId);
             // ack should be sent to the relayedby to tell it we received the relayedby
             fLink.send(ACK, NetworkGlobalInfo.getAllHosts().get(pktRecv.relayedBy-1));

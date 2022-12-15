@@ -1,6 +1,7 @@
 package cs451.Broadcast;
 
 import cs451.Host;
+import cs451.LatticeAgreement.MultiAgreements;
 import cs451.Logger;
 import cs451.NetworkGlobalInfo;
 import cs451.links.Packet;
@@ -17,11 +18,12 @@ import java.util.List;
 public class BestEffortBroadcast {
    PerfectLink perfectLink; // perfect link can be used to send to different hosts from same port. note the requirement was each process use only one port
 
-    BestEffortBroadcast() {
-        perfectLink = new PerfectLink();
+    public BestEffortBroadcast() {
+        perfectLink = NetworkGlobalInfo.perfectLink;
     }
 
     public void broadcast(Packet pkt) {
+        System.out.println("in broadcast NetworkGlobalInfo.getOtherHosts():"+NetworkGlobalInfo.getOtherHosts());
         for (Host host: NetworkGlobalInfo.getOtherHosts()) {
             // pkt.src should be set when creating the packet at the src node
             // but relayedBy and dst need to be changed
@@ -30,6 +32,8 @@ public class BestEffortBroadcast {
             pktCpy.setRelayedBy(NetworkGlobalInfo.getMyHost().getId());
             perfectLink.send(pktCpy, host);
         }
+        // FIXME: 14.12.22 also add process the packet myself here...
+        MultiAgreements.handlePacket(pkt);
     }
 
 

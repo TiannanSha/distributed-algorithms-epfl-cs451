@@ -1,8 +1,11 @@
 package cs451;
 
 import cs451.Broadcast.BroadcastUser;
+import cs451.LatticeAgreement.AgreementsExecutor;
+import cs451.LatticeAgreement.MultiAgreements;
 import cs451.links.LinkUser;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
@@ -39,6 +42,25 @@ public class Main {
             @Override
             public void run() {
                 handleSignal(broadcastUser);
+            }
+        });
+    }
+
+    private static void handleSignal(AgreementsExecutor agreementsExecutor) {
+        //immediately stop network packet processing
+        System.out.println("Immediately stopping network packet processing.");
+        agreementsExecutor.stopExecutionNow();
+
+        //write/flush output file if necessary
+        System.out.println("Writing output.");
+        NetworkGlobalInfo.getLogger().flushToDisk();
+    }
+
+    private static void initSignalHandlers(AgreementsExecutor agreementsExecutor) {
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run() {
+                handleSignal(agreementsExecutor);
             }
         });
     }
@@ -81,10 +103,10 @@ public class Main {
         /**
          * for testing fifo broadcast
          */
-        configParser.readFifoBroadcastConf();
-
-        Host myhost = parser.hosts().get(parser.myId()-1);
-        NetworkGlobalInfo.init(myhost, parser.hosts(), logger, configParser.getNumMsgsToSend());
+//        configParser.readFifoBroadcastConf();
+//
+//        Host myhost = parser.hosts().get(parser.myId()-1);
+//        NetworkGlobalInfo.init(myhost, parser.hosts(), logger, configParser.getNumMsgsToSend());
 
         /**
          * for testing perfect link
@@ -107,11 +129,29 @@ public class Main {
         /**
          * for testing fifo broadcast
          */
-        BroadcastUser broadcastUser = new BroadcastUser();
-        initSignalHandlers(broadcastUser);
-        broadcastUser.broadcastAllMsgs();
-        broadcastUser.startReceivingLoop();
-        broadcastUser.getExecutorService().shutdown();
-        broadcastUser.getExecutorService().awaitTermination(30, TimeUnit.MINUTES);
+//        BroadcastUser broadcastUser = new BroadcastUser();
+//        initSignalHandlers(broadcastUser);
+//        broadcastUser.broadcastAllMsgs();
+//        broadcastUser.startReceivingLoop();
+//        broadcastUser.getExecutorService().shutdown();
+//        broadcastUser.getExecutorService().awaitTermination(30, TimeUnit.MINUTES);
+
+        /**
+         * for agreements. agreements only need host info and logger for NetworkGlobalInfo
+         */
+        // numMsg is used in m1 m2
+        Host myhost = parser.hosts().get(parser.myId()-1);
+        NetworkGlobalInfo.init(myhost, parser.hosts(), logger, 0);
+        NetworkGlobalInfo.initPerfectLink(); // initialize perfect link which is like a socket used by all classes
+        System.out.println(NetworkGlobalInfo.getAllHosts());
+
+
+        AgreementsExecutor agreementsExecutor = new AgreementsExecutor(parser.config());
+        initSignalHandlers(agreementsExecutor);
+        try {
+            agreementsExecutor.makeProposalsAndDecisions();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

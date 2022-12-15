@@ -15,15 +15,21 @@ public class PacketSerializer {
     public static final int DST_OFFSET=16; // dst is short, 2bytes
     public static final int RELAYED_BY_OFFSET=18; // relayedby is short, 2bytes
     public static final int PL_PKT_ID_OFFSET = 20; // plpktid is int 4 bytes
-    // todo add new field here
-    public static final int DATA_OFFSET =24;
+    public static final int MSG_TYPE_OFFSET = 24; // msgType is short 2 bytes
+    public static final int SHOT_ID_OFFSET = 26; // shotID is int 4 bytes
+    public static final int DATA_LEN_OFFSET = 30; // dataLen is int 4 bytes
 
-    public static final int MAX_DATA_SIZE = 8 * Message.MAX_MSG_CONTENT_SIZE;
+
+    // todo add new field here
+    public static final int DATA_OFFSET =34;
+
+    public static final int MAX_DATA_SIZE = 8 * Message.MAX_MSG_CONTENT_SIZE; // for M2 ACK packets
     public static final int MAX_PACKET_SIZE = DATA_OFFSET+ MAX_DATA_SIZE;
 
+
     public static byte[] serialize(Packet packet) {
-//        System.out.println("in serialize, serialzing packet: " + packet);
-        ByteBuffer byteBuffer = ByteBuffer.allocate(MAX_PACKET_SIZE);
+        //System.out.println("in serialize, serialzing packet: " + packet);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(packet.getPacketSize());
         try {
             byteBuffer.putInt(packet.pktId);
             byteBuffer.putInt(packet.numMsgs);
@@ -41,9 +47,17 @@ public class PacketSerializer {
 //            System.out.println("after put relayby");
 //            System.out.println("byteBuffer: "+byteBuffer);
             byteBuffer.putInt(packet.plPktId);
+            byteBuffer.putShort(packet.getMsgType());
+            byteBuffer.putInt(packet.shotId);
+            byteBuffer.putInt(packet.dataLen);
             // todo add new field here
-
-            byteBuffer.put(packet.data);
+//            System.out.println("packet.isACK = "+packet.isACK);
+//            System.out.println("byteBuffer.capacity()"+byteBuffer.capacity());
+//            System.out.println("byteBuffer.position()"+byteBuffer.position());
+            // fixme if data null don't put
+            if (packet.data!=null) {
+                byteBuffer.put(packet.data);
+            }
             //System.out.println("after put packet.data");
 
         } catch (Exception e) {
@@ -70,11 +84,28 @@ public class PacketSerializer {
         short dst = byteBuffer.getShort();
         short relayedBy = byteBuffer.getShort();
         int plPktId = byteBuffer.getInt();
+        short msgType = byteBuffer.getShort();
+        int shotId = byteBuffer.getInt();  // which round of agreement does this packet belong to
+        int dataLen = byteBuffer.getInt();
         // todo add new field here
 
-        byte[] data = new byte[MAX_DATA_SIZE];
-        Packet res = new Packet(data, numMsgs, firstMsgId, pktId, isACK, src, dst, relayedBy);
-        res.setPerfectLinkId(plPktId);
-        return res;
+
+        // FIXME: if data len = 0 no need to read data, data =null, i.e. this is just an ACK
+        if (dataLen>0) {
+            byte[] data = new byte[dataLen];
+            byteBuffer.get(data); // read bytes to data[0, dataLen]
+            //byte[] data = new byte[MAX_DATA_SIZE];
+            Packet res = new Packet(data, numMsgs, firstMsgId, pktId, isACK, src, dst, relayedBy,
+                    msgType, shotId, dataLen);
+            res.setPerfectLinkId(plPktId);
+            return res;
+        } else {
+            //if data len = 0 no need to read data, data =null, i.e. this is just an ACK
+            Packet res = new Packet(null, numMsgs, firstMsgId, pktId, isACK, src, dst, relayedBy,
+                    msgType, shotId, dataLen);
+            res.setPerfectLinkId(plPktId);
+            return res;
+        }
+
     }
 }
