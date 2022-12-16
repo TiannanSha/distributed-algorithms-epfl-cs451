@@ -44,9 +44,9 @@ public class AgreementsExecutor {
             numProposals = Integer.parseInt(line.split(" ")[0]);
             maxItemOneProposal = Integer.parseInt(line.split(" ")[1]);
             maxDistinctItemGlobal = Integer.parseInt(line.split(" ")[2]);
-            System.out.println("numProposals = " + numProposals);
-            System.out.println("maxItemOneProposal = " + maxItemOneProposal);
-            System.out.println("maxDistinctItemGlobal = " + maxDistinctItemGlobal);
+            //System.out.println("numProposals = " + numProposals);
+            //System.out.println("maxItemOneProposal = " + maxItemOneProposal);
+            //System.out.println("maxDistinctItemGlobal = " + maxDistinctItemGlobal);
 
             multiAgreements = new MultiAgreements(numProposals);
             executorService.submit(this::startReceiveLoop);
@@ -60,7 +60,7 @@ public class AgreementsExecutor {
 
         while (true) {
             try {
-                System.out.println("in recv loop");
+                //System.out.println("in recv loop");
                 // receive packets
                 Packet pkt = NetworkGlobalInfo.perfectLink.deliver();
                 // process packets based on message type

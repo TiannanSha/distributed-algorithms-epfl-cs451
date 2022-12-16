@@ -44,7 +44,7 @@ public class PerfectLink implements Link {
     /**
      * scheduler for periodically send tasks
      */
-    private ScheduledExecutorService schedulerForExecSendTasks = Executors.newScheduledThreadPool(2);
+    private ScheduledExecutorService schedulerForExecSendTasks = Executors.newScheduledThreadPool(3);
 
     /**
      * scheduler for periodically submit tasks
@@ -58,11 +58,11 @@ public class PerfectLink implements Link {
     /**
      * milliseconds between two checks of whether ACK is received for a packet and then retry
      */
-    static final int PERIOD_CHECK_ACK_RETRY = 1000;
+    static final int PERIOD_CHECK_ACK_RETRY = 10;
     /**
      * milliseconds between two submissions of send tasks. To avoid submitting too many tasks and use up memory
      */
-    static final int PERIOD_SUBMIT = 1000;
+    static final int PERIOD_SUBMIT = 10;
 
     /**
      *   maximum 32 packets that are waiting to be sent
@@ -74,6 +74,7 @@ public class PerfectLink implements Link {
 
     public PerfectLink() {
         fLink = new FairLossLink();
+        // todo maybe delete sendQueue, send directly put into scheduler
         schedulerForSubmitSendTasks.scheduleAtFixedRate(this::submitSendingTaskToScheduler,
                 0, PERIOD_SUBMIT, TimeUnit.MILLISECONDS);
     }
@@ -90,7 +91,7 @@ public class PerfectLink implements Link {
      */
     @Override
     public void send(Packet packet, Host host) {
-        System.out.println("in perfect link send packet:" + packet);
+        //System.out.println("in perfect link send packet:" + packet);
         packet.setRelayedBy(NetworkGlobalInfo.getMyHost().getId());
         // plPktId uniquely identifies the each packet send out of this perfect link
         packet.setPerfectLinkId(plPktId);
@@ -116,13 +117,8 @@ public class PerfectLink implements Link {
                     // todo maybe change while to if and use scheduled thread pool to avoid busy waiting?
                     // periodically checking whether ACK is received, if not, resend
                     if (pendingPlPktIds.alreadyContainsPacket(packet.relayedBy, packet.plPktId)) {
-                        System.out.println("###inside perfect link scheduler send loop, pkt = " + packet);
+                        //System.out.println("###inside perfect link scheduler send loop, pkt = " + packet);
                         fLink.send(datagramPacket, host);
-//                        try {
-//                            Thread.sleep(resendWaitingTimeMs);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
                     }
                 },
                 0, PERIOD_CHECK_ACK_RETRY, TimeUnit.MILLISECONDS
