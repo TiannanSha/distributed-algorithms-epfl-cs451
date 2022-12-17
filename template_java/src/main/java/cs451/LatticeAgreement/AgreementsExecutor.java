@@ -51,8 +51,9 @@ public class AgreementsExecutor {
             multiAgreements = new MultiAgreements(numProposals);
             executorService.submit(this::startReceiveLoop);
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            e.printStackTrace(System.out);
         }
     }
 
@@ -67,6 +68,7 @@ public class AgreementsExecutor {
                 MultiAgreements.handlePacket(pkt);
             } catch (Exception e) {
                 e.printStackTrace();
+                e.printStackTrace(System.out);
             }
 
         }
@@ -83,7 +85,7 @@ public class AgreementsExecutor {
             }
             // propose() waits for a decision to be reached for this shot ID
             HashSet<Integer> decision = multiAgreements.propose(shotId, proposal);
-            System.out.println("decision: " + decision);
+//            System.out.println("decision: " + decision);
 
             // append decision to log
             NetworkGlobalInfo.getLogger().appendDecisionLogs(decision);

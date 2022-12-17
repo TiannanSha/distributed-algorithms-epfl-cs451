@@ -23,7 +23,7 @@ public class BestEffortBroadcast {
     }
 
     public void broadcast(Packet pkt) {
-        System.out.println("in broadcast NetworkGlobalInfo.getOtherHosts():"+NetworkGlobalInfo.getOtherHosts());
+        //System.out.println("in broadcast NetworkGlobalInfo.getOtherHosts():"+NetworkGlobalInfo.getOtherHosts());
         for (Host host: NetworkGlobalInfo.getOtherHosts()) {
             // pkt.src should be set when creating the packet at the src node
             // but relayedBy and dst need to be changed

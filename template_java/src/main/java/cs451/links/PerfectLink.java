@@ -5,6 +5,7 @@ import cs451.NetworkGlobalInfo;
 
 import java.net.DatagramPacket;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.*;
 
 /**
@@ -49,7 +50,7 @@ public class PerfectLink implements Link {
     /**
      * scheduler for periodically submit tasks
      */
-    private ScheduledExecutorService schedulerForSubmitSendTasks = Executors.newScheduledThreadPool(1);
+    //private ScheduledExecutorService schedulerForSubmitSendTasks = Executors.newScheduledThreadPool(1);
 
     //public static final int resendWaitingTimeMs = 1000;
 
@@ -58,7 +59,7 @@ public class PerfectLink implements Link {
     /**
      * milliseconds between two checks of whether ACK is received for a packet and then retry
      */
-    static final int PERIOD_CHECK_ACK_RETRY = 10;
+    static final int PERIOD_CHECK_ACK_RETRY = 100 ;  // unit:millisecond
     /**
      * milliseconds between two submissions of send tasks. To avoid submitting too many tasks and use up memory
      */
@@ -70,13 +71,17 @@ public class PerfectLink implements Link {
      *   is smaller than certain threshold
      */
 //    BlockingQueue<Packet> sendQueue = new LinkedBlockingQueue<>(32);
-    BlockingQueue<Packet> sendQueue = new LinkedBlockingQueue<>();
+//    BlockingQueue<Packet> sendQueue = new LinkedBlockingQueue<>();
+
+    IntToFuture tasksInScheduler = new IntToFuture();
 
     public PerfectLink() {
         fLink = new FairLossLink();
+        ((ScheduledThreadPoolExecutor) this.schedulerForExecSendTasks).setRemoveOnCancelPolicy(true);
+
         // todo maybe delete sendQueue, send directly put into scheduler
-        schedulerForSubmitSendTasks.scheduleAtFixedRate(this::submitSendingTaskToScheduler,
-                0, PERIOD_SUBMIT, TimeUnit.MILLISECONDS);
+//        schedulerForSubmitSendTasks.scheduleAtFixedRate(this::submitSendingTaskToScheduler,
+//                0, PERIOD_SUBMIT, TimeUnit.MILLISECONDS);
     }
 
 
@@ -91,14 +96,17 @@ public class PerfectLink implements Link {
      */
     @Override
     public void send(Packet packet, Host host) {
+        // finalize the packet
         //System.out.println("in perfect link send packet:" + packet);
         packet.setRelayedBy(NetworkGlobalInfo.getMyHost().getId());
         // plPktId uniquely identifies the each packet send out of this perfect link
         packet.setPerfectLinkId(plPktId);
         plPktId++;
 
+        // ask scheduler to periodically check ack and send packet if no ack
+        submitASendTask(packet, host);
         //System.out.println("packet.dst:" + packet.dst);
-        sendQueue.add(packet);
+//        sendQueue.add(packet);
         //System.out.println("in send, sendQueue add packet:" + packet);
         //System.out.println("sendQueue: "+sendQueue);
     }
@@ -113,35 +121,42 @@ public class PerfectLink implements Link {
         ////System.out.println("in submit A send task after marshalPacket");
         DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, host.getInetIp(), host.getPort());
         Future<?> future = schedulerForExecSendTasks.scheduleAtFixedRate(
-                ()-> {
+                () -> {
+                    //System.out.println("inside scheduler for plpktid " + packet.plPktId);
                     // todo maybe change while to if and use scheduled thread pool to avoid busy waiting?
                     // periodically checking whether ACK is received, if not, resend
                     if (pendingPlPktIds.alreadyContainsPacket(packet.relayedBy, packet.plPktId)) {
                         //System.out.println("###inside perfect link scheduler send loop, pkt = " + packet);
                         fLink.send(datagramPacket, host);
                     }
+//                    else {
+//                        /// TODO: 16.12.22 how cool is this !! RuntimeException can be used without try catch
+//                        // and it can go beyond the boundary of current function to stop the
+//                        throw new RuntimeException("Exiting task");
+//                    }
                 },
                 0, PERIOD_CHECK_ACK_RETRY, TimeUnit.MILLISECONDS
                 );
+        tasksInScheduler.put(packet.plPktId, future);
         //System.out.println("after submit send task of sending packet: " + packet);
     }
 
-    private void submitSendingTaskToScheduler() {
-        // todo maybe this should sleep sometime between check
-        //System.out.println("$$$submitloop in sendingLoop");
-        //System.out.println("$$$submitloop  sendQueue:" + sendQueue);
-        if (pendingPlPktIds.getTotalNumPkts()<MAX_PENDING_PKTS) {
-            try {
-                //System.out.println("$$$submitloop before sendQueue.take()");
-                Packet pkt = sendQueue.take();
-                //System.out.println("$$$submitloop  after sendQueue.take() pkt: " + pkt);
-                submitASendTask(pkt, NetworkGlobalInfo.getHostById(pkt.dst));
-                //System.out.println("$$$submitloop  after submit an task");
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    private void submitSendingTaskToScheduler() {
+//        // todo maybe this should sleep sometime between check
+//        //System.out.println("$$$submitloop in sendingLoop");
+//        //System.out.println("$$$submitloop  sendQueue:" + sendQueue);
+//        if (pendingPlPktIds.getTotalNumPkts()<MAX_PENDING_PKTS) {
+//            try {
+//                //System.out.println("$$$submitloop before sendQueue.take()");
+//                Packet pkt = sendQueue.take();
+//                //System.out.println("$$$submitloop  after sendQueue.take() pkt: " + pkt);
+//                submitASendTask(pkt, NetworkGlobalInfo.getHostById(pkt.dst));
+//                //System.out.println("$$$submitloop  after submit an task");
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 
 //    private void submitSendingTaskToScheduler() {
@@ -215,6 +230,8 @@ public class PerfectLink implements Link {
         //System.out.println("ACK:" + pktRecv);
         //System.out.println("pendingPlPktIds " + pendingPlPktIds);
         pendingPlPktIds.removePacket(pktRecv.relayedBy, pktRecv.plPktId);
+        //System.out.println(pktRecv);
+        tasksInScheduler.cancelAndRemove(pktRecv.plPktId); // cancel and remove task from scheduler
         ////System.out.println("after remove, " + pendingPktIds.alreadyContainsPacket(pktRecv.src, ));
         return null;
     }

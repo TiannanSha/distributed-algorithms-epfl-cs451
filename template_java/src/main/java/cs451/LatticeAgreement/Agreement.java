@@ -52,8 +52,8 @@ public class Agreement {
          */
         public synchronized HashSet<Integer> propose(HashSet<Integer> proposal ) {
             // todo need to protect shared variable as sending and receiving are concurrent, probably just make all methods sync
-            System.out.println("in propose()");
-            System.out.println("proposal: " + proposal);
+            //System.out.println.println("in propose()");
+            //System.out.println.println("proposal: " + proposal);
             proposedValues = proposal;
             active = true;
             activeProposalNumber++;
@@ -87,7 +87,7 @@ public class Agreement {
                 checkNeedToRebroadcast();
                 checkDecisionReached();
             }
-            System.out.println("in handleACK(), proposalACKMsg" + proposalACKMsg);
+            //System.out.println.println("in handleACK(), proposalACKMsg" + proposalACKMsg);
         }
 
         public synchronized void handleNACK(ProposalNACKMsg proposalNACKMsg) {
@@ -97,7 +97,7 @@ public class Agreement {
                 checkNeedToRebroadcast();
                 checkDecisionReached();
             }
-            System.out.println("in handle NACK(), proposalNACKMsg" + proposalNACKMsg);
+            //System.out.println.println("in handle NACK(), proposalNACKMsg" + proposalNACKMsg);
         }
 
         private void checkNeedToRebroadcast() {
@@ -133,7 +133,7 @@ public class Agreement {
         }
 
         public void handleProposalMsg(ProposalMsg proposalMsg, Packet pkt) {
-            System.out.println("handle proposalMsg :" + proposalMsg);
+            ////System.out.println.println.println("handle proposalMsg :" + proposalMsg);
             HashSet<Integer> proposedValues = proposalMsg.getProposedValues();
             if (proposedValues.containsAll(acceptedValues)) {
                 acceptedValues = proposedValues;

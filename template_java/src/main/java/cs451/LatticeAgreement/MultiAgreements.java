@@ -31,7 +31,7 @@ public class MultiAgreements {
     public static void handlePacket(Packet pkt) {
         if (pkt==null) return;
         Agreement agreement = agreements[pkt.getShotId()];
-        System.out.println("in handlePacket() pkt: " + pkt);
+//        System.out.println("in handlePacket() pkt: " + pkt);
         if (pkt.getMsgType() == Packet.PROPOSE_MSG) {
             ProposalMsg proposalMsg = ProposalMsg.deserialize(pkt.getData());
             agreement.acceptor.handleProposalMsg(proposalMsg, pkt);

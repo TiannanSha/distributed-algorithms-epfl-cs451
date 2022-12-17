@@ -93,6 +93,9 @@ public class PacketSerializer {
         // FIXME: if data len = 0 no need to read data, data =null, i.e. this is just an ACK
         if (dataLen>0) {
             byte[] data = new byte[dataLen];
+            System.out.println("isACK = " + isACK);
+            System.out.println("datalen = " + dataLen);
+            System.out.println("msgType = " + msgType);
             byteBuffer.get(data); // read bytes to data[0, dataLen]
             //byte[] data = new byte[MAX_DATA_SIZE];
             Packet res = new Packet(data, numMsgs, firstMsgId, pktId, isACK, src, dst, relayedBy,
