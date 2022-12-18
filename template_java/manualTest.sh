@@ -1,0 +1,10 @@
+./run.sh --id 1 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc01.output ../example/output/stress/proc01.config &
+./run.sh --id 2 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc02.output ../example/output/stress/proc02.config &
+./run.sh --id 3 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc03.output ../example/output/stress/proc03.config &
+./run.sh --id 4 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc04.output ../example/output/stress/proc04.config &
+./run.sh --id 5 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc05.output ../example/output/stress/proc05.config &
+./run.sh --id 6 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc06.output ../example/output/stress/proc06.config &
+./run.sh --id 7 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc07.output ../example/output/stress/proc07.config &
+./run.sh --id 8 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc08.output ../example/output/stress/proc08.config &
+./run.sh --id 9 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc09.output ../example/output/stress/proc09.config &
+./run.sh --id 10 --hosts ../example/output/stress/hosts --output ../example/output/stress/proc10.output ../example/output/stress/proc10.config &
