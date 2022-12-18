@@ -15,7 +15,10 @@ import java.util.List;
 public class FairLossLink implements Link {
 
     private DatagramSocket socket;
-    //private Host myHost;
+    byte[] buf = new byte[PacketSerializer.MAX_PACKET_SIZE];
+    // Create a datagram packet to hold the received data. It's like a buffer that can only create once
+    // and then use repeatedly
+    DatagramPacket datagramPacket = new DatagramPacket(buf, PacketSerializer.MAX_PACKET_SIZE);
 
     public FairLossLink()  {
         try {
@@ -59,8 +62,8 @@ public class FairLossLink implements Link {
      */
     public Packet deliver()  {
         try {
-            byte[] buf = new byte[Link.BUF_SIZE];
-            DatagramPacket datagramPacket = new DatagramPacket(buf, Link.BUF_SIZE);
+//            byte[] buf = new byte[];
+//            DatagramPacket datagramPacket = new DatagramPacket(buf, );
             //System.out.println("before socket receive, which blocks if no packet is received");
             socket.receive(datagramPacket); // this blocks
             //System.out.println("fair loss link deliver() after socket.receive()");

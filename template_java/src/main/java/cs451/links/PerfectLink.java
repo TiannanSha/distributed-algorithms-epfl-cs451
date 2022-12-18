@@ -91,11 +91,13 @@ public class PerfectLink implements Link {
 
     /**
      * send a packet to host; blocks if the send queue is currently full
+     * very important to use lock to protect plpktid
      * @param packet
      * @param host the id of the host. A host is basically a process listening on one socket
+     *
      */
     @Override
-    public void send(Packet packet, Host host) {
+    public synchronized void send(Packet packet, Host host) {
         // finalize the packet
         //System.out.println("in perfect link send packet:" + packet);
         packet.setRelayedBy(NetworkGlobalInfo.getMyHost().getId());
@@ -112,13 +114,14 @@ public class PerfectLink implements Link {
     }
 
     private void submitASendTask(Packet packet, Host host) {
-        // todo debug this
+
         //System.out.println("###in perfect link submitasendtask() submitting sending packet: " + packet);
         pendingPlPktIds.addPacket(packet.relayedBy, packet.plPktId);
         //System.out.println("###in perfect link submitasendtask() pendingPktIds" + pendingPlPktIds);
         //NetworkGlobalInfo.getLogger().appendBroadcastLogs(packet.firstMsgId, packet.firstMsgId+packet.numMsgs-1);
         byte[] buf = packet.marshalPacket();
         ////System.out.println("in submit A send task after marshalPacket");
+        //System.out.println("buf.length"+buf.length);
         DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, host.getInetIp(), host.getPort());
         Future<?> future = schedulerForExecSendTasks.scheduleAtFixedRate(
                 () -> {

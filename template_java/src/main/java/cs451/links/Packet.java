@@ -9,6 +9,7 @@ import java.util.Objects;
  */
 
 public class Packet {
+
     /**
      * max num of msg in a pkt
      */

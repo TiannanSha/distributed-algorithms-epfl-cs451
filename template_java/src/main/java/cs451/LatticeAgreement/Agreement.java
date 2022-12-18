@@ -132,7 +132,12 @@ public class Agreement {
 
         }
 
-        public void handleProposalMsg(ProposalMsg proposalMsg, Packet pkt) {
+        /**
+         * synchronized to protect acceptedValues
+         * @param proposalMsg
+         * @param pkt
+         */
+        public synchronized void handleProposalMsg(ProposalMsg proposalMsg, Packet pkt) {
             ////System.out.println.println.println("handle proposalMsg :" + proposalMsg);
             HashSet<Integer> proposedValues = proposalMsg.getProposedValues();
             if (proposedValues.containsAll(acceptedValues)) {

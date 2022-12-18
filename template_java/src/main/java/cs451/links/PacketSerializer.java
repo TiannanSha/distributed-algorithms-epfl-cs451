@@ -1,6 +1,7 @@
 package cs451.links;
 
 import java.nio.ByteBuffer;
+import java.sql.SQLOutput;
 import java.util.List;
 
 public class PacketSerializer {
@@ -24,11 +25,16 @@ public class PacketSerializer {
     public static final int DATA_OFFSET =34;
 
     public static final int MAX_DATA_SIZE = 8 * Message.MAX_MSG_CONTENT_SIZE; // for M2 ACK packets
-    public static final int MAX_PACKET_SIZE = DATA_OFFSET+ MAX_DATA_SIZE;
 
+    /**
+     * max total size of a packet. For proposal msg, 1024 int for both proposal and proposevalues plus packet
+     * header length. +8 for storing proposal length and proposedValues length
+     */
+    public static final int MAX_PACKET_SIZE = 2048*4 + DATA_OFFSET + 8;
 
     public static byte[] serialize(Packet packet) {
         //System.out.println("in serialize, serialzing packet: " + packet);
+        //System.out.println("packet.getPacketSize()"+packet.getPacketSize());
         ByteBuffer byteBuffer = ByteBuffer.allocate(packet.getPacketSize());
         try {
             byteBuffer.putInt(packet.pktId);
@@ -40,28 +46,29 @@ public class PacketSerializer {
             } else {
                 byteBuffer.putChar('F');
             }
-//            System.out.println("after put ack");
+//            //System.out.println("after put ack");
             byteBuffer.putShort(packet.src);
             byteBuffer.putShort(packet.dst);
             byteBuffer.putShort(packet.relayedBy);
-//            System.out.println("after put relayby");
-//            System.out.println("byteBuffer: "+byteBuffer);
+//            //System.out.println("after put relayby");
+//            //System.out.println("byteBuffer: "+byteBuffer);
             byteBuffer.putInt(packet.plPktId);
             byteBuffer.putShort(packet.getMsgType());
             byteBuffer.putInt(packet.shotId);
             byteBuffer.putInt(packet.dataLen);
             // todo add new field here
-//            System.out.println("packet.isACK = "+packet.isACK);
-//            System.out.println("byteBuffer.capacity()"+byteBuffer.capacity());
-//            System.out.println("byteBuffer.position()"+byteBuffer.position());
+//            //System.out.println("packet.isACK = "+packet.isACK);
+//            //System.out.println("byteBuffer.capacity()"+byteBuffer.capacity());
+//            //System.out.println("byteBuffer.position()"+byteBuffer.position());
             // fixme if data null don't put
             if (packet.data!=null) {
                 byteBuffer.put(packet.data);
             }
-            //System.out.println("after put packet.data");
+            ////System.out.println("after put packet.data");
 
         } catch (Exception e) {
             e.printStackTrace();
+            e.printStackTrace(System.out);
         }
         return byteBuffer.array();
     }
@@ -93,9 +100,13 @@ public class PacketSerializer {
         // FIXME: if data len = 0 no need to read data, data =null, i.e. this is just an ACK
         if (dataLen>0) {
             byte[] data = new byte[dataLen];
-            System.out.println("isACK = " + isACK);
-            System.out.println("datalen = " + dataLen);
-            System.out.println("msgType = " + msgType);
+            //System.out.println("---deserialize packet---");
+            //System.out.println("plpktid = " + plPktId);
+            //System.out.println("isACK = " + isACK);
+            //System.out.println("datalen = " + dataLen);
+            //System.out.println("msgType = " + msgType);
+            //System.out.println("byteBuffer.capacity() = "+byteBuffer.capacity());
+            //System.out.println("byteBuffer.position() = "+byteBuffer.position());
             byteBuffer.get(data); // read bytes to data[0, dataLen]
             //byte[] data = new byte[MAX_DATA_SIZE];
             Packet res = new Packet(data, numMsgs, firstMsgId, pktId, isACK, src, dst, relayedBy,
