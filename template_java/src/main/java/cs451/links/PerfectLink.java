@@ -59,7 +59,7 @@ public class PerfectLink implements Link {
     /**
      * milliseconds between two checks of whether ACK is received for a packet and then retry
      */
-    static final int PERIOD_CHECK_ACK_RETRY = 100 ;  // unit:millisecond
+    static final int PERIOD_CHECK_ACK_RETRY = 500 ;  // unit:millisecond
     /**
      * milliseconds between two submissions of send tasks. To avoid submitting too many tasks and use up memory
      */

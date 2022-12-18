@@ -28,13 +28,14 @@ public class PacketSerializer {
 
     /**
      * max total size of a packet. For proposal msg, 1024 int for both proposal and proposevalues plus packet
-     * header length. +8 for storing proposal length and proposedValues length
+     * header length. +8 for storing proposal length and proposedValues length。 +4 for proposal active number
+     * + 512 additional space just to be safe
      */
-    public static final int MAX_PACKET_SIZE = 2048*4 + DATA_OFFSET + 8;
+    public static final int MAX_PACKET_SIZE = 2048*4 + DATA_OFFSET + 8 + 4 + 512;
 
     public static byte[] serialize(Packet packet) {
-        //System.out.println("in serialize, serialzing packet: " + packet);
-        //System.out.println("packet.getPacketSize()"+packet.getPacketSize());
+//        System.out.println("in serialize, serialzing packet: " + packet);
+//        System.out.println("packet.getPacketSize()"+packet.getPacketSize());
         ByteBuffer byteBuffer = ByteBuffer.allocate(packet.getPacketSize());
         try {
             byteBuffer.putInt(packet.pktId);
@@ -100,13 +101,13 @@ public class PacketSerializer {
         // FIXME: if data len = 0 no need to read data, data =null, i.e. this is just an ACK
         if (dataLen>0) {
             byte[] data = new byte[dataLen];
-            //System.out.println("---deserialize packet---");
-            //System.out.println("plpktid = " + plPktId);
-            //System.out.println("isACK = " + isACK);
-            //System.out.println("datalen = " + dataLen);
-            //System.out.println("msgType = " + msgType);
-            //System.out.println("byteBuffer.capacity() = "+byteBuffer.capacity());
-            //System.out.println("byteBuffer.position() = "+byteBuffer.position());
+//            System.out.println("---deserialize packet---");
+//            System.out.println("plpktid = " + plPktId);
+//            System.out.println("isACK = " + isACK);
+//            System.out.println("datalen = " + dataLen);
+//            System.out.println("msgType = " + msgType);
+//            System.out.println("byteBuffer.capacity() = "+byteBuffer.capacity());
+//            System.out.println("byteBuffer.position() = "+byteBuffer.position());
             byteBuffer.get(data); // read bytes to data[0, dataLen]
             //byte[] data = new byte[MAX_DATA_SIZE];
             Packet res = new Packet(data, numMsgs, firstMsgId, pktId, isACK, src, dst, relayedBy,
